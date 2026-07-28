@@ -336,4 +336,3 @@ The frontend is deployed from CI (not from Amplify's Git integration):
 
 This manual zip-deploy approach decouples the frontend build from AWS — the CI pipeline handles building, and Amplify only handles hosting and TLS.
 
-![Serverless Layer Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/serverless-layer.png)

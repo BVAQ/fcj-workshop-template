@@ -169,4 +169,3 @@ This **vpc** object is threaded through the stack constructor to every module th
 
 Only **two modules** actually consume the VPC: ECS (for compute placement) and RaftDB Application Storage (for EFS mount targets). All other modules either operate at the regional/global level or are intentionally placed outside the VPC.
 
-![VPC Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/vpc-architecture.png)

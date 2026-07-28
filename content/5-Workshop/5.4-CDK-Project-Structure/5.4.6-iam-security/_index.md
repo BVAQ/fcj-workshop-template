@@ -223,4 +223,3 @@ The Lambda only has **PutObject** on the exports bucket — no **GetObject**, no
 | **JWT secret** | Never in code; pulled from Secrets Manager at ECS startup | **secrets** field in container definition |
 | **No VPC for Lambda** | No ENI cold start, no **ec2:*** permissions | Absence of **vpc** property |
 
-![IAM Roles & Security Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/iam-roles.png)

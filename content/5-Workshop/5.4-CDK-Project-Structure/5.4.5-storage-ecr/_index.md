@@ -239,4 +239,3 @@ Even if another process in the ECS task tried to access the EFS filesystem, it w
 | RaftDB EFS | **DESTROY** | Ephemeral WAL data; safe to recreate |
 | RaftDB S3 Snapshots | **DESTROY** + **autoDeleteObjects** | Snapshots are periodic and can be regenerated; auto-cleanup prevents orphaned charges |
 
-![Storage Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/storage-architecture.png)

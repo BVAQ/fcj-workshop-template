@@ -270,4 +270,3 @@ This creates **ws.\<domain\>** pointing to the ALB. The split-domain architectur
 
 The WebSocket idle timeout (3600s) is critical here — without it, idle viewers would be disconnected every 60 seconds.
 
-![ECS Fargate Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/ecs-architecture.png)

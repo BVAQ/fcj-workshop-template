@@ -260,4 +260,3 @@ Here is the complete infrastructure deployed by the CDK stacks:
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-![RaftDB Staging Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/raftdb-staging.png)

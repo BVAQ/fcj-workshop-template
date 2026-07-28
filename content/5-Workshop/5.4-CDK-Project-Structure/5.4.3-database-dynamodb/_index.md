@@ -242,4 +242,3 @@ db.historyTable.grantReadWriteData(taskRole);
 
 Using **grantReadWriteData()** (rather than hand-written policies) ensures the permissions are always correct — CDK generates the minimal policy with the exact table and index ARNs.
 
-![DynamoDB Table Design Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/dynamodb-tables.png)
