@@ -226,3 +226,22 @@ div.notices.info p {
   border-top: 30px solid #fd9827;
   background: #fff2db;
 }
+
+/* Increased font size for better readability */
+#body #body-inner {
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+}
+
+#body #body-inner p,
+#body #body-inner li,
+#body #body-inner td,
+#body #body-inner th {
+  font-size: 1.05rem !important;
+}
+
+#body #body-inner h1 { font-size: 2.2rem !important; }
+#body #body-inner h2 { font-size: 1.75rem !important; }
+#body #body-inner h3 { font-size: 1.45rem !important; }
+#body #body-inner h4 { font-size: 1.25rem !important; }
+
