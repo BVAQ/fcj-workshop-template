@@ -1,57 +1,30 @@
 ---
-title: "Week 8 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Week 8: Continued Learning (Aug 3 - Aug 7, 2026)"
+date: 2026-08-03
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+
+{{% notice note %}}
+From this point forward (August), no project-related tasks are executed. Activities are strictly dedicated to studying the resources provided in the FCAJ platform.
 {{% /notice %}}
 
+### Objectives:
 
-### Week 8 Objectives:
+* Explore advanced AWS Cloud and AI/ML services theoretically via FCAJ materials.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
+| 36 | - Study AWS AI/ML service overview (SageMaker, Rekognition, Polly). | 08/03/2026 | 08/03/2026 | cloudjourney.awsstudygroup.com |
+| 37 | - Review FCAJ recorded sessions on cloud security best practices. | 08/04/2026 | 08/04/2026 | FCAJ Video Library |
+| 38 | - Read whitepapers on AWS Well-Architected Framework (Security & Reliability). | 08/05/2026 | 08/05/2026 | AWS Whitepapers |
+| 39 | - Study AWS Cost Optimization strategies and tools (Cost Explorer). | 08/06/2026 | 08/06/2026 | cloudjourney.awsstudygroup.com |
+| 40 | - Complete FCAJ module quizzes for AI/ML and Security chapters. | 08/07/2026 | 08/07/2026 | FCAJ Quiz Portal |
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Achievements:
 
+* Gained theoretical knowledge of the AWS AI/ML stack without project execution.
+* Deepened understanding of cloud security and cost optimization pillars.
 
-### Week 8 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
