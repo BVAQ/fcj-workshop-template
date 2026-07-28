@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Worklog
-
 ## Introduction
 
 This worklog summarizes my internship activities in the **First Cloud AI Journey (FCAJ)** program from **15 June 2026** to **14 August 2026**, covering a total of **nine weeks**.

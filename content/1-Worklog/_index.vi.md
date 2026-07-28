@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Nhật ký công việc (Worklog)
-
 ## Giới thiệu
 
 Nhật ký công việc này tóm tắt các hoạt động thực tập của tôi trong chương trình **First Cloud AI Journey (FCAJ)** từ ngày **15 tháng 06 năm 2026** đến ngày **14 tháng 08 năm 2026**, bao gồm tổng cộng **chín tuần**.
