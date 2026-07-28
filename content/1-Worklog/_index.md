@@ -6,11 +6,34 @@ chapter: true
 pre: " <b> 1. </b> "
 ---
 
-### Introduction
+# Worklog
 
-This worklog outlines the progress and tasks completed during my 9-week internship program at the **First Cloud AI Journey (FCAJ)**, from June 15, 2026, to August 14, 2026. The program is structured into two main phases:
+## Introduction
 
-* **Phase 1 (June 15 - July 31):** Hands-on learning of AWS core services (Compute, Storage, Networking, Databases) and active project implementation. The final project and workshop report are strictly submitted by July 31, 2026.
-* **Phase 2 (August 1 - August 14):** Exclusive focus on continued learning and exploring advanced AWS and AI resources provided within the FCAJ ecosystem. No project-related tasks are carried out during this period.
+This worklog summarizes my internship activities in the **First Cloud AI Journey (FCAJ)** program from **15 June 2026** to **14 August 2026**, covering a total of **nine weeks**.
 
-This document details the weekly objectives, daily tasks, execution timelines, reference materials, and key achievements.
+During the first seven weeks, I focused on completing the assigned **Final Workshop**, including learning AWS services, developing the project, testing the system, and preparing the Workshop Report. The Final Workshop was successfully submitted before the official deadline on **31 July 2026**.
+
+After submitting the Final Workshop, I continued studying advanced AWS topics through the FCAJ learning resources. This phase focused on expanding my understanding of cloud technologies and exploring additional AWS services beyond the project requirements.
+
+The following pages present a detailed weekly worklog, including the objectives, completed tasks, and achievements throughout the internship.
+
+---
+
+## Internship Timeline
+
+| Week | Period | Main Activities |
+|------|---------|-----------------|
+| [**Week 1**](1.1-week1/) | 15/06/2026 – 21/06/2026 | Internship onboarding, AWS fundamentals, development environment setup, AWS account configuration |
+| [**Week 2**](1.2-week2/) | 22/06/2026 – 28/06/2026 | Learn core AWS services, design the project architecture, initialize the Final Workshop |
+| [**Week 3**](1.3-week3/) | 29/06/2026 – 05/07/2026 | Develop cloud infrastructure using AWS CDK and implement the initial project components |
+| [**Week 4**](1.4-week4/) | 06/07/2026 – 12/07/2026 | Continue implementing project features, integrate AWS services and perform functional testing |
+| [**Week 5**](1.5-week5/) | 13/07/2026 – 19/07/2026 | Complete remaining project modules, optimize the application and begin writing the Workshop Report |
+| [**Week 6**](1.6-week6/) | 20/07/2026 – 26/07/2026 | Finalize project implementation, complete documentation and prepare the Workshop Report |
+| [**Week 7**](1.7-week7/) | 27/07/2026 – 31/07/2026 | Review the project, finalize documentation and submit the Final Workshop |
+| [**Week 8**](1.8-week8/) | 03/08/2026 – 09/08/2026 | Continue studying advanced AWS topics through FCAJ learning resources |
+| [**Week 9**](1.9-week9/) | 10/08/2026 – 14/08/2026 | Explore additional AWS services and summarize knowledge gained during the internship |
+
+---
+
+## Weekly Worklog
