@@ -36,15 +36,7 @@ export function createIamRoles(scope: Construct, input: IamInput): IamOutput {
 }
 ```
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Phân quyền IAM & Bảo mật (IAM Roles & Security Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + AWS IAM (Roles, Policies, Least Privilege Principle)
-  + ECS Task Execution Role (Thẩm quyền kéo image từ ECR, ghi CloudWatch Logs)
-  + ECS Task Role (Thẩm quyền đọc/ghi DynamoDB, S3 bucket)
-  + AWS KMS (Mã hóa EFS & Secret Manager)
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Phân quyền IAM & Bảo mật dựa trên hướng dẫn ở trên và lưu với tên iam-roles.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Phân quyền IAM & Bảo mật](/images/5-Workshop/5.4-CDK-Project-Structure/iam-roles.png)
 
 #### Role 1: ECS Task Execution Role
 

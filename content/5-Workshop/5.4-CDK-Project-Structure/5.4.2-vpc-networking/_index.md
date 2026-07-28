@@ -61,17 +61,7 @@ This is a deliberate architectural decision that saves approximately **$32/month
 
 The standard AWS best practice of placing compute in private subnets behind a NAT Gateway exists for defense-in-depth. The awsplace project achieves equivalent security through tightly scoped security groups (see below) while avoiding the operational cost and complexity of NAT Gateways.
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: AWS VPC Architecture Diagram
-- Use official AWS Architecture Icons:
-  + AWS Region (ap-southeast-1)
-  + VPC Boundary (AWS::EC2::VPC) with CIDR (e.g. 10.0.0.0/16)
-  + 2 Availability Zones (AZ a, AZ b)
-  + Public Subnets (SubnetType.PUBLIC, cidrMask: 24) in each AZ
-  + Internet Gateway (IGW) & Route Tables
-  + Note: natGateways: 0 (No NAT Gateways for cost optimization)
--->
-> **Action for you:** Please draw the VPC Architecture Diagram following the guidelines above and save as vpc-architecture.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![VPC Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/vpc-architecture.png)
 
 ---
 
@@ -179,10 +169,4 @@ This **vpc** object is threaded through the stack constructor to every module th
 
 Only **two modules** actually consume the VPC: ECS (for compute placement) and RaftDB Application Storage (for EFS mount targets). All other modules either operate at the regional/global level or are intentionally placed outside the VPC.
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console VPC dashboard and capture the AwsplaceVpc showing: the VPC itself, 2 public subnets across 2 AZs, the internet gateway, and 0 NAT gateways.
-Save as: static/images/5.4/vpc-console.png
-
-Screenshot suggestion 2: Open the AWS Console Security Groups page and capture the 3 security groups (ALB, ECS, EFS) showing their inbound rules.
-Save as: static/images/5.4/security-groups-console.png
--->
+![VPC Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/vpc-architecture.png)

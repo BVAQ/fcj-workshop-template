@@ -16,15 +16,7 @@ Three modules together form the serverless frontend-serving and authentication l
 | API Gateway | **lib/apigw.ts** | HTTP API v2 + custom domain + Route 53 record | Routes all HTTP requests to Lambda |
 | Amplify | **lib/amplify.ts** | Amplify App + Branch + Domain | Frontend SPA hosting with custom domain |
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: Serverless Layer Diagram (Lambda, API Gateway, Amplify)
-- Use official AWS Architecture Icons:
-  + AWS Amplify (Frontend hosting)
-  + Amazon API Gateway (REST API endpoints)
-  + AWS Lambda Functions (Node.js runtime, custom handlers)
-  + Route 53 (DNS routing)
--->
-> **Action for you:** Please draw the Serverless Layer Diagram following the guidelines above and save as serverless-layer.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Serverless Layer Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/serverless-layer.png)
 
 ---
 
@@ -344,13 +336,4 @@ The frontend is deployed from CI (not from Amplify's Git integration):
 
 This manual zip-deploy approach decouples the frontend build from AWS — the CI pipeline handles building, and Amplify only handles hosting and TLS.
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console Lambda page, select the ApiFunction, and capture the Configuration tab showing runtime Node.js 24, 512 MB memory, 30s timeout, and the environment variables.
-Save as: static/images/5.4/lambda-configuration.png
-
-Screenshot suggestion 2: Open the AWS Console API Gateway page, select the HTTP API, and capture the Routes tab showing the $default route integrated with the Lambda function, and the CORS configuration.
-Save as: static/images/5.4/api-gateway-routes.png
-
-Screenshot suggestion 3: Open the AWS Console Amplify Hosting page, select the app, and capture the Rewrites & redirects section showing the two custom rules (SPA rewrite with html exception, and the catch-all fallback).
-Save as: static/images/5.4/amplify-rewrites.png
--->
+![Serverless Layer Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/serverless-layer.png)

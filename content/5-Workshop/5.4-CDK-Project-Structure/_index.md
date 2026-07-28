@@ -32,13 +32,4 @@ When writing the CDK code for awsplace, we stuck to a few core rules to keep thi
 5. **No hardcoded ARNs**: We never construct raw ARN strings by hand. We always use CDK methods, which guarantees the ARNs will be correct no matter what account or region you deploy to.
 6. **Protecting critical resources**: We add **RemovalPolicy.RETAIN** to things we really don't want to lose (like our ECR repo or secrets). A simple stack deletion won't wipe out important data.
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the cdk/ directory in VS Code and capture the file tree showing all 15 TypeScript modules under lib/.
-Save as: static/images/5.4/cdk-project-tree.png
-
-Screenshot suggestion 2: Run npx cdk synth and capture the terminal output showing "Successfully synthesized" with the list of stacks.
-Save as: static/images/5.4/cdk-synth-output.png
-
-Screenshot suggestion 3: Open the stack-wiring.svg diagram in a browser and capture it showing the full dependency graph.
-Save as: static/images/5.4/stack-dependency-graph.png
--->
+![CDK Project Overview](/images/5-Workshop/5.4-CDK-Project-Structure/entry-point-flow.png)

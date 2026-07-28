@@ -84,14 +84,7 @@ export function createStorage(scope: Construct, props?: StorageProps): StorageOu
 
 **Tại sao S3 cho canvas thay vì DynamoDB?** DynamoDB có giới hạn kích thước mục 400 KB. Canvas ở 4 bit mỗi pixel phát triển đến **32 MiB** ở kích thước tối đa (8000×8000). S3 không có giới hạn kích thước thực tế cho trường hợp sử dụng này và rẻ hơn cho lưu trữ nhị phân.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Kiến trúc Lưu trữ ECR & S3 (Storage Architecture Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + Amazon ECR (Repository awsplace-ecs): Mutability rules, ScanOnPush, Retention policy
-  + Amazon S3 (Bucket canvas & snapshot): Bucket policy, Lifecycle rules, Encryption
-- Mô tả luồng CI/CD push Docker image lên ECR và ứng dụng ghi snapshot canvas vào S3.
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Kiến trúc lưu trữ ECR & S3 dựa trên hướng dẫn ở trên và lưu với tên storage-architecture.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Kiến trúc Lưu trữ ECR & S3](/images/5-Workshop/5.4-CDK-Project-Structure/storage-architecture.png)
 
 #### Lưu trữ Ứng dụng RaftDB
 

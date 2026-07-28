@@ -10,16 +10,7 @@ pre : " <b> 5.4.4 </b> "
 
 Module ECS (**createEcs**) là module phức tạp nhất, định nghĩa lớp tính toán: một **ECS Fargate cluster** chạy container ứng dụng Go với **RaftDB sidecar**, được đặt trước bởi **Application Load Balancer (ALB)** với kết thúc HTTPS.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Kiến trúc Tính toán Amazon ECS (ECS Fargate Architecture Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + ECS Cluster (Amazon ECS)
-  + ECS Service (Fargate Launch Type)
-  + Task Definition (App container với Docker Image từ ECR)
-  + Security Group (Inbound port 80/443 từ Public Subnet)
-  + Auto-scaling & Deployment Circuit Breaker
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Kiến trúc ECS Fargate dựa trên hướng dẫn ở trên và lưu với tên ecs-architecture.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Kiến trúc ECS Fargate](/images/5-Workshop/5.4-CDK-Project-Structure/ecs-architecture.png)
 
 #### Task Definition
 

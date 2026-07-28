@@ -17,16 +17,7 @@ The ECS module (**createEcs**) is the most complex module in the CDK codebase. I
 | Resources | Fargate cluster, task definition (2 containers), Fargate service, ALB, HTTPS listener, target group, Route 53 ws. record |
 | Return type | **{ cluster, service, taskDefinition, alb }** |
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: Amazon ECS Fargate Architecture Diagram
-- Use official AWS Architecture Icons:
-  + ECS Cluster (Amazon ECS)
-  + ECS Service (Fargate Launch Type)
-  + Task Definition (App container with Docker Image from ECR)
-  + Security Group (Inbound port 80/443 from Public Subnet)
-  + Auto-scaling & Deployment Circuit Breaker
--->
-> **Action for you:** Please draw the ECS Architecture Diagram following the guidelines above and save as ecs-architecture.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![ECS Fargate Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/ecs-architecture.png)
 
 ---
 
@@ -279,13 +270,4 @@ This creates **ws.\<domain\>** pointing to the ALB. The split-domain architectur
 
 The WebSocket idle timeout (3600s) is critical here — without it, idle viewers would be disconnected every 60 seconds.
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console ECS dashboard, navigate to the AwsplaceStack cluster, and capture the Service view showing: desired count 1, running count 1, Fargate launch type, and the deployment circuit breaker enabled.
-Save as: static/images/5.4/ecs-service-console.png
-
-Screenshot suggestion 2: Open the task definition in the AWS Console and capture the container definitions showing both RaftDB and App containers with their resource allocations and environment variables.
-Save as: static/images/5.4/ecs-task-definition.png
-
-Screenshot suggestion 3: Open the ALB in the AWS Console, go to the Listeners tab, and capture the HTTPS:443 listener with its certificate and target group routing.
-Save as: static/images/5.4/alb-listeners.png
--->
+![ECS Fargate Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/ecs-architecture.png)

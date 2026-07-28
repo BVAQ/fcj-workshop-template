@@ -61,16 +61,7 @@ export function createDatabase(scope: Construct): DatabaseOutput {
 
 Tất cả bốn bảng chia sẻ một mẫu thiết kế chung: **khóa chính tổng hợp** bao gồm **PK** (Partition Key, STRING) và **SK** (Sort Key, STRING). Đây là **thiết kế bảng đơn giản hóa** — mỗi loại thực thể sử dụng tiền tố PK riêng biệt thay vì nằm trong các cột riêng biệt.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Thiết kế Bảng DynamoDB (DynamoDB Table Design)
-- Sử dụng icon chuẩn Amazon DynamoDB từ bộ AWS Architecture Icons:
-  + Config Table: PK (CONFIG), SK (SINGLETON) - Lưu cấu hình canvas (width, height, cooldown)
-  + Bans Table: PK (BAN#type#id), SK (BAN) - Quản lý danh sách cấm user/IP
-  + Milestones Table: PK (MILESTONE), SK (uuid) + GSI (TriggerAtIndex) - Theo dõi cột mốc pixel
-  + History Table: PK (HISTORY), SK (ts#ms#uuid) + GSI (XOriginalIndex) - Nhật ký lịch sử vẽ pixel
-- Chú thích: Tất cả 4 bảng dùng Billing.onDemand() (On-Demand Capacity).
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Thiết kế Bảng DynamoDB dựa trên hướng dẫn ở trên và lưu với tên dynamodb-tables.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Thiết kế Bảng DynamoDB](/images/5-Workshop/5.4-CDK-Project-Structure/dynamodb-tables.png)
 
 #### Chi tiết Bảng
 

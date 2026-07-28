@@ -8,15 +8,7 @@ pre : " <b> 5.4.7 </b> "
 
 Phần này bao gồm ba module cùng nhau tạo thành lớp phục vụ frontend và xác thực: **Lambda** cho OAuth + admin proxy, **API Gateway** cho định tuyến HTTP, và **Amplify** cho lưu trữ frontend.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Lớp Serverless (Serverless Layer Diagram - Lambda, API Gateway, Amplify)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + AWS Amplify (Hosting Frontend)
-  + Amazon API Gateway (REST API endpoints)
-  + AWS Lambda Functions (Node.js runtime, custom handlers)
-  + Route 53 (DNS routing)
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Lớp Serverless dựa trên hướng dẫn ở trên và lưu với tên serverless-layer.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Lớp Serverless](/images/5-Workshop/5.4-CDK-Project-Structure/serverless-layer.png)
 
 ---
 

@@ -16,14 +16,7 @@ The storage layer consists of two independent modules: **ECR** (**createEcr**) f
 | S3 Storage | **lib/storage.ts** | 2 S3 buckets (imported) | Canvas binary + PNG exports |
 | RaftDB Storage | **lib/raftdb-application.ts** | 1 EFS filesystem + 1 access point + 1 S3 bucket | RaftDB WAL + periodic snapshots |
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: ECR & S3 Storage Architecture Diagram
-- Use official AWS Architecture Icons:
-  + Amazon ECR (Repository awsplace-ecs): Mutability rules, ScanOnPush, Retention policy
-  + Amazon S3 (Canvas & snapshot buckets): Bucket policy, Lifecycle rules, Encryption
-- Show CI/CD image push flow to ECR and application canvas snapshot writes to S3.
--->
-> **Action for you:** Please draw the Storage Architecture Diagram following the guidelines above and save as storage-architecture.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Storage Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/storage-architecture.png)
 
 ---
 
@@ -246,13 +239,4 @@ Even if another process in the ECS task tried to access the EFS filesystem, it w
 | RaftDB EFS | **DESTROY** | Ephemeral WAL data; safe to recreate |
 | RaftDB S3 Snapshots | **DESTROY** + **autoDeleteObjects** | Snapshots are periodic and can be regenerated; auto-cleanup prevents orphaned charges |
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console ECR dashboard and capture the awsplace-ecs repository showing: imageScanOnPush enabled, MUTABLE_WITH_EXCLUSION tag mutability, raftdb-* exclusion filter, and the keep-last-10 lifecycle rule.
-Save as: static/images/5.4/ecr-repository-console.png
-
-Screenshot suggestion 2: Open the AWS Console S3 dashboard and capture the 3 buckets: awsplace-canvas-{account} (versioned), awsplace-exports-{account}, and the RaftDB snapshots bucket (versioned with lifecycle rules).
-Save as: static/images/5.4/s3-buckets-console.png
-
-Screenshot suggestion 3: Open the AWS Console EFS dashboard and capture the RaftDbApplicationFileSystem showing: encrypted, the access point with UID/GID 10001, and the mount targets in the VPC's public subnets.
-Save as: static/images/5.4/efs-console.png
--->
+![Storage Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/storage-architecture.png)

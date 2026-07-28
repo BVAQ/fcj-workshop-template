@@ -17,15 +17,7 @@ The IAM module (**createIamRoles**) creates **3 IAM roles** following the princi
 | Resources | 3 IAM roles with inline/managed policies |
 | Return type | **{ ecsTaskExecutionRole, ecsTaskRole, lambdaExecutionRole }** |
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: IAM Roles & Security Diagram
-- Use official AWS Architecture Icons:
-  + AWS IAM (Roles, Policies, Least Privilege Principle)
-  + ECS Task Execution Role (Permissions for ECR pull, CloudWatch Logs)
-  + ECS Task Role (Permissions for DynamoDB, S3 bucket access)
-  + AWS KMS (EFS & Secret Manager encryption)
--->
-> **Action for you:** Please draw the IAM Roles & Security Diagram following the guidelines above and save as iam-roles.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![IAM Roles & Security Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/iam-roles.png)
 
 ---
 
@@ -231,13 +223,4 @@ The Lambda only has **PutObject** on the exports bucket — no **GetObject**, no
 | **JWT secret** | Never in code; pulled from Secrets Manager at ECS startup | **secrets** field in container definition |
 | **No VPC for Lambda** | No ENI cold start, no **ec2:*** permissions | Absence of **vpc** property |
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console IAM Roles page and capture all 3 roles (EcsTaskExecutionRole, EcsTaskRole, LambdaExecutionRole) showing their trust relationships.
-Save as: static/images/5.4/iam-roles-console.png
-
-Screenshot suggestion 2: Open the EcsTaskRole in the IAM console, go to the Permissions tab, and expand the DynamoDB policy to show the scoped table ARNs (4 tables + indexes).
-Save as: static/images/5.4/ecs-task-role-dynamodb-policy.png
-
-Screenshot suggestion 3: Open the LambdaExecutionRole in the IAM console and capture the policy showing: DynamoDB CRUD on 4 tables, S3 PutObject on exports bucket only, and AWSLambdaBasicExecutionRole for CloudWatch Logs.
-Save as: static/images/5.4/lambda-role-policy.png
--->
+![IAM Roles & Security Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/iam-roles.png)

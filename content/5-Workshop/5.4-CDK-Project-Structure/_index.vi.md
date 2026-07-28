@@ -32,14 +32,4 @@ Khi viết mã CDK cho awsplace, chúng mình tuân theo một vài quy tắc c�
 5. **Không dùng chuỗi ARN cứng**: Chúng mình không bao giờ tự gõ tay các chuỗi ARN. Thay vào đó là dùng các hàm có sẵn của CDK, đảm bảo ARN luôn chính xác cho dù bạn deploy ở account hay region nào.
 6. **Bảo vệ tài nguyên quan trọng**: Với những thứ không muốn bị mất (như database hay secret), chúng mình gán thêm **RemovalPolicy.RETAIN**. Nhờ đó, việc xóa stack sẽ không vô tình làm mất các dữ liệu quan trọng.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Tổng quan Kiến trúc AWS CDK (AWS Architecture Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons (AWS Stencil Set):
-  + AWS Cloud / VPC Boundary
-  + Amazon ECS (Fargate Task)
-  + Amazon DynamoDB (Config, Bans, Milestones, History)
-  + AWS Lambda & Amazon API Gateway
-  + AWS Amplify (Frontend)
-- Mô tả mối liên hệ giữa Stack chính (AwsplaceStack) và Stack diễn tập (RaftDbStagingStack).
-Lưu tại: static/images/5-Workshop/5.4-CDK-Project-Structure/cdk-overview.png
--->
+![Tổng quan Kiến trúc AWS CDK](/images/5-Workshop/5.4-CDK-Project-Structure/entry-point-flow.png)

@@ -91,16 +91,7 @@ if (process.env.ENABLE_RAFTDB === 'true') {
 | 1 (đơn node) | PUBLIC | 1 AZ | TCP 9100 trực tiếp từ mọi nơi (đánh giá staging) |
 | 3 (ba node) | PRIVATE_ISOLATED | 3 AZ | Chỉ nội bộ (Raft peer-to-peer trên cổng 9101) |
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Kiến trúc Diễn tập RaftDB (RaftDB Staging Stack Architecture)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + RaftDbStagingStack Boundary
-  + 3-Node Raft Cluster (ECS Fargate Tasks trong Subnet riêng)
-  + Amazon EFS (Encrypted Shared File System cho WAL & State)
-  + Amazon S3 (Snapshot Backup Bucket)
-  + Security Group (Inter-node communication port 9100)
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Kiến trúc Diễn tập RaftDB dựa trên hướng dẫn ở trên và lưu với tên raftdb-staging.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Kiến trúc Diễn tập RaftDB](/images/5-Workshop/5.4-CDK-Project-Structure/raftdb-staging.png)
 
 **Tài nguyên staging stack (cụm chung):**
 

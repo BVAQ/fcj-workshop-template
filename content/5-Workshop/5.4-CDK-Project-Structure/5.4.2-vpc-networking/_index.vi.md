@@ -46,17 +46,7 @@ export function createVpc(scope: Construct): VpcOutput {
 
 Điều này tiết kiệm khoảng **$32/tháng cho mỗi NAT Gateway** (2 AZ sẽ cần 2 NAT Gateway để có tính sẵn sàng cao).
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Kiến trúc Mạng VPC (AWS VPC Architecture Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + AWS Region (ap-southeast-1)
-  + VPC Boundary (AWS::EC2::VPC) với CIDR (ví dụ 10.0.0.0/16)
-  + 2 Availability Zones (AZ a, AZ b)
-  + Public Subnets (SubnetType.PUBLIC, cidrMask: 24) trong từng AZ
-  + Internet Gateway (IGW) & Route Tables
-  + Lưu ý: natGateways: 0 (Không có NAT Gateway để tối ưu chi phí)
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Kiến trúc VPC dựa trên hướng dẫn ở trên và lưu với tên vpc-architecture.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Sơ đồ Kiến trúc VPC](/images/5-Workshop/5.4-CDK-Project-Structure/vpc-architecture.png)
 
 #### Security Groups
 

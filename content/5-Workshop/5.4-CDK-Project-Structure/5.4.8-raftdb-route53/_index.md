@@ -118,16 +118,7 @@ if (process.env.ENABLE_RAFTDB === 'true') {
 
 The single-node mode opens port 9100 to the internet for qualification tests. The three-node mode is fully isolated — only Raft peer traffic on port 9101, no public access.
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: RaftDB Staging Stack Architecture
-- Use official AWS Architecture Icons:
-  + RaftDbStagingStack Boundary
-  + 3-Node Raft Cluster (ECS Fargate Tasks in dedicated Subnet)
-  + Amazon EFS (Encrypted Shared File System for WAL & State)
-  + Amazon S3 (Snapshot Backup Bucket)
-  + Security Group (Inter-node communication port 9100)
--->
-> **Action for you:** Please draw the RaftDB Staging Architecture Diagram following the guidelines above and save as raftdb-staging.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![RaftDB Staging Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/raftdb-staging.png)
 
 #### d) Staging stack resources
 
@@ -269,13 +260,4 @@ Here is the complete infrastructure deployed by the CDK stacks:
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console Route 53 Hosted Zones page and capture the hosted zone showing the 3 DNS records: domain.com (Amplify), api.domain.com (API Gateway), ws.domain.com (ALB).
-Save as: static/images/5.4/route53-records.png
-
-Screenshot suggestion 2: Open the AWS Console ACM page, select the wildcard certificate, and capture the details showing: *.domain.com, DNS validation method, and the associated resources (API Gateway custom domain + ALB listener).
-Save as: static/images/5.4/acm-certificate.png
-
-Screenshot suggestion 3: Open the AWS Console CloudWatch Dashboards page and capture the RaftDB dashboard showing the Raft State, Log Replication, Snapshots, Network, and WAL widget groups.
-Save as: static/images/5.4/cloudwatch-raftdb-dashboard.png
--->
+![RaftDB Staging Architecture Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/raftdb-staging.png)

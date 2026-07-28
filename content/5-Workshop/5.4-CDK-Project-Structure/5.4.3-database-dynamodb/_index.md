@@ -68,16 +68,7 @@ export function createDatabase(scope: Construct): DatabaseOutput {
 }
 ```
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: DynamoDB Table Design
-- Use official Amazon DynamoDB icons from AWS Architecture Icons set:
-  + Config Table: PK (CONFIG), SK (SINGLETON) - Stores canvas config (width, height, cooldown)
-  + Bans Table: PK (BAN#type#id), SK (BAN) - Manages user/IP bans
-  + Milestones Table: PK (MILESTONE), SK (uuid) + GSI (TriggerAtIndex) - Tracks pixel milestones
-  + History Table: PK (HISTORY), SK (ts#ms#uuid) + GSI (XOriginalIndex) - Logs pixel history
-- Annotation: All 4 tables use Billing.onDemand() (On-Demand Capacity).
--->
-> **Action for you:** Please draw the DynamoDB Table Design Diagram following the guidelines above and save as dynamodb-tables.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![DynamoDB Table Design Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/dynamodb-tables.png)
 
 ---
 
@@ -251,10 +242,4 @@ db.historyTable.grantReadWriteData(taskRole);
 
 Using **grantReadWriteData()** (rather than hand-written policies) ensures the permissions are always correct — CDK generates the minimal policy with the exact table and index ARNs.
 
-<!-- 📸 IMAGE GUIDELINE:
-Screenshot suggestion 1: Open the AWS Console DynamoDB dashboard and capture the 4 tables (Config, Bans, Milestones, History) showing their on-demand billing mode and composite primary keys.
-Save as: static/images/5.4/dynamodb-console.png
-
-Screenshot suggestion 2: Open the Milestones table in the AWS Console, go to the Indexes tab, and capture the TriggerAtIndex GSI configuration.
-Save as: static/images/5.4/milestones-gsi.png
--->
+![DynamoDB Table Design Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/dynamodb-tables.png)
