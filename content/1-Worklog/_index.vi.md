@@ -2,7 +2,7 @@
 title: "Worklog"
 date: 2026-06-15
 weight: 1
-chapter: true
+chapter: false
 pre: " <b> 1. </b> "
 ---
 
@@ -23,7 +23,7 @@ Các trang tiếp theo trình bày nhật ký công việc chi tiết theo từn
 ## Tiến độ thực tập
 
 | Tuần | Thời gian | Hoạt động chính |
-|------|---------|-----------------|
+|:---|:---|:---|
 | [**Tuần 1**](1.1-week1/) | 15/06/2026 – 21/06/2026 | Onboarding thực tập, các kiến thức AWS cơ bản, thiết lập môi trường phát triển, cấu hình tài khoản AWS |
 | [**Tuần 2**](1.2-week2/) | 22/06/2026 – 28/06/2026 | Tìm hiểu các dịch vụ cốt lõi của AWS, thiết kế kiến trúc dự án, khởi tạo Final Workshop |
 | [**Tuần 3**](1.3-week3/) | 29/06/2026 – 05/07/2026 | Phát triển hạ tầng đám mây sử dụng AWS CDK và triển khai các thành phần ban đầu của dự án |

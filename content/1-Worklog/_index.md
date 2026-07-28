@@ -2,7 +2,7 @@
 title: "Worklog"
 date: 2026-06-15
 weight: 1
-chapter: true
+chapter: false
 pre: " <b> 1. </b> "
 ---
 
@@ -23,7 +23,7 @@ The following pages present a detailed weekly worklog, including the objectives,
 ## Internship Timeline
 
 | Week | Period | Main Activities |
-|------|---------|-----------------|
+|:---|:---|:---|
 | [**Week 1**](1.1-week1/) | 15/06/2026 – 21/06/2026 | Internship onboarding, AWS fundamentals, development environment setup, AWS account configuration |
 | [**Week 2**](1.2-week2/) | 22/06/2026 – 28/06/2026 | Learn core AWS services, design the project architecture, initialize the Final Workshop |
 | [**Week 3**](1.3-week3/) | 29/06/2026 – 05/07/2026 | Develop cloud infrastructure using AWS CDK and implement the initial project components |
