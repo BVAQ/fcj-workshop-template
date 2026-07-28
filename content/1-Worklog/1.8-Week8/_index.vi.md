@@ -1,5 +1,5 @@
 ---
-title: "Tuần 8: Tiếp tục Học tập (03/08 - 07/08/2026)"
+title: "Worklog Tuần 8"
 date: 2026-08-03
 weight: 8
 chapter: false

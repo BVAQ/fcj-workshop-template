@@ -1,5 +1,5 @@
 ---
-title: "Tuần 7: Hoàn thiện Dự án & Nộp Báo cáo (27/07 - 31/07/2026)"
+title: "Worklog Tuần 7"
 date: 2026-07-27
 weight: 7
 chapter: false

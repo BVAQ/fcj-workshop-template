@@ -1,5 +1,5 @@
 ---
-title: "Tuần 3: Networking & Databases (29/06 - 03/07/2026)"
+title: "Worklog Tuần 3"
 date: 2026-06-29
 weight: 3
 chapter: false

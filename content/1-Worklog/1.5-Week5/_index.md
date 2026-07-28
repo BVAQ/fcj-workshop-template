@@ -1,5 +1,5 @@
 ---
-title: "Week 5: Project Implementation - Phase 1 (Jul 13 - Jul 17, 2026)"
+title: "Week 5 Worklog"
 date: 2026-07-13
 weight: 5
 chapter: false

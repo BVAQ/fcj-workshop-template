@@ -1,5 +1,5 @@
 ---
-title: "Tuần 2: Compute & Storage Nâng cao (22/06 - 26/06/2026)"
+title: "Worklog Tuần 2"
 date: 2026-06-22
 weight: 2
 chapter: false

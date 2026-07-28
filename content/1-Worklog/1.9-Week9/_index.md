@@ -1,5 +1,5 @@
 ---
-title: "Week 9: Wrapping Up Studies (Aug 10 - Aug 14, 2026)"
+title: "Week 9 Worklog"
 date: 2026-08-10
 weight: 9
 chapter: false

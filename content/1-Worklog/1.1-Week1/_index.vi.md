@@ -1,5 +1,5 @@
 ---
-title: "Tuần 1: Nhận việc & Cơ bản về AWS Core (15/06 - 19/06/2026)"
+title: "Worklog Tuần 1"
 date: 2026-06-15
 weight: 1
 chapter: false

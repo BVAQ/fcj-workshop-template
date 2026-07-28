@@ -1,5 +1,5 @@
 ---
-title: "Tuần 9: Tổng kết Khóa học (10/08 - 14/08/2026)"
+title: "Worklog Tuần 9"
 date: 2026-08-10
 weight: 9
 chapter: false

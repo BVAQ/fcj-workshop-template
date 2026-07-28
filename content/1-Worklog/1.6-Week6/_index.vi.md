@@ -1,5 +1,5 @@
 ---
-title: "Tuần 6: Triển khai Dự án - Giai đoạn 2 (20/07 - 24/07/2026)"
+title: "Worklog Tuần 6"
 date: 2026-07-20
 weight: 6
 chapter: false

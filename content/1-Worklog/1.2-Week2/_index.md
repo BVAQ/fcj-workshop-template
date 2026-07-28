@@ -1,5 +1,5 @@
 ---
-title: "Week 2: Advanced Compute & Storage (Jun 22 - Jun 26, 2026)"
+title: "Week 2 Worklog"
 date: 2026-06-22
 weight: 2
 chapter: false

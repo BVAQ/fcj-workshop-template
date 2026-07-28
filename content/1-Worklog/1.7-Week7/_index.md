@@ -1,5 +1,5 @@
 ---
-title: "Week 7: Project Finalization & Report Submission (Jul 27 - Jul 31, 2026)"
+title: "Week 7 Worklog"
 date: 2026-07-27
 weight: 7
 chapter: false

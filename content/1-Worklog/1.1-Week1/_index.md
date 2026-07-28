@@ -1,5 +1,5 @@
 ---
-title: "Week 1: Onboarding & AWS Core Basics (Jun 15 - Jun 19, 2026)"
+title: "Week 1 Worklog"
 date: 2026-06-15
 weight: 1
 chapter: false

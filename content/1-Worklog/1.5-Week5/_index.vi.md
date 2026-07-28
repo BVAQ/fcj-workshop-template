@@ -1,5 +1,5 @@
 ---
-title: "Tuần 5: Triển khai Dự án - Giai đoạn 1 (13/07 - 17/07/2026)"
+title: "Worklog Tuần 5"
 date: 2026-07-13
 weight: 5
 chapter: false

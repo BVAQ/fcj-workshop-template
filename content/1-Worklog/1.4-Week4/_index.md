@@ -1,5 +1,5 @@
 ---
-title: "Week 4: Serverless & Project Kickoff (Jul 6 - Jul 10, 2026)"
+title: "Week 4 Worklog"
 date: 2026-07-06
 weight: 4
 chapter: false
