@@ -31,7 +31,3 @@ Các trang tiếp theo trình bày nhật ký công việc chi tiết theo từn
 | [**Tuần 7**](1.7-week7/) | 27/07/2026 – 31/07/2026 | Rà soát dự án, hoàn thiện tài liệu và nộp Final Workshop |
 | [**Tuần 8**](1.8-week8/) | 03/08/2026 – 09/08/2026 | Tiếp tục học các chủ đề AWS nâng cao thông qua tài nguyên học tập FCAJ |
 | [**Tuần 9**](1.9-week9/) | 10/08/2026 – 14/08/2026 | Khám phá thêm các dịch vụ AWS và tóm tắt kiến thức thu được trong đợt thực tập |
-
----
-
-## Nhật ký hàng tuần

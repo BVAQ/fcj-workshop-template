@@ -31,7 +31,3 @@ The following pages present a detailed weekly worklog, including the objectives,
 | [**Week 7**](1.7-week7/) | 27/07/2026 – 31/07/2026 | Review the project, finalize documentation and submit the Final Workshop |
 | [**Week 8**](1.8-week8/) | 03/08/2026 – 09/08/2026 | Continue studying advanced AWS topics through FCAJ learning resources |
 | [**Week 9**](1.9-week9/) | 10/08/2026 – 14/08/2026 | Explore additional AWS services and summarize knowledge gained during the internship |
-
----
-
-## Weekly Worklog
