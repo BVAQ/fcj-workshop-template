@@ -52,16 +52,7 @@ if (process.env.ENABLE_RAFTDB === 'true') {
 app.synth();
 ```
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: CDK Entry Point Flow
-- Flowchart/Sequence diagram describing:
-  1. Read environment variables (CDK_DEFAULT_ACCOUNT, DOMAIN_NAME, HOSTED_ZONE_ID,...)
-  2. Initialize cdk.App()
-  3. Instantiate AwsplaceStack
-  4. Check condition ENABLE_RAFTDB === 'true' -> Instantiate RaftDbStagingStack & addDependency()
-  5. Invoke app.synth()
--->
-> **Action for you:** Please draw the Entry Point Flow diagram following the guidelines above and save as entry-point-flow.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![CDK Entry Point Flow](/images/5-Workshop/5.4-CDK-Project-Structure/entry-point-flow.png)
 
 ---
 
@@ -203,14 +194,7 @@ The constructor calls modules in this exact sequence:
 - **Route 53 before API Gateway, Amplify, and ECS** — the wildcard ACM certificate must exist before any TLS-enabled resource references it.
 - **ECS last** — it references VPC, IAM, ECR, database, storage, secrets, EFS, and Route 53. Creating it last ensures all dependencies are available.
 
-<!-- 📸 IMAGE GUIDELINE:
-Architecture Diagram Suggestion: Stack Wiring Diagram
-- Use official AWS Architecture Icons:
-  + AwsplaceStack: ECS Service, DynamoDB Tables, ECR Repository, Amplify App
-  + RaftDbStagingStack: 3-node Raft Cluster (ECS Fargate), EFS File System, S3 Snapshot Bucket
-- Show dependencies and cross-stack references via CloudFormation Exports/Imports.
--->
-> **Action for you:** Please draw the Stack Wiring Diagram following the guidelines above and save as stack-wiring.png in static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Stack Wiring Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/stack-wiring.png)
 
 #### CloudFormation Outputs
 

@@ -47,16 +47,7 @@ app.synth();
 
 3. **Stack staging có điều kiện**: **RaftDbStagingStack** chỉ được tạo khi **ENABLE_RAFTDB=true**. Nó phụ thuộc vào stack chính vì chia sẻ ECR repository thông qua **Fn.importValue**.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Luồng Điểm vào (CDK Entry Point Flow)
-- Sơ đồ dạng Flowchart/Sequence mô tả các bước:
-  1. Đọc biến môi trường (CDK_DEFAULT_ACCOUNT, DOMAIN_NAME, HOSTED_ZONE_ID,...)
-  2. Khởi tạo cdk.App()
-  3. Khởi tạo AwsplaceStack
-  4. Kiểm tra điều kiện ENABLE_RAFTDB === 'true' -> Khởi tạo RaftDbStagingStack & addDependency()
-  5. Gọi app.synth()
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ sơ đồ Luồng điểm vào dựa trên hướng dẫn ở trên và lưu với tên entry-point-flow.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![CDK Entry Point Flow](/images/5-Workshop/5.4-CDK-Project-Structure/entry-point-flow.png)
 
 #### Stack Chính
 
@@ -89,14 +80,7 @@ Lớp **AwsplaceStack** là bộ điều phối chính. Nó mở rộng lớp CD
 
 Thứ tự rất quan trọng: VPC đứng đầu vì mọi tài nguyên khác phụ thuộc vào nó. IAM roles được tạo sau database và storage vì chúng cần ARN bảng/bucket cho chính sách có phạm vi. ECS được tạo cuối cùng vì nó cần tham chiếu đến hầu như mọi tài nguyên khác.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
-Gợi ý vẽ sơ đồ: Sơ đồ Kết nối Stack (Stack Wiring Diagram)
-- Sử dụng các icon chuẩn từ bộ AWS Architecture Icons:
-  + AwsplaceStack: ECS Service, DynamoDB Tables, ECR Repository, Amplify App
-  + RaftDbStagingStack: 3-node Raft Cluster (ECS Fargate), EFS File System, S3 Snapshot Bucket
-- Thể hiện sự phụ thuộc và tham chiếu chéo giữa các stack thông qua CloudFormation Exports/Imports.
--->
-> **Nhiệm vụ của bạn:** Vui lòng vẽ Sơ đồ kết nối Stack dựa trên hướng dẫn ở trên và lưu với tên stack-wiring.png vào thư mục static/images/5-Workshop/5.4-CDK-Project-Structure/.
+![Stack Wiring Diagram](/images/5-Workshop/5.4-CDK-Project-Structure/stack-wiring.png)
 
 **CloudFormation Outputs (18 tổng cộng):**
 
