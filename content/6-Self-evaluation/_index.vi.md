@@ -6,35 +6,55 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+### 🌟 Tổng quan Hành trình 8 Tuần
 
-Trong suốt thời gian thực tập tại **[Tên công ty/tổ chức]** từ **[ngày bắt đầu]** đến **[ngày kết thúc]**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế.  
-Tôi đã tham gia **[mô tả ngắn gọn dự án hoặc công việc chính]**, qua đó cải thiện kỹ năng **[liệt kê kỹ năng: lập trình, phân tích, viết báo cáo, giao tiếp…]**.  
+Nhìn lại hành trình 8 tuần tham gia chương trình thực tập/workshop **AWS - First Cloud AI Journey (FCJ)** (từ **15/06/2026** đến **14/08/2026**), tôi tự hào khẳng định đây là một trong những cột mốc quan trọng nhất trong sự nghiệp học tập và phát triển chuyên môn của mình. Không chỉ dừng lại ở các khái niệm lý thuyết sách vở, chương trình đã ném tôi vào một môi trường thực chiến nơi tôi phải tự tay thiết kế, xây dựng và vận hành dự án **Awsplace** - một ứng dụng hoàn chỉnh trên nền tảng điện toán đám mây.
 
-Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ nội quy, và tích cực trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
+Quá trình này là một sự chuyển đổi lớn từ việc "biết về Cloud" sang "làm được Cloud". Tôi đã học được cách kiến trúc một hệ thống có khả năng mở rộng, đảm bảo tính bảo mật cao, và tối ưu hóa chi phí vận hành. Hơn thế nữa, thông qua cường độ làm việc cao và những deadline khắt khe hàng tuần, tôi đã rèn luyện được tính kỷ luật, sự tập trung và khả năng làm việc độc lập cũng như cộng tác nhóm trong một môi trường làm việc chuyên nghiệp (Agile/Scrum).
 
-Để phản ánh một cách khách quan quá trình thực tập, tôi xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
+---
 
+### 📊 Ma trận Đánh giá Năng lực Cốt lõi
 
-| STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | --- | --- | ---------- |
-| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ✅   | ☐   | ☐          |
-| 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ☐   | ✅   | ☐          |
-| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
-| 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
-| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ☐   | ☐   | ✅          |
-| 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ☐   | ✅   | ☐          |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     | ☐   | ✅   | ☐          |
-| 8   | **Hợp tác nhóm**                    | Làm việc hiệu quả với đồng nghiệp, tham gia nhóm                                                 | ✅   | ☐   | ☐          |
-| 9   | **Ứng xử chuyên nghiệp**            | Tôn trọng đồng nghiệp, đối tác, môi trường làm việc                                              | ✅   | ☐   | ☐          |
-| 10  | **Tư duy giải quyết vấn đề**        | Nhận diện vấn đề, đề xuất giải pháp, sáng tạo                                                    | ☐   | ✅   | ☐          |
-| 11  | **Đóng góp vào dự án/tổ chức**      | Hiệu quả công việc, sáng kiến cải tiến, ghi nhận từ team                                         | ✅   | ☐   | ☐          |
-| 12  | **Tổng thể**                        | Đánh giá chung về toàn bộ quá trình thực tập                                                     | ✅   | ☐   | ☐          |
+Thay vì những đánh giá chung chung, tôi đã lượng hóa sự phát triển của mình qua từng năng lực cụ thể dựa trên trải nghiệm triển khai dự án Awsplace.
 
-### Cần cải thiện
+| Tiêu chí Đánh giá | Tự chấm điểm | Phân tích & Minh chứng Cụ thể |
+| :--- | :---: | :--- |
+| **Thiết kế Kiến trúc Cloud** | ⭐⭐⭐⭐ | Nắm vững các nguyên tắc của kiến trúc 3 tầng (3-tier architecture). Hiểu sâu sắc sự tương tác giữa Compute (EC2), Database (RDS), Storage (S3), và CDN (CloudFront). Chuyển đổi thành công các sơ đồ kiến trúc thành các triển khai thực tế có thể hoạt động. |
+| **Bảo mật & Quản lý IAM** | ⭐⭐⭐⭐⭐ | Tuân thủ nghiêm ngặt Nguyên tắc Đặc quyền tối thiểu (Principle of Least Privilege). Rất thành thạo trong việc tạo và quản lý IAM Users, Roles và Policies. Cấu hình thành công các quy tắc Security Group chính xác và tích hợp chứng chỉ SSL thông qua AWS Certificate Manager (ACM) để thực thi mã hóa HTTPS. |
+| **Mạng & Định tuyến DNS** | ⭐⭐⭐⭐ | Xử lý thành công các thiết lập mạng phức tạp: triển khai VPC, Public/Private Subnets, và Internet Gateways. Tích lũy kinh nghiệm thực tế sâu rộng về quản lý DNS, cấu hình bản ghi CNAME/ALIAS thông qua Route 53 và các nhà cung cấp bên thứ ba (như Namecheap). |
+| **CI/CD & Hosting Web (Amplify)** | ⭐⭐⭐⭐⭐ | Hoàn toàn làm chủ pipeline Tích hợp liên tục / Triển khai liên tục (CI/CD) bằng AWS Amplify tích hợp với GitHub. Nhanh chóng giải quyết các lỗi build và tự động hóa quy trình triển khai lên môi trường production một cách trơn tru. |
+| **Khắc phục Sự cố Nâng cao** | ⭐⭐⭐⭐⭐ | Đây là kỹ năng được cải thiện nhiều nhất của tôi. Thay vì hoảng hốt trước các lỗi "403 Access Denied", tôi đã phát triển một tư duy kỹ thuật trưởng thành: phân tích log, đi sâu vào tài liệu AWS và cô lập vấn đề một cách có hệ thống để debug hiệu quả. |
+| **Viết Tài liệu Kỹ thuật** | ⭐⭐⭐⭐ | Xây dựng thói quen tốt trong việc ghi chép lại mọi cấu hình, lựa chọn kiến trúc và lỗi gặp phải. Duy trì các báo cáo công việc (worklog) hàng tuần rõ ràng và toàn diện bằng Markdown, giúp người khác dễ dàng tái tạo lại các bước triển khai của tôi. |
 
-* Nâng cao tính kỹ luật, chấp hành nghiêm chỉnh nội quy của công ty hoặc bất kỳ trong một tổ chức nào
-* Cải thiện trong cách tư duy giải quyết vấn đề
-* Học cách giao tiếp tốt hơn trong giao tiếp hằng ngày và trong công việc, xử lý tình huống
+---
+
+### 🛠️ Bộ Kỹ năng Kỹ thuật Chuyên sâu Đạt được
+
+Chương trình FCJ đã giúp tôi xây dựng một bộ công nghệ mạnh mẽ và có nhu cầu cao:
+- **Compute & Storage:** Tự tin khởi tạo và quản lý các instance **EC2** (Linux/Windows). Quản lý tài nguyên tĩnh hiệu quả với **Amazon S3** và cấu hình block storage với **EBS**.
+- **Database Management:** Triển khai và quản lý cơ sở dữ liệu quan hệ với **Amazon RDS** (MySQL/PostgreSQL), hiểu rõ về sao lưu dự phòng và triển khai Multi-AZ.
+- **Networking & Content Delivery:** Sử dụng **Route 53** để quản lý tên miền (vd: `bvaq-workshop.space`) và cấu hình **CloudFront** như một CDN toàn cầu để tăng tốc độ phân phối nội dung.
+- **Version Control & DevOps:** Thành thạo sử dụng **Git** và **GitHub** để quản lý mã nguồn, chiến lược phân nhánh và merge an toàn.
+
+---
+
+### 🏆 Những Thách thức Chính đã Vượt qua
+
+1. **Cấu hình Tên miền Tùy chỉnh & SSL:** Ban đầu, tôi gặp khó khăn đáng kể với việc Xác thực Chứng chỉ SSL và trỏ bản ghi DNS (CNAME/ALIAS) từ Namecheap sang AWS CloudFront. Nhờ kiên nhẫn nghiên cứu về truyền bá DNS (DNS propagation) và cơ chế của Route 53, tôi đã giải quyết hoàn toàn các vấn đề, mang lại một ứng dụng ổn định và được bảo mật bằng HTTPS.
+2. **Lỗi Từ chối Quyền IAM:** Đã có những lúc hệ thống báo lỗi truy cập (vd: một instance EC2 không thể đọc từ S3). Thay vì cấp quyền Admin toàn diện một cách nguy hiểm như một cách sửa lỗi nhanh, tôi đã học cách đọc log CloudTrail và policy simulators của IAM để cấp chính xác các quyền tối thiểu cần thiết.
+
+---
+
+### 🎯 Kế hoạch Hành động Chiến lược Tương lai
+
+Sự kết thúc của chương trình này không phải là vạch đích; đó là một bệ phóng. Dưới đây là các mục tiêu hành động của tôi trong 3-6 tháng tới:
+
+1. **Đạt được Chứng chỉ AWS Toàn cầu:**
+   - Dành thời gian học tập tập trung để thi đậu chứng chỉ **AWS Certified Solutions Architect – Associate** nhằm chính thức khẳng định kỹ năng kiến trúc và chuyên môn về cloud của mình.
+2. **Nâng cấp với Infrastructure as Code (IaC):**
+   - Mặc dù AWS Management Console rất tuyệt vời cho việc học tập, nó không thể mở rộng cho các dự án doanh nghiệp. Tôi sẽ bắt đầu học **Terraform** hoặc **AWS CloudFormation** để cung cấp và quản lý hạ tầng hoàn toàn thông qua code.
+3. **Nghiên cứu Sâu về Tích hợp AI/ML:**
+   - Đón đầu làn sóng AI, tôi dự định khám phá các dịch vụ như **Amazon Bedrock**, **Amazon SageMaker**, và **Amazon Rekognition** để tích hợp các tính năng thông minh (như chatbot AI tạo sinh hay phân tích hình ảnh) vào các ứng dụng tương lai của mình.
+
+---
