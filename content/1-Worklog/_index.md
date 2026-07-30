@@ -8,11 +8,9 @@ pre: " <b> 1. </b> "
 
 ## Introduction
 
-This worklog summarizes my internship activities in the **First Cloud AI Journey (FCAJ)** program from **15 June 2026** to **14 August 2026**, covering a total of **nine weeks**.
+This worklog summarizes my internship activities in the **First Cloud AI Journey (FCAJ)** program from **15 June 2026** to **31 July 2026**, covering a total of **seven weeks**.
 
-During the first seven weeks, I focused on completing the assigned **Final Workshop**, including learning AWS services, developing the project, testing the system, and preparing the Workshop Report. The Final Workshop was successfully submitted before the official deadline on **31 July 2026**.
-
-After submitting the Final Workshop, I continued studying advanced AWS topics through the FCAJ learning resources. This phase focused on expanding my understanding of cloud technologies and exploring additional AWS services beyond the project requirements.
+During the seven weeks, I focused on completing the assigned **Final Workshop**, including learning AWS services, developing the project, testing the system, and preparing the Workshop Report. The Final Workshop was successfully submitted before the official deadline on **31 July 2026**.
 
 The following pages present a detailed weekly worklog, including the objectives, completed tasks, and achievements throughout the internship.
 
@@ -29,5 +27,3 @@ The following pages present a detailed weekly worklog, including the objectives,
 | [**Week 5**](1.5-week5/) | 13/07/2026 – 19/07/2026 | Complete remaining project modules, optimize the application and begin writing the Workshop Report |
 | [**Week 6**](1.6-week6/) | 20/07/2026 – 26/07/2026 | Finalize project implementation, complete documentation and prepare the Workshop Report |
 | [**Week 7**](1.7-week7/) | 27/07/2026 – 31/07/2026 | Review the project, finalize documentation and submit the Final Workshop |
-| [**Week 8**](1.8-week8/) | 03/08/2026 – 09/08/2026 | Continue studying advanced AWS topics through FCAJ learning resources |
-| [**Week 9**](1.9-week9/) | 10/08/2026 – 14/08/2026 | Explore additional AWS services and summarize knowledge gained during the internship |

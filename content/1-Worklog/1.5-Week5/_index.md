@@ -19,10 +19,15 @@ pre: " <b> 1.5. </b> "
 | 23 | - Develop core backend scripts/Lambda functions. | 07/15/2026 | 07/15/2026 | AWS SDK Documentation |
 | 24 | - Integrate backend with the database and test CRUD operations. | 07/16/2026 | 07/16/2026 | Project Requirements |
 | 25 | - Set up IAM roles and strict permission policies for backend services. | 07/17/2026 | 07/17/2026 | AWS IAM Docs |
+| 6 | - Connect State Machine to Network layer: Respond to client after Committed.<br>- Handle NOT_LEADER error for client reconnection. | TBD | TBD | RaftDB C++ Report |
+| 7 | - Implement basic commands in the command engine: GET, SET, EXISTS, DEL.<br>- Ensure Atomicity for overwrite operations. | TBD | TBD | RaftDB C++ Report |
 
 ### Achievements:
 
-* Completed the foundational infrastructure setup with proper network isolation.
-* Successfully established communication between compute resources and databases.
-* Applied the principle of least privilege using IAM roles.
-
+* Integrated serverless computing paradigms into the project by developing and deploying AWS Lambda functions for backend processing.
+* Orchestrated event-driven architectures utilizing Amazon EventBridge and SNS to trigger serverless workflows asynchronously.
+* Successfully established the critical bridge between RaftDB's State Machine and its Network layer, guaranteeing clients only receive "OK" responses post-consensus.
+* Implemented the NOT_LEADER redirect mechanism, empowering clients to automatically discover and reconnect to the active cluster Leader without manual intervention.
+* Built the core storage engine commands, fully supporting standard KV operations such as GET, SET, EXISTS, and DEL in-memory.
+* Engineered strict atomicity guarantees for data overwrite operations, ensuring the database remains completely resilient against race conditions during concurrent accesses.
+* Synthesized AWS serverless components with custom backend services, bridging the gap between managed cloud services and raw C++ performance.

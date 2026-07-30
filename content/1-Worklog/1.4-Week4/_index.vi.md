@@ -19,9 +19,15 @@ pre: " <b> 1.4. </b> "
 | 18 | - Khởi động Dự án: Lên ý tưởng và chọn chủ đề dự án. | 08/07/2026 | 08/07/2026 | Hướng dẫn Dự án |
 | 19 | - Thiết kế Kiến trúc: Phác thảo sơ đồ kiến trúc cho dự án đã chọn. | 09/07/2026 | 09/07/2026 | AWS Architecture Center |
 | 20 | - Trình bày kế hoạch và kiến trúc dự án cho mentors để phê duyệt. | 10/07/2026 | 10/07/2026 | Ghi chú Phản hồi từ Mentor |
+| 6 | - Nâng cấp AppendEntries RPC: Gửi kèm Log Entries.<br>- Tối ưu hóa gửi Batch để tăng thông lượng. | TBD | TBD | Báo cáo C++ RaftDB |
+| 7 | - Hiện thực logic giải quyết xung đột (Conflict Resolution).<br>- Hiện thực cơ chế tính toán Commit Index. | TBD | TBD | Báo cáo C++ RaftDB |
 
 ### Thành tựu:
 
-* Tạo thành công một endpoint serverless hoạt động được.
-* Chốt phạm vi dự án, yêu cầu và sơ đồ kiến trúc AWS.
-
+* Chuyển đổi thành công từ việc vận hành thủ công trên AWS Console sang phương pháp Infrastructure as Code (IaC) thông qua việc làm chủ AWS Cloud Development Kit (CDK).
+* Khởi tạo và triển khai hạ tầng có khả năng mở rộng tự động bằng cách sử dụng các template AWS CloudFormation sinh ra từ CDK.
+* Cấu trúc lại các thiết lập trước đó (VPC, EC2, S3) thành các module CDK có thể tái sử dụng, tăng tốc độ và độ nhất quán khi triển khai.
+* Nâng cấp thành công AppendEntries RPC của cụm Raft, cho phép truyền tải chính xác các Log Entries thực tế từ Leader sang các Follower.
+* Tối ưu hóa thông lượng mạng bằng cách thiết kế cơ chế gửi Batch, giảm thiểu đáng kể chi phí RPC cho các luồng dữ liệu khối lượng lớn.
+* Hiện thực xuất sắc logic Giải quyết xung đột (Conflict Resolution) của Raft, giúp Leader tự động phát hiện sai lệch và ghi đè các log bị lỗi trên Follower một cách mượt mà.
+* Phát triển cơ chế tính toán Commit Index chuẩn xác, đảm bảo State Machine chỉ thực thi những lệnh đã đạt được sự đồng thuận của đa số node một cách an toàn.
