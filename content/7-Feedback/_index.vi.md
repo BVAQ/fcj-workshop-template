@@ -6,37 +6,37 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-Nhìn lại toàn bộ hành trình 8 tuần cùng **First Cloud AI Journey (FCJ)**, mình có rất nhiều cảm xúc và suy nghĩ muốn chia sẻ. Dưới đây là những đánh giá chân thực nhất của cá nhân mình về chương trình, không còn là những gạch đầu dòng khô khan nữa.
+Nhìn lại toàn bộ hành trình 8 tuần tham gia chương trình First Cloud AI Journey (FCJ), tài liệu này trình bày những đánh giá chi tiết và phản hồi khách quan của tôi về chương trình.
 
-### 🌟 Đánh giá chung về chương trình
+### Đánh giá chung về chương trình
 
 **1. Môi trường và cường độ làm việc**  
-Cá nhân mình thấy môi trường của FCJ thực sự mang đậm tính "thực chiến". Nó không giống như việc đi học lý thuyết trên trường hay xem các tutorial trên mạng. Cường độ làm việc khá cao với các deadline hàng tuần rất gắt gao. Ban đầu mình hơi ngợp, nhưng chính áp lực này lại ép mình phải rèn luyện tính kỷ luật và khả năng quản lý thời gian. Cộng đồng trên group (Discord/Zalo) hoạt động cực kỳ sôi nổi, nhiều khi 1-2 giờ sáng hỏi bài vẫn có người nhảy vào support hoặc cùng nhau debug. Cảm giác không bị đơn độc trong một môi trường remote thực sự rất tuyệt vời.
+Môi trường của FCJ thể hiện tính thực tiễn và chuyên nghiệp cao, khác biệt đáng kể so với môi trường học thuật lý thuyết. Cường độ làm việc lớn cùng với các thời hạn hoàn thành nghiêm ngặt hàng tuần đã góp phần rèn luyện kỷ luật và kỹ năng quản lý thời gian hiệu quả. Cộng đồng trao đổi trên Discord/Zalo hoạt động tích cực; sự phối hợp liên tục trong việc hỗ trợ giải quyết sự cố đã tạo ra một môi trường làm việc từ xa mang lại hiệu quả cao.
 
 **2. Tinh thần Tự học và Hỗ trợ từ Cộng đồng (Community Support)**  
-Chương trình này đề cao tinh thần tự học, không có mentor cầm tay chỉ việc. Ban đầu mình khá "sốc nhiệt" vì phải tự bơi giữa biển tài liệu AWS khổng lồ. Tuy nhiên, chính việc phải tự mày mò khi kẹt ở lỗi "403 Access Denied" hay CI/CD build xịt đã rèn luyện cho mình kỹ năng tự research cực kỳ tốt. Thay vì hỏi và có ngay đáp án, mình học cách đọc CloudTrail, tra cứu Stack Overflow và tài liệu chính thức của AWS. Điểm sáng lớn nhất là sự hỗ trợ từ cộng đồng anh em cùng cohort; mọi người review lỗi cho nhau, cùng thảo luận tìm hướng giải quyết, tạo nên một môi trường tự học nhưng không hề cô độc. Team Admin cũng rất chu đáo, luôn nhắc nhở deadline và support nhiệt tình các vấn đề về tài khoản.
+Chương trình đề cao tinh thần tự học tập và nghiên cứu. Việc độc lập tìm hiểu tài liệu AWS để xử lý các sự cố, chẳng hạn như lỗi biên dịch CI/CD hay các vấn đề về phân quyền, đã nâng cao đáng kể kỹ năng nghiên cứu của tôi. Thay vì phụ thuộc vào các giải pháp có sẵn, tôi đã rèn luyện được khả năng phân tích log CloudTrail, khai thác các diễn đàn kỹ thuật và tham khảo tài liệu chính thức của AWS. Hơn nữa, môi trường hợp tác giữa các học viên – nơi chúng tôi tích cực hỗ trợ nhau rà soát lỗi – đã thiết lập một văn hóa học tập rất tích cực. Ban tổ chức cũng thể hiện sự tận tâm trong việc theo sát tiến độ và hỗ trợ các vấn đề về tài khoản.
 
 **3. Mức độ bám sát thực tế và chuyên ngành**  
-Những gì mình học được ở trường (như kiến thức mạng cơ bản, hệ điều hành) chỉ là nền tảng. Khi vào FCJ, việc tự tay cấu hình VPC, Public/Private Subnet, hay thiết lập Route 53 thực sự đã biến những lý thuyết khô khan đó thành kiến thức sống. Các công việc trong dự án Awsplace bám sát 100% với nhu cầu tuyển dụng Cloud/DevOps hiện nay ở các doanh nghiệp.
+Mặc dù chương trình đại học đã cung cấp nền tảng kiến thức về mạng và hệ điều hành, việc tham gia FCJ đã giúp tôi chuyển hóa những lý thuyết này thành kỹ năng thực tế. Các thao tác thực hành như cấu hình VPC, Subnet, và Route 53 trong dự án Awsplace hoàn toàn tương đồng với các yêu cầu thực tế đối với vị trí Kỹ sư Cloud/DevOps tại các doanh nghiệp hiện nay.
 
 **4. Kỹ năng thu nhận được (Không chỉ là Technical)**  
-Tất nhiên, về mặt kỹ thuật, mình đã nắm được kiến trúc 3-tier, biết dùng EC2, RDS, S3, Amplify... Nhưng điều mình quý giá hơn cả là **kỹ năng xử lý sự cố (troubleshooting)** và **kỹ năng viết tài liệu (documentation)**. Trước đây mình rất ghét đọc log, thấy lỗi là cuống cuồng đi hỏi. Giờ thì mình đã có phản xạ bình tĩnh đọc log, tra cứu AWS Docs và tự khoanh vùng lỗi. Việc phải viết báo cáo hàng tuần bằng Markdown cũng giúp tư duy trình bày vấn đề của mình rành mạch hơn rất nhiều.
+Bên cạnh năng lực kỹ thuật về kiến trúc 3 tầng và việc sử dụng các dịch vụ như EC2, RDS, S3, và Amplify, chương trình đã cải thiện đáng kể kỹ năng xử lý sự cố và soạn thảo tài liệu kỹ thuật của tôi. Việc tiếp cận các bản ghi hệ thống một cách có phương pháp để cô lập lỗi đã trở thành phản xạ chuyên môn tiêu chuẩn. Thêm vào đó, việc lập báo cáo kỹ thuật hàng tuần bằng Markdown đã giúp tôi nâng cao khả năng trình bày các quy trình kỹ thuật một cách rõ ràng và chuyên nghiệp.
 
 ---
 
-### 💡 Trả lời một số câu hỏi khảo sát
+### Trả lời một số câu hỏi khảo sát
 
 **Điều gì làm bạn hài lòng nhất trong suốt quá trình tham gia?**  
-Khoảnh khắc nhìn thấy trang web của mình thực sự chạy được trên tên miền tùy chỉnh với ổ khóa xanh HTTPS (chứng chỉ SSL), và mỗi lần push code lên GitHub là hệ thống tự động deploy (CI/CD)... Cảm giác "thành tựu" đó vô cùng lớn. Nó chứng minh rằng mình hoàn toàn có thể tự tay xây dựng một hệ thống thật từ con số không.
+Việc triển khai thành công một ứng dụng web trên tên miền tùy chỉnh với chứng chỉ SSL đang hoạt động, kết hợp cùng quy trình CI/CD tự động từ kho lưu trữ GitHub, mang lại một cảm giác hoàn thành mục tiêu chuyên môn rất lớn. Điều này chứng minh năng lực thiết kế và vận hành một hệ thống thực tế từ các bước cơ bản nhất.
 
 **Theo bạn, chương trình cần cải thiện điều gì để tốt hơn cho các lứa (cohort) sau?**  
-Mình nghĩ ban tổ chức có thể làm thêm một buổi hướng dẫn thật kỹ (hoặc một tài liệu riêng) về **Quản lý chi phí (Billing & Cost Management)** ngay từ tuần đầu tiên. Dù AWS có Free Tier, nhưng nhiều bạn (trong đó có mình) đôi khi cấu hình nhầm hoặc quên tắt dịch vụ dẫn đến bị trừ tiền oan. Nếu có cảnh báo rõ ràng hơn về các dịch vụ dễ phát sinh chi phí, trải nghiệm sẽ trọn vẹn hơn. Ngoài ra, nếu có thêm 1-2 buổi seminar trực tuyến chia sẻ kinh nghiệm thực tế từ các kỹ sư đang làm Cloud thì sẽ rất truyền cảm hứng.
+Tôi đề xuất ban tổ chức nên bổ sung một tài liệu hướng dẫn chi tiết về Quản lý chi phí (AWS Billing & Cost Management) ngay trong tuần đầu tiên. Dù sử dụng AWS Free Tier, các cấu hình sai sót vẫn có thể dẫn đến những khoản phí không mong muốn. Việc tăng cường các cảnh báo về các dịch vụ dễ phát sinh chi phí sẽ giúp cải thiện trải nghiệm học tập. Ngoài ra, việc tổ chức các buổi hội thảo với chuyên gia trong ngành để chia sẻ kinh nghiệm thực tiễn cũng sẽ mang lại nhiều giá trị thiết thực.
 
 **Bạn có sẵn sàng giới thiệu chương trình này cho bạn bè không?**  
-Chắc chắn là **CÓ**. Mình đã giới thiệu cho vài người bạn cùng khóa. Nếu ai thực sự muốn chuyển mình từ một sinh viên chỉ biết code chay sang một người biết cách vận hành cả một hệ thống trên Cloud, FCJ là môi trường "khắc nghiệt nhưng cực kỳ xứng đáng" để trải nghiệm.
+Chắc chắn có. Tôi đã giới thiệu chương trình này cho một số đồng nghiệp. Đối với những cá nhân mong muốn chuyển đổi từ việc phát triển phần mềm sang vận hành toàn diện hạ tầng trên nền tảng điện toán đám mây, FCJ cung cấp một môi trường thử thách nhưng mang lại những phần thưởng hoàn toàn xứng đáng.
 
 ---
 
-### 🎯 Lời kết
+### Lời kết
 
-Kết thúc 8 tuần không có nghĩa là dừng lại. Trải nghiệm tại FCJ đã cung cấp cho mình một bệ phóng vô cùng vững chắc. Mình muốn gửi lời cảm ơn chân thành đến đội ngũ Ban tổ chức và đặc biệt là toàn thể anh em trong cộng đồng đã đồng hành, hỗ trợ lẫn nhau trong suốt chặng đường qua. Chúc cho cộng đồng FCJ ngày càng phát triển và tạo ra nhiều thế hệ kỹ sư Cloud chất lượng!
+Việc hoàn thành khóa học 8 tuần này cung cấp một nền tảng vững chắc cho quá trình phát triển chuyên môn liên tục của tôi. Tôi xin gửi lời cảm ơn chân thành tới ban tổ chức và toàn thể các học viên đã hỗ trợ trong suốt chặng đường qua. Chúc chương trình FCJ tiếp tục thành công trong việc đào tạo những kỹ sư Cloud chất lượng cao.

@@ -57,6 +57,3 @@ Une notice de type *warning*
 
 s'affiche comme
 
-{{% notice warning %}}
-Une notice de type _warning_
-{{% /notice %}}
