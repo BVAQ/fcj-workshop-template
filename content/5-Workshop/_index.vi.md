@@ -7,10 +7,6 @@ pre: " <b> 5. </b> "
 includeInReport: false
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 # Triển khai awsplace: Từ tài khoản trống đến Production
 
 Workshop này đi qua từng bước vận hành cần thiết để triển khai, kiểm thử, giám sát và tháo dỡ **awsplace** — một pixel canvas cộng tác thời gian thực qua WebSocket. Workshop bao gồm toàn bộ vòng đời triển khai: chuẩn bị, hạ tầng dạng code, pipeline CI/CD, triển khai, kiểm thử, giám sát và dọn dẹp.

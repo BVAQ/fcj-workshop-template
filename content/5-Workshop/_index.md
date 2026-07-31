@@ -7,10 +7,6 @@ pre: " <b> 5. </b> "
 includeInReport: false
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
 # Deploying awsplace: From Blank Account to Production
 
 This workshop walks through every operational step required to deploy, test, monitor, and tear down **awsplace** — a real-time collaborative pixel canvas served over WebSocket. It covers the full deployment lifecycle: prerequisites, infrastructure-as-code, CI/CD pipeline, deployment, testing, monitoring, and cleanup.
