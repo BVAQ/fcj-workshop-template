@@ -13,7 +13,7 @@ During my internship and practical training program, I had the opportunity to ex
 
 &emsp;**Date & Time:** 25/07/2026
 
-&emsp;**Location:** Amazon Web Services Office, Tầng 26 tòa nhà Bitexco TPHCM
+&emsp;**Location:** Amazon Web Services Office, Floor 26 Bitexco Tower, Ho Chi Minh City
 
 &emsp;**Role:** Attendee 
 
@@ -26,8 +26,8 @@ During my internship and practical training program, I had the opportunity to ex
 
 &emsp;**Date & Time:** 04/07/2026
 
-&emsp;**Location:** Amazon Web Services Office, Tầng 26 tòa nhà Bitexco TPHCM
+&emsp;**Location:** Amazon Web Services Office, Floor 26 Bitexco Tower, Ho Chi Minh City
 
-&emsp;**Role:** Attendee  
+&emsp;**Role:** Online Attendee  
 
 &emsp;**Main Content:** A highly practical "Study Tour" bridging the gap between academia and enterprise. Features 4 sessions led by top experts covering the modern IT job market, data architecture, discovering one's "Unique Selling Proposition", and mindset in the AI era.
