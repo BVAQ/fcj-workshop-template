@@ -12,7 +12,7 @@ The IAM module (**createIamRoles**) creates **3 IAM roles** following the princi
 
 | Aspect | Detail |
 |---|---|
-| File | **lib/iam.ts** |
+| File | **Infrastructure** |
 | Function | **createIamRoles(scope: Construct, input: IamInput): IamOutput** |
 | Resources | 3 IAM roles with inline/managed policies |
 | Return type | **{ ecsTaskExecutionRole, ecsTaskRole, lambdaExecutionRole }** |

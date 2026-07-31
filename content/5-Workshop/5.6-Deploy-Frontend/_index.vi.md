@@ -10,14 +10,6 @@ pre: " <b> 5.6. </b> "
 
 Frontend của **awsplace** là một ứng dụng HTML tĩnh, gọn nhẹ — không sử dụng framework JavaScript phức tạp như React hay Vue. Thay vào đó, việc deploy dựa vào một script build bằng shell thực hiện thay thế token, và quy trình CI/CD tải asset cuối cùng trực tiếp lên AWS Amplify. Toàn bộ quá trình được tự động hóa hoàn toàn.
 
-### Luồng Triển Khai
-
-Sự tương tác giữa CI/CD runner và AWS Amplify tuân theo chuỗi lệnh rõ ràng, được điều khiển bằng API. Sơ đồ dưới đây minh họa từng bước từ việc đọc stack output đến xác nhận deployment thành công.
-
-![Luồng Deploy Frontend](/images/5-Workshop/5.6-Deploy-Frontend/frontend-deploy-flow.png)
-
----
-
 ### Phần 1: Hạ Tầng Ứng Dụng Amplify (Định nghĩa trong CDK)
 
 Nền tảng cho việc deploy frontend là tài nguyên **AWS Amplify App**, được cung cấp bởi **AwsplaceStack** (như đã trình bày chi tiết ở phần trước). Mã CDK trong **cdk/lib/amplify.ts** cấu hình tài nguyên này với các hành vi quan trọng:

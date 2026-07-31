@@ -21,13 +21,13 @@ During my internship and practical training program, I had the opportunity to ex
 
 ---
 
-### [Event 2: AWS Study Tour & First Cloud AI Journey](4.2-Event2/)  
-&emsp;**Event Name:** AWS Study Tour & First Cloud AI Journey (FCAJ)  
+### [Event 2: AWS - Enterprise Cloud Architectures and Industry Application](4.2-Event2/)  
+&emsp;**Event Name:** AWS - Enterprise Cloud Architectures and Industry Application  
 
 &emsp;**Date & Time:** 04/07/2026
 
 &emsp;**Location:** Amazon Web Services Office, Tầng 26 tòa nhà Bitexco TPHCM
 
-&emsp;**Role:** Online Attendee  
+&emsp;**Role:** Attendee  
 
-&emsp;**Main Content:** Directly engaged with Mr. Nguyen Gia Hung (Head of SA at AWS Vietnam). Had a reality check regarding the brutal 2026 IT job market, the inverted human resource pyramid caused by AI, the "LED bulb" paradox, and the critical importance of internal Networking over blindly submitting CVs.
+&emsp;**Main Content:** A highly practical "Study Tour" bridging the gap between academia and enterprise. Features 4 sessions led by top experts covering the modern IT job market, data architecture, discovering one's "Unique Selling Proposition", and mindset in the AI era.

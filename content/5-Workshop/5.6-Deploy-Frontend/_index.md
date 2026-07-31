@@ -10,14 +10,6 @@ pre: " <b> 5.6. </b> "
 
 The **awsplace** frontend is a lightweight, static HTML application — it doesn't use a complex JavaScript framework like React or Vue. Instead, its deployment relies on a shell-based build script that performs token substitution, and a CI/CD workflow that uploads the final assets directly to AWS Amplify. The entire process is fully automated.
 
-### Deployment Flow
-
-The interaction between the CI/CD runner and AWS Amplify follows a clear, API-driven sequence. The diagram below illustrates each step from reading stack outputs to confirming a successful deployment.
-
-![Frontend Deployment Flow](/images/5-Workshop/5.6-Deploy-Frontend/frontend-deploy-flow.png)
-
----
-
 ### Part 1: The Amplify App Infrastructure (Defined in CDK)
 
 The foundation for the frontend deployment is an **AWS Amplify App** resource, provisioned by the **AwsplaceStack** (as detailed in the previous section). The CDK code in **cdk/lib/amplify.ts** configures this resource with specific, important behaviors:

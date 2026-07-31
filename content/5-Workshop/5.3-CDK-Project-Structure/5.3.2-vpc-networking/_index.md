@@ -12,7 +12,7 @@ The VPC module (**createVpc**) is the simplest but most foundational module in t
 
 | Aspect | Detail |
 |---|---|
-| File | **lib/vpc.ts** |
+| File | **Infrastructure** |
 | Function | **createVpc(scope: Construct): VpcOutput** |
 | Resources | 1 VPC, 2 public subnets |
 | Return type | **{ vpc: ec2.Vpc }** |
@@ -69,7 +69,7 @@ The standard AWS best practice of placing compute in private subnets behind a NA
 
 Security groups are created in the modules that own the resources they protect — not in the VPC module itself. This keeps security rules co-located with the resource that needs them.
 
-#### a) ALB Security Group (created in **ecs.ts**)
+#### a) ALB Security Group (created in infrastructure code)
 
 ```typescript
 const albSg = new ec2.SecurityGroup(scope, 'AlbSecurityGroup', {
@@ -83,7 +83,7 @@ albSg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(443), 'Allow HTTPS from an
 
 The ALB is internet-facing — it accepts traffic from any IPv4 address on ports 80 and 443. Port 80 exists only to redirect to 443 (HTTP → HTTPS permanent redirect).
 
-#### b) ECS Security Group (created in **ecs.ts**)
+#### b) ECS Security Group (created in infrastructure code)
 
 ```typescript
 const ecsSg = new ec2.SecurityGroup(scope, 'EcsSecurityGroup', {
@@ -96,7 +96,7 @@ ecsSg.addIngressRule(albSg, ec2.Port.tcp(8980), 'Allow app traffic from ALB');
 
 The ECS security group is locked down: it **only** accepts traffic on port 8980 from the ALB security group. Even though ECS tasks have public IP addresses, no direct internet traffic can reach them.
 
-#### c) EFS Security Group (created in **raftdb-application.ts**)
+#### c) EFS Security Group (created in infrastructure code)
 
 ```typescript
 raftDb.fileSystem.connections.allowDefaultPortFrom(
@@ -129,7 +129,7 @@ ECS SG (port 8980 from ALB SG only)
 
 No direct path exists from the internet to the ECS task or the EFS filesystem — all traffic must pass through the ALB.
 
-#### d) RaftDB Staging Security Group (created in **raftdb-staging-stack.ts**)
+#### d) RaftDB Staging Security Group (created in infrastructure code)
 
 For the staging stack, security group configuration depends on node count:
 

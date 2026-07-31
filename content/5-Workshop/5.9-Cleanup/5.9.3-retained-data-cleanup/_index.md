@@ -67,7 +67,7 @@ aws s3api delete-objects --bucket "$BUCKET" \
 aws s3api delete-bucket --bucket "$BUCKET"
 ```
 
-The lifecycle rule configured in **raftdb.ts** (35-day noncurrent version expiration) provides automatic eventual cleanup for old versions, but the complete immediate cleanup above is the only way to fully remove the bucket on demand.
+The lifecycle rule configured in infrastructure code (35-day noncurrent version expiration) provides automatic eventual cleanup for old versions, but the complete immediate cleanup above is the only way to fully remove the bucket on demand.
 
 #### b) EFS Filesystem Cleanup
 
@@ -119,7 +119,7 @@ Production retained resources (ECR repository, Secrets Manager secret, imported 
 | Secrets Manager secret | Only if the application is fully decommissioned | Schedule deletion with a recovery window (default 30 days) |
 | Imported S3 buckets (canvas, exports) | Never via CDK | These are imported (not created) by the stack; they must be managed independently |
 
-Because imported S3 buckets are created outside CDK (via **s3.Bucket.fromBucketName** in **storage.ts**), CDK has no authority to delete them — they survive stack destruction automatically.
+Because imported S3 buckets are created outside CDK (via **s3.Bucket.fromBucketName** in infrastructure code), CDK has no authority to delete them — they survive stack destruction automatically.
 
 ---
 

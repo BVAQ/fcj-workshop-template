@@ -12,10 +12,10 @@ The final two modules provide the DNS/TLS foundation for the split-domain archit
 
 | Module | File | Resources | Purpose |
 |---|---|---|---|
-| Route 53 & ACM | **lib/route53.ts** | Imported hosted zone, ACM wildcard certificate | DNS + TLS for **api.** and **ws.** subdomains |
-| RaftDB Staging Stack | **lib/raftdb-staging-stack.ts** | ECS cluster, NLB, Cloud Map, EFS, S3, CloudWatch dashboard | Disposable environment for RaftDB qualification |
-| RaftDB Cluster Factory | **lib/raftdb.ts** | Factory functions (no resources directly) | Reusable **createRaftDbCluster()** + **createRaftDbMember()** |
-| CloudWatch Dashboard | **lib/dashboard.ts** | CloudWatch dashboard widgets | Raft consensus monitoring |
+| Route 53 & ACM | **Infrastructure** | Imported hosted zone, ACM wildcard certificate | DNS + TLS for **api.** and **ws.** subdomains |
+| RaftDB Staging Stack | **Infrastructure** | ECS cluster, NLB, Cloud Map, EFS, S3, CloudWatch dashboard | Disposable environment for RaftDB qualification |
+| RaftDB Cluster Factory | **Infrastructure** | Factory functions (no resources directly) | Reusable **createRaftDbCluster()** + **createRaftDbMember()** |
+| CloudWatch Dashboard | **Infrastructure** | CloudWatch dashboard widgets | Raft consensus monitoring |
 
 ---
 
@@ -52,8 +52,8 @@ The wildcard certificate is used by two modules:
 
 | Module | Domain | Protocol | Port |
 |---|---|---|---|
-| **API Gateway** (**apigw.ts**) | **api.domain.com** | HTTPS | 443 |
-| **ECS ALB** (**ecs.ts**) | **ws.domain.com** | HTTPS | 443 |
+| **API Gateway** (**Infrastructure**) | **api.domain.com** | HTTPS | 443 |
+| **ECS ALB** (**Infrastructure**) | **ws.domain.com** | HTTPS | 443 |
 
 **Separate TLS for Amplify:** The root domain (**domain.com**) has its TLS managed by Amplify Hosting — Amplify provisions and manages its own ACM certificate. The wildcard certificate only covers subdomains.
 
@@ -142,7 +142,7 @@ The single-node mode opens port 9100 to the internet for qualification tests. Th
 | **Deployment Stability** | Per-service CPU utilization | < 1% for 5 periods | Info — verifies idle after deployment |
 | **NLB Liveness** | **HealthyHostCount** | < node count for 3 periods | Critical — members are unreachable |
 
-The CloudWatch dashboard (**lib/dashboard.ts**) adds Raft-specific widget groups:
+The CloudWatch dashboard (**Infrastructure**) adds Raft-specific widget groups:
 
 ```
 Dashboard Widgets
@@ -188,7 +188,7 @@ Step 7: VERIFY  → Confirm quorum reached + applied index converged
 
 #### 3. RaftDB Cluster Factory
 
-The **lib/raftdb.ts** module provides reusable factory functions for creating RaftDB clusters:
+The **Infrastructure** module provides reusable factory functions for creating RaftDB clusters:
 
 | Function | Purpose |
 |---|---|

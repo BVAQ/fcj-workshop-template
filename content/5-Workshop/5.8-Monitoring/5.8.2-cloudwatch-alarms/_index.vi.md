@@ -28,7 +28,7 @@ Các alarm deployment rollback (từng member, CPU < 1% liên tục) bổ sung t
 
 #### 1. Alarm Sử Dụng Tài Nguyên từng Member
 
-File: **raftdb.ts** — hàm **createRaftDbMember**
+Hàm: **createRaftDbMember**
 
 Mỗi RaftDB member nhận alarm CPU và memory riêng. Thiết kế này tránh gộp chung giữa các node để một member bị quá tải được xác định ngay lập tức mà không cần kiểm tra dashboard:
 
@@ -75,7 +75,7 @@ test('per-member CPU and memory alarms exist for all three nodes', () => {
 
 #### 2. Alarm Độ Bền: Snapshot Age và WAL Errors
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 Hai alarm toàn cluster bảo vệ chống lại các kịch bản mất dữ liệu. Chúng sử dụng CloudWatch **MathExpression** để tổng hợp giữa tất cả member:
 
@@ -131,7 +131,7 @@ Metric WalErrors là bộ đếm tăng dần — bất kỳ giá trị khác 0 n
 
 #### 3. Alarm Deployment Rollback
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 Đối với triển khai đa node, mỗi member nhận một alarm ổn định triển khai để phát hiện các task không bao giờ khởi động đúng cách sau deploy:
 
@@ -162,7 +162,7 @@ for (const member of members) {
 
 #### 4. Alarm NLB TCP Liveness
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 Cấu trúc liên kết đa node phơi bày RaftDB qua một internal Network Load Balancer. Một alarm liveness giám sát số lượng healthy target của NLB:
 

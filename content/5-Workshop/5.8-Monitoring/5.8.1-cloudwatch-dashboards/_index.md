@@ -6,14 +6,14 @@ chapter: false
 pre: " <b> 5.8.1. </b> "
 ---
 
-The awsplace CDK codebase provisions two CloudWatch dashboards — a **RaftDB staging dashboard** in the RaftDbStagingStack and a **production RaftDB sidecar dashboard** created through shared infrastructure functions. All dashboard widgets are defined in the files **dashboard.ts** and **raftdb.ts** inside the **cdk/lib/** directory. The Jest test suite validates that every planned metric appears in the dashboard body.
+The awsplace CDK codebase provisions two CloudWatch dashboards — a **RaftDB staging dashboard** in the RaftDbStagingStack and a **production RaftDB sidecar dashboard** created through shared infrastructure functions. All dashboard widgets are defined in the files **Infrastructure** and **Infrastructure** inside the **cdk/lib/** directory. The Jest test suite validates that every planned metric appears in the dashboard body.
 
 #### Dashboard overview
 
 | Dashboard | Scope | Source File | Key Widgets |
 |---|---|---|---|
-| RaftDbDashboard | Staging cluster (3-node Raft) | raftdb.ts (createRaftDbCluster) | EFS I/O limit, burst credits, ECS utilization per member, NLB target health, Raft consensus panels |
-| Production Raft sidecar | Application stack (1-node sidecar) | raftdb.ts (createRaftDbApplicationStorage) | EFS provider signals |
+| RaftDbDashboard | Staging cluster (3-node Raft) | createRaftDbCluster | EFS I/O limit, burst credits, ECS utilization per member, NLB target health, Raft consensus panels |
+| Production Raft sidecar | Application stack (1-node sidecar) | createRaftDbApplicationStorage | EFS provider signals |
 
 All dashboards are emitted as CloudFormation outputs (**RaftDbDashboardName**), so the dashboard name is discoverable from the stack outputs without opening the AWS Console.
 
@@ -21,7 +21,7 @@ All dashboards are emitted as CloudFormation outputs (**RaftDbDashboardName**), 
 
 #### 1. EFS Provider Signal Widgets
 
-File: **raftdb.ts** — function **createRaftDbCluster**
+Function: **createRaftDbCluster**
 
 Every RaftDB cluster dashboard starts with an EFS health row that displays:
 
@@ -75,7 +75,7 @@ The dual-Y-axis design separates rate metrics (left) from accumulated credits (r
 
 #### 2. Raft Consensus Custom-Metric Widgets
 
-File: **dashboard.ts** — function **addRaftConsensusWidgets**
+Function: **addRaftConsensusWidgets**
 
 The RaftDB runtime emits custom CloudWatch metrics under the **RaftDb** namespace with **Cluster** and **NodeId** dimensions. These metrics are defined in the planned emission contract and are rendered on the dashboard via four dedicated widgets:
 
@@ -86,7 +86,7 @@ The RaftDB runtime emits custom CloudWatch metrics under the **RaftDb** namespac
 | Raft commit index vs applied index | CommitIndex, AppliedIndex (per node, MAX, 1 min) | 5 | Is the state machine keeping up with the log? |
 | Raft durability: snapshot age, WAL errors, membership | SnapshotAge (MAX, 5 min), WalErrors (SUM, 5 min), MembershipChanges (MAX, 5 min) | 5 | Is durable storage healthy? Are snapshots recent? |
 
-The metric contract is defined as a typed interface in **dashboard.ts**:
+The metric contract is defined as a typed interface in infrastructure code:
 
 ```typescript
 interface RaftMetricProps {
@@ -116,7 +116,7 @@ All nine metrics are validated by the Jest test **staging dashboard includes Raf
 
 #### 3. Per-Member ECS Utilization Widgets
 
-File: **raftdb.ts** — function **createRaftDbMember**
+Function: **createRaftDbMember**
 
 Each RaftDB member gets a dedicated ECS utilization widget showing CPU and memory usage:
 

@@ -32,4 +32,3 @@ Khi viết mã CDK cho awsplace, chúng mình tuân theo một vài quy tắc c�
 5. **Không dùng chuỗi ARN cứng**: Chúng mình không bao giờ tự gõ tay các chuỗi ARN. Thay vào đó là dùng các hàm có sẵn của CDK, đảm bảo ARN luôn chính xác cho dù bạn deploy ở account hay region nào.
 6. **Bảo vệ tài nguyên quan trọng**: Với những thứ không muốn bị mất (như database hay secret), chúng mình gán thêm **RemovalPolicy.RETAIN**. Nhờ đó, việc xóa stack sẽ không vô tình làm mất các dữ liệu quan trọng.
 
-![Tổng quan Kiến trúc AWS CDK](/images/5-Workshop/5.3-CDK-Project-Structure/cdk-overview.svg)

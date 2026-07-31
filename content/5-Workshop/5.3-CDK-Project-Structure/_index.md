@@ -32,4 +32,3 @@ When writing the CDK code for awsplace, we stuck to a few core rules to keep thi
 5. **No hardcoded ARNs**: We never construct raw ARN strings by hand. We always use CDK methods, which guarantees the ARNs will be correct no matter what account or region you deploy to.
 6. **Protecting critical resources**: We add **RemovalPolicy.RETAIN** to things we really don't want to lose (like our ECR repo or secrets). A simple stack deletion won't wipe out important data.
 
-![CDK Project Overview](/images/5-Workshop/5.3-CDK-Project-Structure/cdk-overview.svg)

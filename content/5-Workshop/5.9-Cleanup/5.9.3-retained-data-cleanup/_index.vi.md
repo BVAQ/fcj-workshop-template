@@ -67,7 +67,7 @@ aws s3api delete-objects --bucket "$BUCKET" \
 aws s3api delete-bucket --bucket "$BUCKET"
 ```
 
-Lifecycle rule được cấu hình trong **raftdb.ts** (35 ngày hết hạn noncurrent version) cung cấp dọn dẹp tự động cuối cùng cho các version cũ, nhưng việc dọn dẹp hoàn chỉnh ngay lập tức như trên là cách duy nhất để loại bỏ hoàn toàn bucket theo yêu cầu.
+Lifecycle rule được cấu hình trong mã hạ tầng (35 ngày hết hạn noncurrent version) cung cấp dọn dẹp tự động cuối cùng cho các version cũ, nhưng việc dọn dẹp hoàn chỉnh ngay lập tức như trên là cách duy nhất để loại bỏ hoàn toàn bucket theo yêu cầu.
 
 #### b) Dọn dẹp EFS Filesystem
 
@@ -119,7 +119,7 @@ Tài nguyên production được giữ lại (ECR repository, Secrets Manager se
 | Secrets Manager secret | Chỉ khi ứng dụng bị ngừng hoàn toàn | Lên lịch xoá với recovery window (mặc định 30 ngày) |
 | S3 bucket được import (canvas, exports) | Không bao giờ qua CDK | Chúng được import (không được tạo) bởi stack; phải được quản lý độc lập |
 
-Vì các S3 bucket được import được tạo bên ngoài CDK (qua **s3.Bucket.fromBucketName** trong **storage.ts**), CDK không có thẩm quyền xoá chúng — chúng tự động tồn tại sau khi huỷ stack.
+Vì các S3 bucket được import được tạo bên ngoài CDK (qua **s3.Bucket.fromBucketName** trong mã hạ tầng), CDK không có thẩm quyền xoá chúng — chúng tự động tồn tại sau khi huỷ stack.
 
 ---
 

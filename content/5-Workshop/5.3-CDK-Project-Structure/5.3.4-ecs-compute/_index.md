@@ -12,7 +12,7 @@ The ECS module (**createEcs**) is the most complex module in the CDK codebase. I
 
 | Aspect | Detail |
 |---|---|
-| File | **lib/ecs.ts** |
+| File | **Infrastructure** |
 | Function | **createEcs(scope: Construct, input: EcsInput): EcsOutput** |
 | Resources | Fargate cluster, task definition (2 containers), Fargate service, ALB, HTTPS listener, target group, Route 53 ws. record |
 | Return type | **{ cluster, service, taskDefinition, alb }** |

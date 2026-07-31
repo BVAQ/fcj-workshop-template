@@ -6,21 +6,21 @@ chapter: false
 pre: " <b> 5.8.3. </b> "
 ---
 
-Dự án awsplace sử dụng health check ở ba tầng — ECS container health, thứ tự phụ thuộc container, và ALB target group health — để đảm bảo chỉ những dịch vụ được khởi tạo đúng cách mới nhận lưu lượng. Các health check này được định nghĩa trong mã CDK ở file **ecs.ts** và **raftdb.ts**, và lệnh cùng tham số chính xác của chúng được thực thi bởi các Jest contract test.
+Dự án awsplace sử dụng health check ở ba tầng — ECS container health, thứ tự phụ thuộc container, và ALB target group health — để đảm bảo chỉ những dịch vụ được khởi tạo đúng cách mới nhận lưu lượng. Các health check này được định nghĩa trong mã hạ tầng, và lệnh cùng tham số chính xác của chúng được thực thi bởi các Jest contract test.
 
 #### Các tầng health check
 
 | Tầng | Cơ chế | Định nghĩa tại | Hành vi khi thất bại |
 |---|---|---|---|
-| RaftDB container | Lệnh HEALTHCHECK (**raftdb-healthcheck**) | raftdb.ts createRaftDbMember | ECS khởi động lại container sau 10 lần thất bại liên tiếp |
-| Application container | DependsOn RaftDB container với điều kiện **HEALTHY** | ecs.ts createEcs | App container không khởi động cho đến khi RaftDB vượt qua health check |
-| ALB target group | HTTP health probe trên đường dẫn **/health** | ecs.ts createEcs | ALB rút target khỏi phục vụ; ECS deployment circuit breaker có thể rollback |
+| RaftDB container | Lệnh HEALTHCHECK (**raftdb-healthcheck**) | Infrastructure | ECS khởi động lại container sau 10 lần thất bại liên tiếp |
+| Application container | DependsOn RaftDB container với điều kiện **HEALTHY** | Infrastructure | App container không khởi động cho đến khi RaftDB vượt qua health check |
+| ALB target group | HTTP health probe trên đường dẫn **/health** | Infrastructure | ALB rút target khỏi phục vụ; ECS deployment circuit breaker có thể rollback |
 
 ---
 
 #### 1. Health Check RaftDB Container
 
-File: **raftdb.ts** — hàm **createRaftDbMember**
+Hàm: **createRaftDbMember**
 
 Mỗi RaftDB container (cả production sidecar và staging member) đều chạy cùng một lệnh health:
 
@@ -64,7 +64,7 @@ expect(container.HealthCheck.Command).toEqual([
 
 #### 2. Thứ Tự Phụ Thuộc Container
 
-File: **ecs.ts** — hàm **createEcs**
+Hàm: **createEcs**
 
 Application container phụ thuộc vào RaftDB sidecar đạt trạng thái healthy trước khi nó khởi động:
 
@@ -89,7 +89,7 @@ Nếu không có đảm bảo thứ tự này, application container có thể k
 
 #### 3. ALB Target Group Health Check
 
-File: **ecs.ts** — hàm **createEcs**
+Hàm: **createEcs**
 
 Application Load Balancer production xác thực tình trạng ứng dụng qua một HTTP endpoint:
 

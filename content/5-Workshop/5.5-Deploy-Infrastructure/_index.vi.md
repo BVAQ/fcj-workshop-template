@@ -26,30 +26,30 @@ Luồng hoạt động chia thành ba đường chính:
 
 **AwsplaceStack** là construct trung tâm trong ứng dụng CDK. Nó kết hợp nhiều construct nhỏ hơn theo dạng module — mỗi construct chịu trách nhiệm quản lý một phần cụ thể của hạ tầng.
 
-#### 1. Mạng (vpc.ts)
+#### 1. Mạng
 
 - **VPC:** Một Virtual Private Cloud tùy chỉnh cung cấp môi trường mạng cô lập cho tất cả tài nguyên. VPC trải rộng trên **2 Availability Zone** để đảm bảo tính dự phòng.
 - **Subnets:** VPC chỉ sử dụng **public subnet** và không có NAT Gateway (**natGateways: 0**). Đây là quyết định tối ưu chi phí có chủ đích — tất cả dịch vụ cần truy cập internet (ECS Fargate, ALB) đều chạy trong public subnet với public IP tự gán. Bảo mật được thực thi ở tầng security group thay vì qua topology mạng.
 
-#### 2. Lưu trữ (storage.ts và raftdb-application.ts)
+#### 2. Lưu trữ
 
 Ứng dụng sử dụng ba S3 bucket và một EFS file system:
 
-**S3 Buckets** (định nghĩa trong **storage.ts** — import theo tên bucket, không tạo mới):
+**S3 Buckets** (import theo tên bucket, không tạo mới):
 
 - **awsplace-canvas-{account}**: Lưu trữ trạng thái chính của canvas.
 - **awsplace-exports-{account}**: Lưu trữ dữ liệu xuất ra.
 
-**Lưu trữ RaftDB** (định nghĩa trong **raftdb-application.ts** — tạo mới với cấu hình bảo mật đầy đủ):
+**Lưu trữ RaftDB** (tạo mới với cấu hình bảo mật đầy đủ):
 
 - **RaftDB Snapshot Bucket**: Có versioning, mã hóa (S3-managed), bắt buộc SSL/TLS 1.2, chặn mọi truy cập công khai. Phiên bản không còn hiện tại tự động hết hạn sau 35 ngày.
 - **EFS File System**: Một Elastic File System được mã hóa cung cấp lưu trữ bền vững cho dữ liệu consensus của RaftDB. Một access point giới hạn quyền ghi vào **/raftdb/production/member-1** với quyền POSIX bị hạn chế (UID/GID 10001, mode 0750).
 
-#### 3. Kho chứa Container (ecr.ts)
+#### 3. Kho chứa Container
 
 Một kho chứa Amazon ECR tên **awsplace-ecs** lưu trữ Docker image cho Go backend server. Pipeline CI/CD push image có gắn tag vào đây, và ECS Fargate pull chúng khi deploy.
 
-#### 4. IAM Roles (iam.ts)
+#### 4. IAM Roles
 
 Stack tuân thủ **nguyên tắc đặc quyền tối thiểu** — mỗi dịch vụ chỉ nhận được quyền hạn mà nó thực sự cần:
 
@@ -57,7 +57,7 @@ Stack tuân thủ **nguyên tắc đặc quyền tối thiểu** — mỗi dịc
 - **EcsTaskExecutionRole**: Cho phép ECS agent pull image từ ECR, đọc secret từ Secrets Manager và gửi log đến CloudWatch.
 - **LambdaExecutionRole**: Cấp cho Lambda xác thực quyền thực thi cơ bản.
 
-#### 5. Backend Lõi (ecs.ts)
+#### 5. Backend Lõi
 
 Đây là construct lớn nhất và quan trọng nhất:
 
@@ -70,24 +70,24 @@ Stack tuân thủ **nguyên tắc đặc quyền tối thiểu** — mỗi dịc
 
 > **[SCREENSHOT: Giao diện AWS ECS console hiển thị dịch vụ 'awsplace' đang chạy và các task liên quan]**
 
-#### 6. Xác thực (lambda.ts và apigw.ts)
+#### 6. Xác thực
 
 - **Hàm Lambda**: Một hàm Node.js 24 xử lý luồng OAuth2 callback với Discord. Nó đọc client secret từ **Secrets Manager** tại runtime — secret không bao giờ được đóng gói vào deployment artifact.
 - **API Gateway**: Một HTTP API (không phải REST API) ánh xạ các route dưới **/auth/** đến hàm Lambda. Một custom domain **api.{domainName}** được gắn với API, sử dụng wildcard ACM certificate chung. Bản ghi Route 53 trỏ subdomain này đến API Gateway.
 - **Secrets Manager**: Lưu trữ Discord client secret, session secret và các cấu hình nhạy cảm khác dưới dạng JSON object. Cả Lambda function và ECS task đều có thể đọc secret này (với quyền truy cập theo IAM scope).
 
-#### 7. Frontend (amplify.ts)
+#### 7. Frontend
 
 - **Ứng dụng AWS Amplify**: Được cấu hình cho **deploy thủ công** — không kết nối Git repository. Pipeline CI/CD build frontend và upload file zip trực tiếp lên Amplify. Điều này tách rời frontend hosting khỏi bất kỳ nhà cung cấp source control cụ thể nào.
 - **Tên miền tùy chỉnh**: Root domain (ví dụ: **place.namanhishere.com**) được ánh xạ đến nhánh **production**. Amplify tự cung cấp và quản lý chứng chỉ TLS riêng cho domain này — tách biệt với wildcard ACM cert được ALB và API Gateway sử dụng.
 - **Luật Rewrite SPA**: Một custom rewrite rule viết lại các path không có phần mở rộng thành **/index.html**, đồng thời giữ nguyên quyền truy cập trực tiếp đến các file có phần mở rộng (CSS, JS, image) và đặc biệt là **/admin.html**. Một catch-all 404 rewrite cũng phục vụ **/index.html** cho các path không xác định.
 
-#### 8. DNS & Chứng chỉ (route53.ts)
+#### 8. DNS & Chứng chỉ
 
 - **Hosted Zone**: Stack import một hosted zone Route 53 đã có sẵn theo ID (không tạo mới).
 - **Wildcard ACM Certificate**: Một chứng chỉ cho **\*.{domainName}** được cung cấp và xác thực qua DNS. Cert này được chia sẻ bởi ALB (cho subdomain **ws.**) và API Gateway (cho subdomain **api.**). Amplify quản lý cert riêng cho root domain.
 
-#### 9. CloudWatch Dashboard (dashboard.ts)
+#### 9. CloudWatch Dashboard
 
 Một CloudWatch dashboard được tự động cung cấp với các metric vận hành cho ECS service, ALB, DynamoDB table và Lambda function. Điều này giúp team có cái nhìn tổng quan trên một bảng điều khiển duy nhất để giám sát sức khỏe ứng dụng trong môi trường production.
 

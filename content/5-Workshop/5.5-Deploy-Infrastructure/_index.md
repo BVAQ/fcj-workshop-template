@@ -26,30 +26,30 @@ The flow breaks down into three main paths:
 
 The **AwsplaceStack** is the central CDK construct. It composes multiple smaller, modular constructs — each responsible for a specific piece of infrastructure. Below is a walk-through of every component.
 
-#### 1. Networking (vpc.ts)
+#### 1. Networking
 
 - **VPC:** A custom Virtual Private Cloud provides a logically isolated network for all resources. It spans **2 Availability Zones** for redundancy.
 - **Subnets:** The VPC uses **public subnets only** with no NAT Gateways (**natGateways: 0**). This is a deliberate cost-optimization decision — all services that need outbound internet access (ECS Fargate, ALB) run in public subnets with auto-assigned public IPs. Security is enforced at the security group level rather than through network topology.
 
-#### 2. Storage (storage.ts and raftdb-application.ts)
+#### 2. Storage
 
 The application uses three S3 buckets and one EFS file system:
 
-**S3 Buckets** (defined in **storage.ts** — imported by bucket name, not created):
+**S3 Buckets** (imported by bucket name, not created):
 
 - **awsplace-canvas-{account}**: Persists the primary canvas state.
 - **awsplace-exports-{account}**: Stores data exports.
 
-**RaftDB Storage** (defined in **raftdb-application.ts** — newly created with full security configuration):
+**RaftDB Storage** (newly created with full security configuration):
 
 - **RaftDB Snapshot Bucket**: Versioned, encrypted (S3-managed), enforces SSL/TLS 1.2, blocks all public access. Non-current versions expire after 35 days.
 - **EFS File System**: An encrypted Elastic File System provides durable, persistent storage for RaftDB consensus data. An access point scopes writes to **/raftdb/production/member-1** with restricted POSIX permissions (UID/GID 10001, mode 0750).
 
-#### 3. Container Registry (ecr.ts)
+#### 3. Container Registry
 
 An Amazon ECR repository named **awsplace-ecs** stores the Docker images for the Go backend server. The CI/CD pipeline pushes tagged images here, and ECS Fargate pulls them during deployment.
 
-#### 4. IAM Roles (iam.ts)
+#### 4. IAM Roles
 
 The stack follows the **principle of least privilege** — each service gets only the permissions it strictly needs:
 
@@ -57,7 +57,7 @@ The stack follows the **principle of least privilege** — each service gets onl
 - **EcsTaskExecutionRole**: Allows the ECS agent to pull images from ECR, read secrets from Secrets Manager, and send logs to CloudWatch.
 - **LambdaExecutionRole**: Grants the authentication Lambda basic execution permissions.
 
-#### 5. Core Backend (ecs.ts)
+#### 5. Core Backend
 
 This is the largest and most critical construct:
 
@@ -70,24 +70,24 @@ This is the largest and most critical construct:
 
 > **[SCREENSHOT: AWS ECS console showing the 'awsplace' service running and the associated tasks]**
 
-#### 6. Authentication (lambda.ts and apigw.ts)
+#### 6. Authentication
 
 - **Lambda Function**: A Node.js 24 function handles the Discord OAuth2 callback flow. It reads the client secret from **Secrets Manager** at runtime — the secret is never baked into the deployment artifact.
 - **API Gateway**: An HTTP API (not REST API) maps routes under **/auth/** to the Lambda function. A custom domain **api.{domainName}** is associated with the API, using the shared wildcard ACM certificate. Route 53 records point this subdomain to the API Gateway.
 - **Secrets Manager**: Stores the Discord client secret, session secret, and other sensitive configuration as a JSON object. Both the Lambda function and ECS tasks can read this secret (with IAM-scoped access).
 
-#### 7. Frontend (amplify.ts)
+#### 7. Frontend
 
 - **AWS Amplify App**: Configured for **manual deployment** — no Git repository connection. The CI/CD pipeline builds the frontend and uploads a zip file directly to Amplify. This decouples frontend hosting from any specific source control provider.
 - **Custom Domain**: The root domain (e.g., **place.namanhishere.com**) is mapped to the **production** branch. Amplify provisions and manages its own TLS certificate for this domain — separate from the wildcard ACM cert used by the ALB and API Gateway.
 - **SPA Rewrite Rules**: A custom rewrite rule rewrites extension-less paths to **/index.html** while preserving direct access to files with extensions (CSS, JS, images) and specifically **/admin.html**. A catch-all 404 rewrite also serves **/index.html** for unknown paths.
 
-#### 8. DNS & Certificates (route53.ts)
+#### 8. DNS & Certificates
 
 - **Hosted Zone**: The stack imports an existing Route 53 hosted zone by ID (not created from scratch).
 - **Wildcard ACM Certificate**: A certificate for **\*.{domainName}** is provisioned and validated via DNS. This cert is shared by the ALB (for **ws.** subdomain) and API Gateway (for **api.** subdomain). Amplify manages its own separate cert for the root domain.
 
-#### 9. CloudWatch Dashboard (dashboard.ts)
+#### 9. CloudWatch Dashboard
 
 A CloudWatch dashboard is automatically provisioned with operational metrics for the ECS service, ALB, DynamoDB tables, and Lambda function. This gives the team a single-pane-of-glass view for monitoring the application health in production.
 

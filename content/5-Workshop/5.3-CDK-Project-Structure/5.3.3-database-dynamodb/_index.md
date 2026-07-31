@@ -12,7 +12,7 @@ The database module (**createDatabase**) defines **4 DynamoDB tables** using the
 
 | Aspect | Detail |
 |---|---|
-| File | **lib/database.ts** |
+| File | **Infrastructure** |
 | Function | **createDatabase(scope: Construct): DatabaseOutput** |
 | Resources | 4 **dynamodb.TableV2** |
 | Return type | **{ configTable, bansTable, milestonesTable, historyTable }** |

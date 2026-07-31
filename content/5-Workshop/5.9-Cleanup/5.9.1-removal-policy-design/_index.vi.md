@@ -12,18 +12,18 @@ Mỗi tài nguyên có trạng thái trong mã nguồn CDK của awsplace đều
 
 | Tài nguyên | Stack | Chính sách | File nguồn | Lý do |
 |---|---|---|---|---|
-| ECR Repository (awsplace-ecs) | AwsplaceStack | **RETAIN** | ecr.ts | CI publish image trước khi tạo lại stack; registry phải tồn tại sau cdk destroy |
-| RaftDB staging snapshot bucket | RaftDbStagingStack | **RETAIN** | raftdb.ts | Dữ liệu staging snapshot và qualification evidence phải được duy trì qua các lần dỡ bỏ staging |
-| RaftDB staging EFS | RaftDbStagingStack | **RETAIN** | raftdb.ts | Dữ liệu WAL bền vững được cố ý giữ lại; dọn dẹp là quy trình huỷ riêng biệt |
-| RaftDB application snapshot bucket | AwsplaceStack | **DESTROY** | raftdb-application.ts | Production sidecar snapshot là cục bộ; bucket được dùng riêng cho sidecar và bị xoá với autoDeleteObjects |
-| RaftDB application EFS | AwsplaceStack | **DESTROY** | raftdb-application.ts | EFS volume của production sidecar là tạm thời — dữ liệu nằm trong DynamoDB; không cần giữ lại |
-| Secrets Manager secret | AwsplaceStack | **RETAIN** | lambda.ts | Application secret phải tồn tại sau khi tạo lại stack để tránh phải nhập lại thủ công |
+| ECR Repository (awsplace-ecs) | AwsplaceStack | **RETAIN** | Infrastructure | CI publish image trước khi tạo lại stack; registry phải tồn tại sau cdk destroy |
+| RaftDB staging snapshot bucket | RaftDbStagingStack | **RETAIN** | Infrastructure | Dữ liệu staging snapshot và qualification evidence phải được duy trì qua các lần dỡ bỏ staging |
+| RaftDB staging EFS | RaftDbStagingStack | **RETAIN** | Infrastructure | Dữ liệu WAL bền vững được cố ý giữ lại; dọn dẹp là quy trình huỷ riêng biệt |
+| RaftDB application snapshot bucket | AwsplaceStack | **DESTROY** | Infrastructure | Production sidecar snapshot là cục bộ; bucket được dùng riêng cho sidecar và bị xoá với autoDeleteObjects |
+| RaftDB application EFS | AwsplaceStack | **DESTROY** | Infrastructure | EFS volume của production sidecar là tạm thời — dữ liệu nằm trong DynamoDB; không cần giữ lại |
+| Secrets Manager secret | AwsplaceStack | **RETAIN** | Infrastructure | Application secret phải tồn tại sau khi tạo lại stack để tránh phải nhập lại thủ công |
 
 ---
 
 #### 1. ECR Repository: RETAIN với Lifecycle
 
-File: **ecr.ts** — hàm **createEcr**
+Hàm: **createEcr**
 
 ECR repository là tài nguyên được giữ lại quan trọng nhất. Lý do được ghi lại trong mã nguồn:
 
@@ -70,7 +70,7 @@ test('application ECR repository has a stable retained physical name', () => {
 
 #### 2. Tài nguyên RaftDB Staging: RETAIN
 
-File: **raftdb.ts** — hàm **createRaftDbCluster**
+Hàm: **createRaftDbCluster**
 
 Snapshot bucket và EFS filesystem của staging đều được đặt là **RETAIN**:
 
@@ -111,7 +111,7 @@ Jest test **raftdb snapshots use a retained private versioned bucket with lifecy
 
 #### 3. Tài nguyên RaftDB Phía Ứng dụng: DESTROY
 
-File: **raftdb-application.ts** — hàm **createRaftDbApplicationStorage**
+Hàm: **createRaftDbApplicationStorage**
 
 Trái ngược với staging stack, các tài nguyên RaftDB sidecar của production application sử dụng **DESTROY**:
 
@@ -145,7 +145,7 @@ const fileSystem = new efs.FileSystem(scope, 'RaftDbApplicationFileSystem', {
 
 #### 4. Secrets Manager: RETAIN
 
-File: **lambda.ts** — hàm **createLambda**
+Hàm: **createLambda**
 
 Application secret (Discord OAuth credentials, session secret) được giữ lại:
 

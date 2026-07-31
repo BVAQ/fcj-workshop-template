@@ -12,24 +12,24 @@ Mỗi container trong dự án awsplace đều truyền log đến CloudWatch Lo
 
 | Container | Log Group Stream Prefix | File nguồn | Mục đích |
 |---|---|---|---|
-| RaftDB (production sidecar) | **raftdb** | ecs.ts | Sự kiện Raft consensus, publication snapshot, chuyển đổi health |
-| Application (Go/ECS) | **awsplace** | ecs.ts | HTTP request log, WebSocket event, thao tác DynamoDB, thao tác RaftDB client |
-| RaftDB (staging members) | **raftdb** | raftdb.ts createRaftDbMember | Sự kiện consensus từng member, giao tiếp peer, thao tác WAL |
-| RaftDB qualification tasks | **raftdb-qualification** | raftdb.ts createRaftDbCluster | Kết quả qualification test, metric phía client, chẩn đoán lỗi |
+| RaftDB (production sidecar) | **raftdb** | Infrastructure | Sự kiện Raft consensus, publication snapshot, chuyển đổi health |
+| Application (Go/ECS) | **awsplace** | Infrastructure | HTTP request log, WebSocket event, thao tác DynamoDB, thao tác RaftDB client |
+| RaftDB (staging members) | **raftdb** | Infrastructure | Sự kiện consensus từng member, giao tiếp peer, thao tác WAL |
+| RaftDB qualification tasks | **raftdb-qualification** | Infrastructure | Kết quả qualification test, metric phía client, chẩn đoán lỗi |
 
 Mỗi stream prefix tạo ra một CloudWatch log stream riêng biệt trong log group. Driver **awslogs** được cấu hình trực tiếp trong container definition:
 
 ```typescript
-// Production sidecar (ecs.ts)
+// Production sidecar
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb' }),
 
-// Application container (ecs.ts)
+// Application container
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'awsplace' }),
 
-// Staging members (raftdb.ts)
+// Staging members
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb' }),
 
-// Qualification tasks (raftdb.ts)
+// Qualification tasks
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb-qualification' }),
 ```
 
@@ -37,7 +37,7 @@ logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb-qualification' }),
 
 #### 1. IAM Permissions cho Logging
 
-File: **iam.ts** — hàm **createIamRoles**
+Hàm: **createIamRoles**
 
 ECS task execution role mang các quyền tối thiểu cần thiết để awslogs driver tạo stream và publish event:
 
@@ -61,7 +61,7 @@ Lambda execution role sử dụng managed policy của AWS **AWSLambdaBasicExecu
 
 #### 2. Private VPC Endpoint cho Tác Vụ Isolated
 
-File: **raftdb.ts** — hàm **createRaftDbCluster**
+Hàm: **createRaftDbCluster**
 
 RaftDB staging member chạy trong private isolated subnet không có NAT gateway và không có public IP (khi triển khai dưới dạng cụm 3 node). Để các tác vụ này có thể đẩy log lên CloudWatch, CDK tạo một **CloudWatch Logs VPC interface endpoint** riêng:
 

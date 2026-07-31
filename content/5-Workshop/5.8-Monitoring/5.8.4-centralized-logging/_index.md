@@ -12,24 +12,24 @@ Every container in the awsplace project streams its logs to CloudWatch Logs usin
 
 | Container | Log Group Stream Prefix | Source File | Purpose |
 |---|---|---|---|
-| RaftDB (production sidecar) | **raftdb** | ecs.ts | Raft consensus events, snapshot publication, health transitions |
-| Application (Go/ECS) | **awsplace** | ecs.ts | HTTP request logs, WebSocket events, DynamoDB operations, RaftDB client operations |
-| RaftDB (staging members) | **raftdb** | raftdb.ts createRaftDbMember | Per-member consensus events, peer communication, WAL operations |
-| RaftDB qualification tasks | **raftdb-qualification** | raftdb.ts createRaftDbCluster | Qualification test output, client-side metrics, failure diagnostics |
+| RaftDB (production sidecar) | **raftdb** | Infrastructure | Raft consensus events, snapshot publication, health transitions |
+| Application (Go/ECS) | **awsplace** | Infrastructure | HTTP request logs, WebSocket events, DynamoDB operations, RaftDB client operations |
+| RaftDB (staging members) | **raftdb** | Infrastructure | Per-member consensus events, peer communication, WAL operations |
+| RaftDB qualification tasks | **raftdb-qualification** | Infrastructure | Qualification test output, client-side metrics, failure diagnostics |
 
 Each stream prefix creates a separate CloudWatch log stream within the log group. The **awslogs** driver is configured inline in the container definition:
 
 ```typescript
-// Production sidecar (ecs.ts)
+// Production sidecar
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb' }),
 
-// Application container (ecs.ts)
+// Application container
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'awsplace' }),
 
-// Staging members (raftdb.ts)
+// Staging members
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb' }),
 
-// Qualification tasks (raftdb.ts)
+// Qualification tasks
 logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb-qualification' }),
 ```
 
@@ -37,7 +37,7 @@ logging: ecs.LogDriver.awsLogs({ streamPrefix: 'raftdb-qualification' }),
 
 #### 1. IAM Permissions for Logging
 
-File: **iam.ts** — function **createIamRoles**
+Function: **createIamRoles**
 
 The ECS task execution role carries the minimum permissions needed for the awslogs driver to create streams and publish events:
 
@@ -61,7 +61,7 @@ The Lambda execution role uses the AWS-managed policy **AWSLambdaBasicExecutionR
 
 #### 2. Private VPC Endpoint for Isolated Tasks
 
-File: **raftdb.ts** — function **createRaftDbCluster**
+Function: **createRaftDbCluster**
 
 RaftDB staging members run in private isolated subnets with no NAT gateway and no public IP (when deployed as a 3-node cluster). For these tasks to push logs to CloudWatch, the CDK provisions a private **CloudWatch Logs VPC interface endpoint**:
 

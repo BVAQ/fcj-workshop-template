@@ -34,7 +34,7 @@ Runbook cảnh báo rõ ràng rằng EFS filesystem đã mã hoá và S3 bucket 
 
 #### 2. Huỷ Application Stack
 
-Việc huỷ application stack (**AwsplaceStack**) yêu cầu cẩn trọng hơn vì nó chứa ECR repository, Secrets Manager secret, và các S3 bucket được import. Mã CDK trong **ecr.ts** ghi lại quy trình:
+Việc huỷ application stack (**AwsplaceStack**) yêu cầu cẩn trọng hơn vì nó chứa ECR repository, Secrets Manager secret, và các S3 bucket được import. Mã CDK trong mã hạ tầng ghi lại quy trình:
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
@@ -126,8 +126,8 @@ CI/CD artifact (test log, báo cáo scan, publication evidence) được quản 
 | GitHub Actions run log | 90 ngày (mặc định) | Tự động hết hạn bởi GitHub |
 | RaftDB image publication evidence | 90 ngày (rõ ràng) | Workflow artifact với retention-days: 90 |
 | Trivy vulnerability scan report | 90 ngày (rõ ràng) | Workflow artifact với retention-days: 90 |
-| ECR image vượt quá 10 image | Tự động | Lifecycle rule trong ecr.ts |
-| S3 non-current snapshot version | 35 ngày | Lifecycle rule trong raftdb.ts |
+| ECR image vượt quá 10 image | Tự động | Lifecycle rule |
+| S3 non-current snapshot version | 35 ngày | Lifecycle rule |
 
 Thời gian lưu artifact 90 ngày phù hợp với yêu cầu chain-of-custody của RaftDB: publication evidence phải có sẵn để kiểm toán trong toàn bộ rollback window (7 ngày sau read cutover) cộng với biên độ hào phóng.
 

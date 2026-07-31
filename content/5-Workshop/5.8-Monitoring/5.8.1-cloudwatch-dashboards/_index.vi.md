@@ -6,14 +6,14 @@ chapter: false
 pre: " <b> 5.8.1. </b> "
 ---
 
-Mã nguồn CDK của awsplace tạo ra hai CloudWatch dashboard — một **RaftDB staging dashboard** trong RaftDbStagingStack và một **production RaftDB sidecar dashboard** được tạo thông qua các hàm hạ tầng dùng chung. Tất cả widget dashboard đều được định nghĩa trong file **dashboard.ts** và **raftdb.ts** bên trong thư mục **cdk/lib/**. Bộ Jest test xác thực rằng mọi metric đã lên kế hoạch đều xuất hiện trong dashboard body.
+Mã nguồn CDK của awsplace tạo ra hai CloudWatch dashboard — một **RaftDB staging dashboard** trong RaftDbStagingStack và một **production RaftDB sidecar dashboard** được tạo thông qua các hàm hạ tầng dùng chung. Tất cả widget dashboard đều được định nghĩa trong file **Infrastructure** và **Infrastructure** bên trong thư mục **cdk/lib/**. Bộ Jest test xác thực rằng mọi metric đã lên kế hoạch đều xuất hiện trong dashboard body.
 
 #### Tổng quan dashboard
 
 | Dashboard | Phạm vi | File nguồn | Widget chính |
 |---|---|---|---|
-| RaftDbDashboard | Staging cluster (3-node Raft) | raftdb.ts (createRaftDbCluster) | EFS I/O limit, burst credits, ECS utilization từng member, NLB target health, panel Raft consensus |
-| Production Raft sidecar | Application stack (1-node sidecar) | raftdb.ts (createRaftDbApplicationStorage) | Tín hiệu EFS provider |
+| RaftDbDashboard | Staging cluster (3-node Raft) | createRaftDbCluster | EFS I/O limit, burst credits, ECS utilization từng member, NLB target health, panel Raft consensus |
+| Production Raft sidecar | Application stack (1-node sidecar) | createRaftDbApplicationStorage | Tín hiệu EFS provider |
 
 Tất cả dashboard đều được xuất dưới dạng CloudFormation output (**RaftDbDashboardName**), cho phép khám phá tên dashboard từ stack output mà không cần mở AWS Console.
 
@@ -21,7 +21,7 @@ Tất cả dashboard đều được xuất dưới dạng CloudFormation output
 
 #### 1. Widget tín hiệu EFS Provider
 
-File: **raftdb.ts** — hàm **createRaftDbCluster**
+Hàm: **createRaftDbCluster**
 
 Mỗi dashboard RaftDB cluster bắt đầu với một hàng EFS health hiển thị:
 
@@ -75,7 +75,7 @@ Thiết kế trục Y kép tách biệt metric tốc độ (bên trái) khỏi c
 
 #### 2. Widget Custom Metric Raft Consensus
 
-File: **dashboard.ts** — hàm **addRaftConsensusWidgets**
+Hàm: **addRaftConsensusWidgets**
 
 RaftDB runtime phát ra custom CloudWatch metric dưới namespace **RaftDb** với dimension **Cluster** và **NodeId**. Các metric này được định nghĩa trong planned emission contract và được hiển thị trên dashboard qua bốn widget chuyên dụng:
 
@@ -86,7 +86,7 @@ RaftDB runtime phát ra custom CloudWatch metric dưới namespace **RaftDb** v�
 | Raft commit index vs applied index | CommitIndex, AppliedIndex (từng node, MAX, 1 min) | 5 | State machine có theo kịp log không? |
 | Raft durability: snapshot age, WAL errors, membership | SnapshotAge (MAX, 5 min), WalErrors (SUM, 5 min), MembershipChanges (MAX, 5 min) | 5 | Lưu trữ bền vững có khoẻ không? Snapshot có gần đây không? |
 
-Hợp đồng metric được định nghĩa dưới dạng typed interface trong **dashboard.ts**:
+Hợp đồng metric được định nghĩa dưới dạng typed interface trong mã hạ tầng:
 
 ```typescript
 interface RaftMetricProps {
@@ -116,7 +116,7 @@ Tất cả chín metric đều được xác thực bởi Jest test **staging da
 
 #### 3. Widget ECS Utilization từng Member
 
-File: **raftdb.ts** — hàm **createRaftDbMember**
+Hàm: **createRaftDbMember**
 
 Mỗi RaftDB member nhận một widget ECS utilization riêng hiển thị mức sử dụng CPU và memory:
 

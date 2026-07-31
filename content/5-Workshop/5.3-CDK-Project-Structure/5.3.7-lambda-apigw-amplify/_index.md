@@ -12,9 +12,9 @@ Three modules together form the serverless frontend-serving and authentication l
 
 | Module | File | Resources | Purpose |
 |---|---|---|---|
-| Lambda | **lib/lambda.ts** | 1 Lambda function + 1 Secrets Manager secret | Discord OAuth2 flow, JWT session management, admin proxy |
-| API Gateway | **lib/apigw.ts** | HTTP API v2 + custom domain + Route 53 record | Routes all HTTP requests to Lambda |
-| Amplify | **lib/amplify.ts** | Amplify App + Branch + Domain | Frontend SPA hosting with custom domain |
+| Lambda | **Infrastructure** | 1 Lambda function + 1 Secrets Manager secret | Discord OAuth2 flow, JWT session management, admin proxy |
+| API Gateway | **Infrastructure** | HTTP API v2 + custom domain + Route 53 record | Routes all HTTP requests to Lambda |
+| Amplify | **Infrastructure** | Amplify App + Branch + Domain | Frontend SPA hosting with custom domain |
 
 ![Serverless Layer Diagram](/images/5-Workshop/5.3-CDK-Project-Structure/serverless-layer.png)
 

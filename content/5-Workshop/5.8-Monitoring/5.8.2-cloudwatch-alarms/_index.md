@@ -28,7 +28,7 @@ The deployment rollback alarms (per-member, sustained CPU < 1%) add another thre
 
 #### 1. Per-Member Resource Utilization Alarms
 
-File: **raftdb.ts** — function **createRaftDbMember**
+Function: **createRaftDbMember**
 
 Each RaftDB member gets its own CPU and memory alarm. The design avoids aggregating across nodes so that a single over-utilized member is identified immediately without requiring dashboard inspection:
 
@@ -75,7 +75,7 @@ test('per-member CPU and memory alarms exist for all three nodes', () => {
 
 #### 2. Durability Alarms: Snapshot Age and WAL Errors
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 Two cluster-wide alarms protect against data-loss scenarios. They use CloudWatch **MathExpression** to aggregate across all members:
 
@@ -131,7 +131,7 @@ The WalErrors metric is an incrementing counter — any non-zero value means WAL
 
 #### 3. Deployment Rollback Alarms
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 For multi-node deployments, each member gets a deployment stability alarm that detects tasks that never started correctly after a deployment:
 
@@ -162,7 +162,7 @@ This is a negative-space alarm: sustained CPU *below* 1% for 5 minutes after a d
 
 #### 4. NLB TCP Liveness Alarm
 
-File: **raftdb-staging-stack.ts**
+File: **Infrastructure**
 
 The multi-node topology exposes RaftDB through an internal Network Load Balancer. A liveness alarm monitors the NLB's healthy target count:
 

@@ -12,9 +12,9 @@ The storage layer consists of two independent modules: **ECR** (**createEcr**) f
 
 | Module | File | Resources | Purpose |
 |---|---|---|---|
-| ECR | **lib/ecr.ts** | 1 ECR repository | Docker image registry (App + RaftDB) |
-| S3 Storage | **lib/storage.ts** | 2 S3 buckets (imported) | Canvas binary + PNG exports |
-| RaftDB Storage | **lib/raftdb-application.ts** | 1 EFS filesystem + 1 access point + 1 S3 bucket | RaftDB WAL + periodic snapshots |
+| ECR | **Infrastructure** | 1 ECR repository | Docker image registry (App + RaftDB) |
+| S3 Storage | **Infrastructure** | 2 S3 buckets (imported) | Canvas binary + PNG exports |
+| RaftDB Storage | **Infrastructure** | 1 EFS filesystem + 1 access point + 1 S3 bucket | RaftDB WAL + periodic snapshots |
 
 ![Storage Architecture Diagram](/images/5-Workshop/5.3-CDK-Project-Structure/storage-architecture.png)
 

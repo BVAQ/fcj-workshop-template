@@ -12,18 +12,18 @@ Every stateful resource in the awsplace CDK codebase carries an explicit **Remov
 
 | Resource | Stack | Policy | Source File | Rationale |
 |---|---|---|---|---|
-| ECR Repository (awsplace-ecs) | AwsplaceStack | **RETAIN** | ecr.ts | CI publishes images before stack recreation; the registry must survive cdk destroy |
-| RaftDB staging snapshot bucket | RaftDbStagingStack | **RETAIN** | raftdb.ts | Staging snapshot data and qualification evidence must persist across staging teardowns |
-| RaftDB staging EFS | RaftDbStagingStack | **RETAIN** | raftdb.ts | Durable WAL data is intentionally retained; cleanup is a separate destructive procedure |
-| RaftDB application snapshot bucket | AwsplaceStack | **DESTROY** | raftdb-application.ts | Production sidecar snapshots are local; the bucket is for the sidecar's own use and is deleted with autoDeleteObjects |
-| RaftDB application EFS | AwsplaceStack | **DESTROY** | raftdb-application.ts | Production sidecar EFS volume is transient — data lives in DynamoDB; no need to retain |
-| Secrets Manager secret | AwsplaceStack | **RETAIN** | lambda.ts | Application secrets must survive stack recreation to avoid manual secret re-entry |
+| ECR Repository (awsplace-ecs) | AwsplaceStack | **RETAIN** | Infrastructure | CI publishes images before stack recreation; the registry must survive cdk destroy |
+| RaftDB staging snapshot bucket | RaftDbStagingStack | **RETAIN** | Infrastructure | Staging snapshot data and qualification evidence must persist across staging teardowns |
+| RaftDB staging EFS | RaftDbStagingStack | **RETAIN** | Infrastructure | Durable WAL data is intentionally retained; cleanup is a separate destructive procedure |
+| RaftDB application snapshot bucket | AwsplaceStack | **DESTROY** | Infrastructure | Production sidecar snapshots are local; the bucket is for the sidecar's own use and is deleted with autoDeleteObjects |
+| RaftDB application EFS | AwsplaceStack | **DESTROY** | Infrastructure | Production sidecar EFS volume is transient — data lives in DynamoDB; no need to retain |
+| Secrets Manager secret | AwsplaceStack | **RETAIN** | Infrastructure | Application secrets must survive stack recreation to avoid manual secret re-entry |
 
 ---
 
 #### 1. ECR Repository: RETAIN with Lifecycle
 
-File: **ecr.ts** — function **createEcr**
+Function: **createEcr**
 
 The ECR repository is the most critical retained resource. The rationale is documented in the code:
 
@@ -70,7 +70,7 @@ test('application ECR repository has a stable retained physical name', () => {
 
 #### 2. RaftDB Staging Resources: RETAIN
 
-File: **raftdb.ts** — function **createRaftDbCluster**
+Function: **createRaftDbCluster**
 
 The staging snapshot bucket and EFS filesystem are both set to **RETAIN**:
 
@@ -111,7 +111,7 @@ The Jest test **raftdb snapshots use a retained private versioned bucket with li
 
 #### 3. Application-Side RaftDB Resources: DESTROY
 
-File: **raftdb-application.ts** — function **createRaftDbApplicationStorage**
+Function: **createRaftDbApplicationStorage**
 
 In contrast to the staging stack, the production application's RaftDB sidecar resources use **DESTROY**:
 
@@ -145,7 +145,7 @@ The key difference is **autoDeleteObjects: true** on the application snapshot bu
 
 #### 4. Secrets Manager: RETAIN
 
-File: **lambda.ts** — function **createLambda**
+Function: **createLambda**
 
 The application secret (Discord OAuth credentials, session secret) is retained:
 

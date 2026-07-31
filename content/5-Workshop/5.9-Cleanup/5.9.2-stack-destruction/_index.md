@@ -34,7 +34,7 @@ The runbook explicitly warns that the encrypted EFS filesystem and versioned S3 
 
 #### 2. Application Stack Destruction
 
-The application stack (**AwsplaceStack**) destruction requires more care because it contains the ECR repository, Secrets Manager secret, and imported S3 buckets. The CDK code in **ecr.ts** documents the workflow:
+The application stack (**AwsplaceStack**) destruction requires more care because it contains the ECR repository, Secrets Manager secret, and imported S3 buckets. The CDK code in infrastructure code documents the workflow:
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
@@ -126,8 +126,8 @@ CI/CD artifacts (test logs, scan reports, publication evidence) are managed sepa
 | GitHub Actions run logs | 90 days (default) | Automatic GitHub expiration |
 | RaftDB image publication evidence | 90 days (explicit) | Workflow artifact with retention-days: 90 |
 | Trivy vulnerability scan reports | 90 days (explicit) | Workflow artifact with retention-days: 90 |
-| ECR images beyond count 10 | Automatic | Lifecycle rule in ecr.ts |
-| S3 non-current snapshot versions | 35 days | Lifecycle rule in raftdb.ts |
+| ECR images beyond count 10 | Automatic | Lifecycle rule |
+| S3 non-current snapshot versions | 35 days | Lifecycle rule |
 
 The 90-day artifact retention aligns with the RaftDB chain-of-custody requirement: publication evidence must be available for audit during the full rollback window (7 days after read cutover) plus a generous margin.
 

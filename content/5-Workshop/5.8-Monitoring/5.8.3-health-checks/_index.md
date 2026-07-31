@@ -6,21 +6,21 @@ chapter: false
 pre: " <b> 5.8.3. </b> "
 ---
 
-The awsplace project uses health checks at three layers — ECS container health, container dependency ordering, and ALB target group health — to ensure that only properly initialized services receive traffic. These health checks are defined in the CDK code in **ecs.ts** and **raftdb.ts**, and their exact commands and parameters are enforced by the Jest contract tests.
+The awsplace project uses health checks at three layers — ECS container health, container dependency ordering, and ALB target group health — to ensure that only properly initialized services receive traffic. These health checks are defined in the CDK code in infrastructure code and **Infrastructure**, and their exact commands and parameters are enforced by the Jest contract tests.
 
 #### Health check layers
 
 | Layer | Mechanism | Defined In | Failure Behavior |
 |---|---|---|---|
-| RaftDB container | HEALTHCHECK command (**raftdb-healthcheck**) | raftdb.ts createRaftDbMember | ECS restarts the container after 10 consecutive failures |
-| Application container | DependsOn RaftDB container with **HEALTHY** condition | ecs.ts createEcs | App container does not start until RaftDB passes health checks |
-| ALB target group | HTTP health probe on **/health** path | ecs.ts createEcs | ALB drains the target; ECS deployment circuit breaker may roll back |
+| RaftDB container | HEALTHCHECK command (**raftdb-healthcheck**) | Infrastructure | ECS restarts the container after 10 consecutive failures |
+| Application container | DependsOn RaftDB container with **HEALTHY** condition | Infrastructure | App container does not start until RaftDB passes health checks |
+| ALB target group | HTTP health probe on **/health** path | Infrastructure | ALB drains the target; ECS deployment circuit breaker may roll back |
 
 ---
 
 #### 1. RaftDB Container Health Check
 
-File: **raftdb.ts** — function **createRaftDbMember**
+Function: **createRaftDbMember**
 
 Every RaftDB container (both production sidecar and staging members) runs the same health command:
 
@@ -64,7 +64,7 @@ expect(container.HealthCheck.Command).toEqual([
 
 #### 2. Container Dependency Ordering
 
-File: **ecs.ts** — function **createEcs**
+Function: **createEcs**
 
 The application container depends on the RaftDB sidecar reaching a healthy state before it starts:
 
@@ -89,7 +89,7 @@ For RaftDB staging members, there is no equivalent dependency because each membe
 
 #### 3. ALB Target Group Health Check
 
-File: **ecs.ts** — function **createEcs**
+Function: **createEcs**
 
 The production Application Load Balancer validates application health via an HTTP endpoint:
 

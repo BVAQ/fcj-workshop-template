@@ -22,13 +22,13 @@ Trong quá trình tham gia khóa thực tập và đào tạo thực tế, em đ
 
 ---
 
-### [Event 2: AWS Study Tour & First Cloud AI Journey](4.2-Event2/)
-&emsp;**Tên sự kiện:** AWS Study Tour & First Cloud AI Journey (FCAJ)
+### [Event 2: AWS - Enterprise Cloud Architectures and Industry Application](4.2-Event2/)
+&emsp;**Tên sự kiện:** AWS - Enterprise Cloud Architectures and Industry Application
 
 &emsp;**Thời gian:** 04/07/2026
 
 &emsp;**Địa điểm:** Văn phòng Amazon Web Services, Tầng 26 tòa nhà Bitexco TPHCM
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự Online
+&emsp;**Vai trò trong sự kiện:** Người tham dự
 
-&emsp;**Nội dung chính:** Lắng nghe anh Nguyễn Gia Hưng (Head of SA tại AWS Việt Nam) chia sẻ về bức tranh khốc liệt của thị trường lao động IT 2026, hiểu rõ tháp nhân sự bị đảo ngược bởi AI, nghịch lý "bóng đèn LED" và tầm quan trọng sống còn của Networking nội bộ thay vì chỉ nộp CV mù quáng.
+&emsp;**Nội dung chính:** Một "Study Tour" thực chiến giúp thu hẹp khoảng cách giữa giảng đường và doanh nghiệp. Bao gồm 4 phiên chia sẻ từ các chuyên gia hàng đầu về bức tranh thị trường IT hiện đại, kiến trúc Data Platform, cách đi tìm thế mạnh "độc bản" của bản thân và tư duy đúng đắn trong kỷ nguyên AI.

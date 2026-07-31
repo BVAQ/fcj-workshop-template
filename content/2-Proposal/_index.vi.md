@@ -1,106 +1,134 @@
 ---
-title: "Bản đề xuất"
+title: "Proposal"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 includeInReport: false
 ---
+## awsplace là gì
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+awsplace là một pixel canvas cộng tác thời gian thực. Người dùng đã đăng nhập có thể đặt một pixel (chọn từ 16 màu có sẵn) lên một lưới dùng chung, và pixel đó sẽ hiện trên tất cả client đang kết nối ngay lập tức qua WebSocket. Lưới không cố định — nó có thể mở rộng sang trái, phải, lên hoặc xuống, either theo lệnh admin hoặc tự động vào một ngày đã hẹn trước, và các hình vẽ hiện có vẫn nguyên vẹn sau khi mở rộng.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+Việc đặt pixel có giới hạn. Khách vãng lai chỉ được xem canvas; muốn đặt phải đăng nhập Discord, và mỗi user có cooldown để hạn chế tần suất. Admin (xác định bằng danh sách Discord user-ID cho phép) có một dashboard riêng với thống kê thời gian thực và preview canvas, mở rộng bảng thủ công, quản lý milestone, xóa vùng chữ nhật, ban user và IP, điều chỉnh cooldown tại chỗ, và feed hoạt động gần đây.
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+## Dành cho ai
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Ba nhóm người dùng, mỗi nhóm có nhu cầu riêng.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+**Người tham gia** là người vẽ. Họ cần canvas load nhanh trong một lần, thấy pixel của người khác mà không cần refresh, và được báo rõ ràng khi đặt bị từ chối cùng lý do. Giao thức WebSocket phục vụ đúng chỗ đó: `INIT_DATA` mang toàn bộ lưới, bảng màu, kích thước và cooldown khi kết nối, `PIXEL_UPDATE` mang một pixel đã đổi, `BOARD_RESIZE` mang kích thước mới, và `ERROR` mang lý do từ chối.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+**Admin** điều hành sự kiện. Họ cần mở rộng bảng, hẹn lịch mở rộng sau, xử lý vi phạm và điều chỉnh cooldown khi sự kiện đang diễn ra mà không cần redeploy. Mười route admin phục vụ mục đích đó, và mọi mutation đều kiểm tra same-origin header trước khi tra cứu danh sách admin cho phép.
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+**Vận hành** — trong kỳ thực tập này nghĩa là mình — cần redeploy một service có trạng thái mà không làm hỏng nó, biết chính xác byte nào đang chạy trên production, và tái tạo toàn bộ môi trường từ source. Yêu cầu này đã định hình phần lớn quyết định hạ tầng trong mục 2.4.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+## Cái gì đã giao
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+Hai sản phẩm, và cả hai đều cần để dự án được tính là hoàn thành.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+Thứ nhất là **trang public đang chạy** tại `place.namanhishere.com`. Frontend được host bởi AWS Amplify Hosting; endpoint WebSocket là `ws.place.namanhishere.com` trước một Application Load Balancer public; surface REST cho auth và admin là `api.place.namanhishere.com` trên API Gateway HTTP API. Cả ba hostname đều resolve trong Route 53 hosted zone.
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+Thứ hai là **hạ tầng có thể tái tạo dưới dạng code**. Toàn bộ môi trường là một CloudFormation stack, `AwsplaceStack`, được tổng hợp từ TypeScript bởi AWS CDK. Không có gì trên production được tạo thủ công trong console.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+![awsplace deployment architecture](/images/diagrams/awsplace-architecture.png)
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+## Phạm vi dự án
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+**Trong phạm vi**
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+- Pixel canvas cộng tác thời gian thực qua WebSocket, nơi người dùng đã đăng nhập đặt một trong 16 màu mỗi cooldown interval lên lưới dùng chung
+- Luồng đăng nhập Discord OAuth2: redirect, đổi code, cookie phiên HS256 JWT, endpoint nhận diện `/api/me`
+- Áp dụng cooldown theo user, admin có thể điều chỉnh tại thời gian chạy mà không cần redeploy
+- Mở rộng bảng động theo bốn hướng, admin kích hoạt thủ công hoặc milestone đã hẹn tự động触发, hình vẽ hiện có được giữ nguyên qua dịch tọa độ offset
+- Dashboard admin tại `/admin.html` với thống kê thời gian thực, preview canvas, mở rộng thủ công, CRUD milestone, xóa vùng chữ nhật, ban user và IP, điều chỉnh cooldown, và feed hoạt động gần đây
+- Lưu trữ canvas dựa trên RaftDB, một engine lưu trữ C++23 tự viết dùng Raft-consensus với WAL phân đoạn và snapshot S3 định kỳ
+- Hạ tầng dạng code: một CDK stack (`AwsplaceStack`) bằng TypeScript tạo ra mọi tài nguyên AWS; không có gì được tạo thủ công trong console
+- Pipeline CI/CD với test tự động (unit, integration, contract); quét ảnh Trivy; xác thực OIDC khi publish ECR; và deploy frontend Amplify
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+**Ngoài phạm vi**
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+- Deploy đa vùng hoặc nhân bản cross-region
+- Ứng dụng native mobile hoặc desktop
+- Nhà cung cấp xác thực ngoài Discord
+- Chat, nhắn tin, hoặc tính năng mạng xã hội
+- Hoàn tác hoặc lịch sử chỉnh sửa theo user cho từng pixel
+- Xuất canvas ra nền tảng ngoài hoặc dịch vụ lưu trữ ảnh
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+## Yêu cầu chức năng
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+| ID | Yêu cầu |
+|----|---------|
+| FR-01 | Khách vãng lai có thể xem canvas và nhận broadcast pixel thời gian thực mà không cần đăng nhập |
+| FR-02 | Đặt pixel yêu cầu xác thực qua Discord OAuth2; lượt đặt không xác thực sẽ nhận thông báo `AUTH_REQUIRED` qua WebSocket |
+| FR-03 | Người dùng đã đăng nhập chọn từ bảng 16 màu cố định và đặt một pixel mỗi cooldown interval; server kiểm tra tọa độ và chỉ số màu trước khi ghi |
+| FR-04 | Mỗi lượt đặt được chấp nhận sẽ broadcast dưới dạng tin nhắn `PIXEL_UPDATE` đến tất cả client đang kết nối |
+| FR-05 | Bảng mở rộng trái, phải, lên hoặc xuống mà không hỏng hình vẽ hiện có; mở rộng trái hoặc lên dịch tọa độ pixel qua global offset |
+| FR-06 | Admin hẹn lịch mở rộng (milestone) với thời gian kích hoạt, hướng, số pixel, và nhãn tùy chọn; server tự động thực hiện |
+| FR-07 | Admin có thể mở rộng bảng theo yêu cầu từ dashboard |
+| FR-08 | Admin có thể xóa một vùng chữ nhật trên canvas về trắng bằng cách chỉ định tọa độ góc (superpaint) |
+| FR-09 | Admin có thể ban hoặc unban user theo Discord ID và theo IP; lệnh ban được kiểm tra trên mỗi lượt đặt |
+| FR-10 | Admin có thể thay đổi thời gian cooldown toàn cục tại thời gian chạy qua dashboard |
+| FR-11 | Dashboard admin hiển thị feed hoạt động gần đây với ô màu, tọa độ, Discord ID, IP, và timestamp, tự động làm mới mỗi 10 giây |
+| FR-12 | Dashboard admin hiển thị thống kê thời gian thực: số client đang online, tổng lượt đặt, kích thước bảng, cooldown hiện tại, và preview canvas dạng base64 |
+| FR-13 | Ngày kết thúc sự kiện có thể cấu hình (`EventEndDate`) khiến mọi lượt đặt sau deadline bị từ chối kèm thông báo |
+| FR-14 | Trạng thái canvas, lệnh ban, milestone, và cấu hình tồn tại qua restart nhờ WAL và snapshot S3 của RaftDB |
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+## Yêu cầu phi chức năng
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+| ID | Yêu cầu |
+|----|---------|
+| NFR-01 | Pixel đã đặt đến mọi client đang kết nối trong vòng 500 ms ở tải bình thường (broadcast WebSocket qua thư viện `coder/websocket`) |
+| NFR-02 | Mục tiêu availability production là 99,9 % mỗi tháng dương lịch, hỗ trợ bởi health check ECS Fargate và circuit breaker triển khai ALB có tự động rollback |
+| NFR-03 | Không mất dữ liệu ghi đã xác nhận khi restart: WAL phân đoạn của RaftDB xác nhận bền vững mọi entry đã commit trước khi phản hồi Go server |
+| NFR-04 | Canvas hỗ trợ kích thước tối đa 8.000 × 8.000 pixel (`MAX_DIMENSION` áp dụng trong Go, JavaScript, và C++) |
+| NFR-05 | Mutation admin yêu cầu kiểm tra header same-origin (`requireSameOrigin` middleware) trước khi tra cứu danh sách admin cho phép, chống CSRF |
+| NFR-06 | Token phiên là JWT ký HS256 lưu trong cookie httpOnly, sameSite=lax, scope theo domain cha; khóa ký nằm trong Secrets Manager và không bao giờ lộ dưới dạng biến môi trường plaintext |
+| NFR-07 | Yêu cầu upgrade WebSocket được kiểm tra với danh sách `ALLOWED_ORIGINS`; yêu cầu không có header `Origin` (client không phải trình duyệt) được phép, tất cả còn lại kiểm tra khớp chính xác hoặc subdomain |
+| NFR-08 | Toàn bộ môi trường production có thể tái tạo từ source: một `cdk deploy` tạo mọi tài nguyên; frontend được build và upload bởi pipeline CI |
+| NFR-09 | Mỗi container ghi vào log stream CloudWatch riêng (tiền tố `awsplace` và `raftdb`); RaftDB có dashboard CloudWatch cho EFS I/O, kết nối client, và burst credits |
+| NFR-10 | Ảnh container được quét bởi Trivy tìm CVE CRITICAL và HIGH trước khi publish ECR; phát hiện critical chặn pipeline; phát hiện high yêu cầu chủ sở hữu chấp nhận rõ ràng và ghi nhận theo commit SHA |
+| NFR-11 | Idle timeout ALB được nâng lên 3.600 giây để giữ kết nối WebSocket lâu dài |
+| NFR-12 | Thay thế task ECS dùng `minimumHealthyPercent: 0` để writer RaftDB đơn lẻ giải phóng khóa file EFS trước khi task thay thế chiếm lấy |
+
+## Tiêu chí thành công
+
+| ID | Tiêu chí | Cách xác minh |
+|----|----------|---------------|
+| SC-01 | User đã đăng nhập Discord đặt pixel và pixel đó hiện trên canvas của user thứ hai thời gian thực | Test thủ công với hai phiên trình duyệt trong staging |
+| SC-02 | Milestone đã hẹn kích hoạt mở rộng bảng giữ nguyên mọi pixel hiện có và broadcast kích thước mới đến client | Test kích hoạt milestone trong stack staging với hình vẽ có sẵn |
+| SC-03 | Admin có thể thực hiện mọi thao tác dashboard: mở rộng, hẹn milestone, xóa milestone, ban user, unban user, xóa vùng, điều chỉnh cooldown, xem feed hoạt động | Đi qua dashboard admin trên trang live |
+| SC-04 | Toàn bộ stack deploy từ một lệnh `cdk deploy` trên nhánh `main` mà không cần thao tác thủ công trên AWS console | Chạy pipeline CI/CD end-to-end |
+| SC-05 | Service sống sót qua restart task ECS bắt buộc mà không mất dữ liệu canvas | Kill task đang chạy, chờ task thay thế, so sánh canvas binary với snapshot S3 trước restart |
+| SC-06 | Mọi bộ test tự động pass trong CI: test unit và integration Go, test Lambda Vitest, test parity nibble, test contract CDK, preset address-sanitizer và thread-sanitizer cho RaftDB | Pipeline CI xanh trên `main` |
+| SC-07 | Ba hostname public (`place.namanhishere.com`, `ws.place.namanhishere.com`, `api.place.namanhishere.com`) resolve qua HTTPS với TLS certificate hợp lệ | Kiểm tra bằng trình duyệt và `curl` từ mạng ngoài |
+| SC-08 | Mọi ảnh RaftDB publish lên ECR có file evidence Trivy chứng nhận không có lỗ hổng CRITICAL | Artifact CI lưu giữ 90 ngày |
+
+## Dịch vụ AWS sử dụng
+
+Quy tắc dự án yêu cầu tối thiểu ba dịch vụ AWS. **Dự án này dùng mười lăm.** Mỗi dòng dưới đây nêu vai trò thực tế của dịch vụ trong hệ thống này, lấy từ source CDK và xác nhận trên account live, không phải mô tả chung chung của dịch vụ.
+
+| # | Dịch vụ | Vai trò trong awsplace |
+|---|---------|----------------------|
+| 1 | Amazon ECS on AWS Fargate | Chạy một task ứng dụng duy nhất: hai container, `App` (Go 1.25 WebSocket và canvas server, port 8980) và `RaftDb` (engine lưu trữ C++23, port 9100). Task size 1024 CPU units và 2048 MiB, `desiredCount: 1`. |
+| 2 | Amazon ECR | Một repository, `awsplace-ecs`, chứa cả hai ảnh container. Tag mutability là `MUTABLE_WITH_EXCLUSION` với filter `raftdb-*`, nên chỉ tag của storage engine là bất biến; scan-on-push bật và giữ mười ảnh gần nhất. |
+| 3 | Amazon EFS | Nơi lưu trữ bền vững cho WAL của RaftDB và snapshot cục bộ. |
+| 4 | Amazon S3 | Một bucket do stack sở hữu nhận snapshot engine RaftDB mỗi 300 giây; hai bucket khác cho canvas binary và PNG export được import theo tên thay vì tạo mới. |
+| 5 | AWS Lambda | Một handler Node.js 24 Express thực hiện đổi mã Discord OAuth, ký cookie phiên HS256, trả lời `/api/me`, và proxy lệnh admin đến ALB. |
+| 6 | Amazon API Gateway | HTTP API v2, cửa trước public cho `/auth/*` và `/api/*`, đứng sau domain tùy chỉnh `api.place.namanhishere.com`. |
+| 7 | Elastic Load Balancing (ALB) | Application Load Balancer public chấm dứt HTTPS trên 443 và chuyển tiếp đến target group port 8980 với health check `/health`. Idle timeout nâng lên 3600 giây vì kết nối mang theo là WebSocket lâu dài. |
+| 8 | Amazon Route 53 | Hosted zone `place.namanhishere.com`. Record `api.` được tạo trong stack, record `ws.` cũng vậy; Amplify tự tạo record apex, nên ba hostname được phục vụ bởi hai record do CloudFormation quản lý. |
+| 9 | AWS Certificate Manager | Cấp certificate wildcard, trong vùng stack `ap-southeast-1`, dùng cho hostname `api.` và `ws.`. Amplify tạo certificate riêng cho apex. |
+| 10 | AWS Secrets Manager | Chứa secret. Người đọc runtime duy nhất là container ECS `App`, nhận `SESSION_SECRET` dưới dạng tham chiếu secret ECS chứ không phải biến môi trường plaintext. |
+| 11 | AWS Amplify Hosting | Phục vụ frontend tĩnh đã build. Nó sở hữu record DNS apex và certificate TLS riêng. |
+| 12 | Amazon CloudWatch | Thu thập một log stream mỗi container, tiền tố `raftdb` và `awsplace`, và chứa dashboard đồng thuận Raft dùng để theo dõi storage engine. |
+| 13 | AWS IAM | Ba vai trò với policy inline có scope: ECS task execution, ECS task, và Lambda execution. Mục 2.5 trình bày chi tiết các policy statement. |
+| 14 | AWS STS | Cấp credentials ngắn hạn cho pipeline triển khai. Mỗi job CI có credentials gọi `assume-role-with-web-identity` với token OIDC do GitLab cấp và phiên 3600 giây. |
+| 15 | AWS CloudFormation, qua CDK | Nền tảng triển khai. Một stack, `AwsplaceStack`, tổng hợp từ TypeScript; mọi tài nguyên trên đều là thành viên của nó. |
+
+## Giới hạn chấp nhận trong thiết kế này
+
+Ba giới hạn, nêu rõ ở đây thay vì giấu trong code.
+
+Production chạy **một Raft voter**, không phải quorum. `desiredCount: 1` và một access point EFS duy nhất có nghĩa là cấu hình multi-voter mà storage engine hỗ trợ không được sử dụng trên production; code rõ ràng rằng chế độ single-node không phải là câu chuyện về durability. Cấu hình ba voter tồn tại trong một stack staging riêng và được mô tả là mục tiêu đã ghi nhận, không phải trạng thái hiện tại.
+
+**Cooldown lưu trong bộ nhớ** trong process Go và mất khi task restart, nên người dùng tạm thời lấy lại khả năng đặt ngay sau khi redeploy.
