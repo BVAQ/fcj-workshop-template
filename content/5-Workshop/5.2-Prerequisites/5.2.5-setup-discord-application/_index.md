@@ -21,9 +21,6 @@ Anyone can view the canvas, but placing a pixel requires a Discord login. The OA
 3. Click **Reset Secret** to reveal the **Client Secret** if you have not already generated one.
 4. Copy the secret and store it immediately. It is only shown once.
 
-{{% notice warning %}}
-Never commit the Client Secret. It belongs in the GitLab CI/CD variables described in section 5.2.8.
-{{% /notice %}}
 
 ## Step 3: Configure redirect URIs
 

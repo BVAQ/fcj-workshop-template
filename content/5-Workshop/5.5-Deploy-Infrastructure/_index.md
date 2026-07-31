@@ -14,7 +14,7 @@ The entire infrastructure for **awsplace** is managed as code using the **AWS Cl
 
 The deployed architecture is designed for scalability, security, and a clear separation of concerns. Below is a high-level overview of how the components interact with each other.
 
-![Infrastructure Architecture](/images/5-Workshop/5.5-Deploy-Infrastructure/infra-architecture.png)
+![Infrastructure Architecture](/images/archtechture.png)
 
 The flow breaks down into three main paths:
 

@@ -21,9 +21,6 @@ Ai cũng có thể xem canvas, nhưng đặt pixel yêu cầu đăng nhập Disc
 3. Nhấn **Reset Secret** để hiển thị **Client Secret** nếu nhóm chưa tạo.
 4. Copy secret và lưu ngay lập tức. Nó chỉ hiển thị một lần.
 
-{{% notice warning %}}
-Không bao giờ commit Client Secret. Nó thuộc biến CI/CD GitLab mô tả ở phần 5.2.8.
-{{% /notice %}}
 
 ## Bước 3: Cấu hình redirect URI
 

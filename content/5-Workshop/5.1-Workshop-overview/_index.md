@@ -24,7 +24,7 @@ The deployed architecture serves three traffic paths through three public hostna
 
 Every AWS resource in this architecture is created by a single `cdk deploy` command. Nothing is provisioned by hand in the console.
 
-![Infrastructure Architecture](/images/5-Workshop/5.5-Deploy-Infrastructure/infra-architecture.png)
+![Infrastructure Architecture](/images/archtechture.png)
 
 ## Workshop sections
 

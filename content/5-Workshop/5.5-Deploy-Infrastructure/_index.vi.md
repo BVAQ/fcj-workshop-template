@@ -14,7 +14,7 @@ Toàn bộ hạ tầng cho **awsplace** được quản lý dưới dạng code 
 
 Kiến trúc được deploy được thiết kế nhằm đảm bảo khả năng mở rộng, tính bảo mật và sự phân chia trách nhiệm rõ ràng. Dưới đây là cái nhìn tổng quan về cách các thành phần tương tác với nhau.
 
-![Kiến Trúc Hạ Tầng](/images/5-Workshop/5.5-Deploy-Infrastructure/infra-architecture.png)
+![Kiến Trúc Hạ Tầng](/images/archtechture.png)
 
 Luồng hoạt động chia thành ba đường chính:
 

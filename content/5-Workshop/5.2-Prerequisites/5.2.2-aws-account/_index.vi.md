@@ -55,8 +55,5 @@ Kết quả mong đợi:
 }
 ```
 
-{{% notice warning %}}
-Hãy che số tài khoản 12 chữ số trong trường `Account` và `Arn` trước khi đưa screenshot này vào báo cáo.
-{{% /notice %}}
 
 Nếu lệnh in ra `Unable to locate credentials`, hãy khắc phục trước khi làm gì khác. Phần còn lại của workshop giả định lệnh này thành công.

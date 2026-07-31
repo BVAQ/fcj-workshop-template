@@ -30,7 +30,7 @@ Thứ nhất là **trang public đang chạy** tại `place.namanhishere.com`. F
 
 Thứ hai là **hạ tầng có thể tái tạo dưới dạng code**. Toàn bộ môi trường là một CloudFormation stack, `AwsplaceStack`, được tổng hợp từ TypeScript bởi AWS CDK. Không có gì trên production được tạo thủ công trong console.
 
-![awsplace deployment architecture](/images/diagrams/awsplace-architecture.png)
+![awsplace deployment architecture](/images/archtechture.png)
 
 ## Phạm vi dự án
 

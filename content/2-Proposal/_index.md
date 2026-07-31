@@ -30,7 +30,7 @@ The first is a **live public site** at `place.namanhishere.com`. The frontend is
 
 The second is **reproducible infrastructure as code**. The entire environment is one CloudFormation stack, `AwsplaceStack`, synthesized from TypeScript by the AWS CDK. Nothing in production was created by hand in the console.
 
-![awsplace deployment architecture](/images/diagrams/awsplace-architecture.png)
+![awsplace deployment architecture](/images/archtechture.png)
 
 ## Project scope
 
@@ -124,11 +124,3 @@ The project rules require a minimum of three AWS services. **This deployment use
 | 13 | AWS IAM | Three roles with scoped inline policies: ECS task execution, ECS task, and Lambda execution. Section 2.5 covers the policy statements in detail. |
 | 14 | AWS STS | Issues short-lived credentials to the deployment pipeline. Each credentialed CI job calls `assume-role-with-web-identity` with a GitLab-issued OIDC token and a 3600-second session. |
 | 15 | AWS CloudFormation, via the CDK | The deployment substrate. One stack, `AwsplaceStack`, synthesized from TypeScript; every resource above is a member of it. |
-
-## Limits accepted in this design
-
-Three of them, stated here rather than buried.
-
-Production runs **one Raft voter**, not a quorum. `desiredCount: 1`  and a single EFS access point mean the multi-voter configuration that the storage engine supports is not exercised in production is explicit that single-node mode is not a durability story. The three-voter configuration exists in a separate staging stack and is described as the documented target, not as the current state.
-
-**Cooldowns are in-memory** in the Go process and are lost when the task restarts, so users briefly regain the ability to place immediately after a redeploy .

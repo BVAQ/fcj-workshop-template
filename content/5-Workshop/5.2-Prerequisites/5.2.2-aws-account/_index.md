@@ -55,8 +55,5 @@ Expected output:
 }
 ```
 
-{{% notice warning %}}
-Mask the 12-digit account number in the `Account` and `Arn` fields before you put this screenshot in a report.
-{{% /notice %}}
 
 If the command prints `Unable to locate credentials`, fix that before anything else. The rest of the workshop assumes this command succeeds.

@@ -24,7 +24,7 @@ Kiến trúc đã triển khai phục vụ ba luồng lưu lượng qua ba hostn
 
 Mọi tài nguyên AWS trong kiến trúc này được tạo bởi một lệnh `cdk deploy` duy nhất. Không có gì được tạo thủ công trong console.
 
-![Kiến trúc Hạ tầng](/images/5-Workshop/5.5-Deploy-Infrastructure/infra-architecture.png)
+![Kiến trúc Hạ tầng](/images/archtechture.png)
 
 ## Các phần của workshop
 
