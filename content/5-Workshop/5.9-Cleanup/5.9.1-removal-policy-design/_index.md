@@ -1,4 +1,4 @@
----
+﻿---
 title: "Resource Removal Policy Design"
 date: 2024-01-01
 weight: 1
@@ -29,7 +29,7 @@ The ECR repository is the most critical retained resource. The rationale is docu
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
-// must survive `cdk destroy` and be auto-imported on the next deployment.
+// must survive **cdk destroy** and be auto-imported on the next deployment.
 repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 ```
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Local AWS Setup (optional)"
 date: 2026-07-27
 weight: 10
@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 5.2.10 </b> "
 ---
 
-For local development without touching real AWS, use **MiniStack** — a local DynamoDB and S3 emulator — and Docker Compose. This is the same local path used by the `test-go-ministack` job in `.gitlab-ci.yml`.
+For local development without touching real AWS, use **MiniStack** — a local DynamoDB and S3 emulator — and Docker Compose. This is the same local path used by the **test-go-ministack** job in **.gitlab-ci.yml**.
 
 ## Clone and configure
 
@@ -16,7 +16,7 @@ For local development without touching real AWS, use **MiniStack** — a local D
 cp .env.example .env
 ```
 
-2. Edit `.env` and fill in at least these values:
+2. Edit **.env** and fill in at least these values:
 
 ```
 DISCORD_CLIENT_ID=your-discord-client-id
@@ -35,14 +35,14 @@ AWS_ENDPOINT_URL=http://localhost:4566
 
 ## Start MiniStack
 
-MiniStack emulates DynamoDB and S3 on `localhost:4566`.
+MiniStack emulates DynamoDB and S3 on **localhost:4566**.
 
 ```bash
 docker compose up -d ministack
 bash scripts/start-ministack.sh
 ```
 
-`start-ministack.sh` creates the four DynamoDB tables (`Config`, `Bans`, `Milestones`, `History`) and the two S3 buckets (`awsplace-canvas`, `awsplace-exports`) inside the emulator.
+**start-ministack.sh** creates the four DynamoDB tables (**Config**, **Bans**, **Milestones**, **History**) and the two S3 buckets (**awsplace-canvas**, **awsplace-exports**) inside the emulator.
 
 ## Run the local stack
 
@@ -62,10 +62,10 @@ curl http://localhost:19980/
 
 | Endpoint | What it serves |
 |---|---|
-| `http://localhost:8980/health` | Go server health check |
-| `http://localhost:19980/` | Frontend through nginx |
-| `http://localhost:19980/admin.html` | Admin dashboard |
-| `http://localhost:19980/ws` | WebSocket endpoint |
+| **http://localhost:8980/health** | Go server health check |
+| **http://localhost:19980/** | Frontend through nginx |
+| **http://localhost:19980/admin.html** | Admin dashboard |
+| **http://localhost:19980/ws** | WebSocket endpoint |
 
 ## Run local tests
 
@@ -87,4 +87,4 @@ cd go-ecs && go test ./internal/ddb/... ./internal/admin/... ./internal/schedule
 docker compose down
 ```
 
-The local stack is optional. The production pipeline in GitLab does not use MiniStack; it deploys to real AWS services in `ap-southeast-1`.
+The local stack is optional. The production pipeline in GitLab does not use MiniStack; it deploys to real AWS services in **ap-southeast-1**.

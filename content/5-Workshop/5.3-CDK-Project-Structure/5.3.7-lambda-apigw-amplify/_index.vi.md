@@ -1,4 +1,4 @@
----
+﻿---
 title : "Lambda, API Gateway & Amplify"
 date : 2024-01-01
 weight : 7
@@ -88,7 +88,7 @@ export function createApiGateway(scope, lambda, input): ApiGatewayOutput {
 
   // Tên miền tùy chỉnh: api.<domainName>
   const apiDomainName = new apigatewayv2.DomainName(scope, 'CustomDomain', {
-    domainName: `api.${domainName}`,
+    domainName: **api.${domainName}**,
     certificate: wildcardCert,
   });
 
@@ -98,7 +98,7 @@ export function createApiGateway(scope, lambda, input): ApiGatewayOutput {
 
   // Route 53: api.<domainName> → API Gateway
   new route53.ARecord(scope, 'ApiRecord', {
-    zone: hostedZone, recordName: `api.${domainName}`,
+    zone: hostedZone, recordName: **api.${domainName}**,
     target: route53.RecordTarget.fromAlias(
       new targets.ApiGatewayv2DomainProperties(
         apiDomainName.regionalDomainName,

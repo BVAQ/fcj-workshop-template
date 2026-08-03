@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 1: Agentic AI Build Week (AABW) Hackathon"
 date: 2024-01-01
 weight: 1
@@ -80,7 +80,7 @@ The core of the event revolved around deep technical dissections of the top 4 pr
   - It drafts high-level, hybrid-cloud aware architectures that inherently align with corporate security standards.
   - It automatically generates raw XML code to render editable **Draw.io** diagrams using official AWS architecture icons.
   - It autonomously writes Infrastructure as Code (IaC) templates (Terraform/CloudFormation).
-  - It computes highly specific, directional AWS cost estimates (e.g., tailored for the `ap-southeast-1` region).
+  - It computes highly specific, directional AWS cost estimates (e.g., tailored for the **ap-southeast-1** region).
 - SAs no longer stare at a blank page. They use a chat sidebar to iteratively refine and critique the AI’s high-quality first draft, compressing days of architectural design into mere minutes.
 
 #### 4. Corporate Strategic Signal Intelligence - Dream AI Team (Signal Scout)
@@ -116,7 +116,7 @@ The core of the event revolved around deep technical dissections of the top 4 pr
 #### 3. Hackathon Survival Strategy
 - **Small, Finished Work Beats Big, Broken Ideas:** It is infinitely better to present one buttery-smooth, fully functional feature than to pitch 10 grandiose ideas that result in a crashed app during the live demo. "Done" is better than "Perfect".
 - **Preparation is Not Cheating:** Having boilerplate code, React templates, pre-configured AWS accounts, and strict role assignments (backend developer, frontend UI, pitch deck designer) is the secret weapon to beating the clock.
-- **Networking & Human Connection:** The late-night struggles—accidentally pushing `.env` files to public GitHub repos, arguing over Git merge conflicts, and chugging 5 Redbulls at 3 AM—forge bonds and teach practical lessons that no university lecture can replicate.
+- **Networking & Human Connection:** The late-night struggles—accidentally pushing **.env** files to public GitHub repos, arguing over Git merge conflicts, and chugging 5 Redbulls at 3 AM—forge bonds and teach practical lessons that no university lecture can replicate.
 
 ---
 

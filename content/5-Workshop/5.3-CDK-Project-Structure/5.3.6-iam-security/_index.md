@@ -1,4 +1,4 @@
----
+﻿---
 title : "IAM Roles & Security"
 date : 2024-01-01
 weight : 6
@@ -95,7 +95,7 @@ This role is assumed by the **Go application container** (and the RaftDB sidecar
 ```typescript
 function allTableArns(db: DatabaseOutput): string[] {
   const tables = [db.configTable, db.bansTable, db.milestonesTable, db.historyTable];
-  return tables.flatMap((t) => [t.tableArn, `${t.tableArn}/index/*`]);
+  return tables.flatMap((t) => [t.tableArn, **${t.tableArn}/index/***]);
 }
 
 // Each table gets its own grant — CDK generates minimal, scoped policies

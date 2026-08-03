@@ -1,4 +1,4 @@
----
+﻿---
 title : "IAM Roles & Bảo mật"
 date : 2024-01-01
 weight : 6
@@ -63,7 +63,7 @@ Role này được giả định bởi container ứng dụng Go để truy cậ
 ```typescript
 function allTableArns(db: DatabaseOutput): string[] {
   const tables = [db.configTable, db.bansTable, db.milestonesTable, db.historyTable];
-  return tables.flatMap((t) => [t.tableArn, `${t.tableArn}/index/*`]);
+  return tables.flatMap((t) => [t.tableArn, **${t.tableArn}/index/***]);
 }
 ```
 

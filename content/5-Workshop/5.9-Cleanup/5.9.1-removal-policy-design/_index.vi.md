@@ -1,4 +1,4 @@
----
+﻿---
 title: "Thiết kế Chính sách Xoá Tài nguyên"
 date: 2024-01-01
 weight: 1
@@ -29,7 +29,7 @@ ECR repository là tài nguyên được giữ lại quan trọng nhất. Lý do
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
-// must survive `cdk destroy` and be auto-imported on the next deployment.
+// must survive **cdk destroy** and be auto-imported on the next deployment.
 repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 ```
 

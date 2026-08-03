@@ -1,4 +1,4 @@
----
+﻿---
 title: "CI/CD Pipeline"
 date: 2024-01-01
 weight: 4
@@ -370,7 +370,7 @@ Below is an example of the NS record configuration on Cloudflare, delegating **p
 
 ![Domain Delegation — NS Records on Cloudflare](/images/5-Workshop/5.4-CICD-Pipeline/753747574_1015957567992787_6550916551567091605_n.jpg)
 
-You can verify the NS record resolution and domain delegation from your terminal using `dig place.namanhishere.com NS`:
+You can verify the NS record resolution and domain delegation from your terminal using **dig place.namanhishere.com NS**:
 
 ![DNS NS Record Resolution Check via dig](/images/5-Workshop/5.4-CICD-Pipeline/756430488_3121594578036333_8322272973070305772_n.png)
 

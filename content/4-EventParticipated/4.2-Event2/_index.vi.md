@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 2: AWS - Enterprise Cloud Architectures and Industry Application"
 date: 2026-07-04
 weight: 2
@@ -37,7 +37,7 @@ Hơn nữa, tư duy định hướng nghề nghiệp cũng cần thay đổi: Đ
 **Bức tranh tương lai và Nghịch lý việc làm với AI:**
 - **Mô hình Nhân sự Inverted Pyramid (Kim tự tháp ngược):** Cấu trúc nhân sự truyền thống đang bị phá vỡ. Hiện tại, số lượng tuyển Junior đang giảm mạnh, tầng giữa (Middle) đang dần bị thay thế bởi sự tối ưu của AI Agent, trong khi doanh nghiệp lại khát khao Senior hơn bao giờ hết. Sinh viên bị ép buộc phải trưởng thành với tốc độ chóng mặt, đạt được trình độ tư duy tương đương 3-4 năm kinh nghiệm trong thời gian ngắn nhất.
 - **Nghịch lý Bóng đèn LED:** Nhiều sinh viên lo sợ AI sẽ cướp mất việc làm vì nó giúp tiết kiệm đến 90% thời gian code. Để giải đáp, anh Hưng đưa ra sự so sánh với bóng đèn LED: Dù đèn LED tiết kiệm điện hơn rất nhiều, nhưng chính vì nó rẻ và hiệu quả nên con người lại lắp đặt nó ở khắp mọi nơi (từ cầu thang, góc vườn đến phòng ngủ). Tương tự, khi chi phí và rào cản phát triển phần mềm rẻ hơn, dễ làm hơn nhờ AI, nhu cầu số hóa của các doanh nghiệp truyền thống (Non-Tech) sẽ bùng nổ dữ dội. Điều này thực chất tạo ra tổng số lượng việc làm lớn hơn rất nhiều, nhưng đồng thời yêu cầu về chất lượng và độ khó của công việc cũng tăng vọt.
-- **Công thức thành công bất biến:** `Kết quả = Capability (Năng lực) x Visibility (Độ nhận diện) x Consistency (Sự kiên trì)`. Nếu bất kỳ yếu tố nào trong phương trình này bằng 0, kết quả cuối cùng sẽ bằng 0. Những chứng chỉ quốc tế hào nhoáng giờ đây chỉ đóng vai trò là "tấm vé" để lọt qua bộ lọc CV tự động của AI. Thứ mà các Hiring Manager thực sự tìm kiếm ở bạn chính là những dự án cá nhân thực chiến, những bài blog chuyên sâu thể hiện tư duy, và một tinh thần học tập trọn đời (Lifelong learning).
+- **Công thức thành công bất biến:** **Kết quả = Capability (Năng lực) x Visibility (Độ nhận diện) x Consistency (Sự kiên trì)**. Nếu bất kỳ yếu tố nào trong phương trình này bằng 0, kết quả cuối cùng sẽ bằng 0. Những chứng chỉ quốc tế hào nhoáng giờ đây chỉ đóng vai trò là "tấm vé" để lọt qua bộ lọc CV tự động của AI. Thứ mà các Hiring Manager thực sự tìm kiếm ở bạn chính là những dự án cá nhân thực chiến, những bài blog chuyên sâu thể hiện tư duy, và một tinh thần học tập trọn đời (Lifelong learning).
 
 #### Phiên 2: Data Architecture - Điểm khác biệt giữa Học thuật và Thực chiến
 **Diễn giả:** Anh Bành Cẩm Vĩnh - Data Engineer tại Renova Cloud

@@ -1,4 +1,4 @@
----
+﻿---
 title : "DynamoDB Database Layer"
 date : 2024-01-01
 weight : 3
@@ -231,7 +231,7 @@ The ECS task role and Lambda execution role both receive DynamoDB permissions sc
 ```typescript
 function allTableArns(db: DatabaseOutput): string[] {
   const tables = [db.configTable, db.bansTable, db.milestonesTable, db.historyTable];
-  return tables.flatMap((t) => [t.tableArn, `${t.tableArn}/index/*`]);
+  return tables.flatMap((t) => [t.tableArn, **${t.tableArn}/index/***]);
 }
 
 db.configTable.grantReadWriteData(taskRole);

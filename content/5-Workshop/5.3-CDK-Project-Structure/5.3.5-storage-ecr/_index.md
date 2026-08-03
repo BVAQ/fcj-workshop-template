@@ -1,4 +1,4 @@
----
+﻿---
 title : "Storage: ECR & S3"
 date : 2024-01-01
 weight : 5
@@ -103,12 +103,12 @@ export function createStorage(scope: Construct, props?: StorageProps): StorageOu
 
   const canvasBucket = s3.Bucket.fromBucketName(
     scope, 'ImportedCanvasBucket',
-    `awsplace-canvas-${account}`
+    **awsplace-canvas-${account}**
   );
 
   const exportsBucket = s3.Bucket.fromBucketName(
     scope, 'ImportedExportsBucket',
-    `awsplace-exports-${account}`
+    **awsplace-exports-${account}**
   );
 
   return { canvasBucket, exportsBucket };

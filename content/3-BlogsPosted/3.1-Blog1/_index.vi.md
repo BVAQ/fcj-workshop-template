@@ -1,4 +1,4 @@
----
+﻿---
 title: "Blog 1"
 date: 2024-01-01
 weight: 1
@@ -37,7 +37,7 @@ Toàn bộ hệ thống được chia thành hai phần.
 
 Phần thứ nhất là **Runner Manager**, chạy liên tục trên một máy nhỏ. Nó chỉ có nhiệm vụ kết nối với GitLab, theo dõi hàng đợi pipeline và quyết định khi nào cần thêm worker.
 
-Phần thứ hai là các **EC2 Worker** nằm trong một **Auto Scaling Group** với `desired capacity = 0`. Bình thường sẽ không có EC2 nào tồn tại. Chỉ khi GitLab xuất hiện job mới, Runner Manager mới yêu cầu Auto Scaling Group khởi tạo thêm instance. Worker sau khi boot sẽ nhận đúng một job, chạy trong Docker container rồi tự terminate.
+Phần thứ hai là các **EC2 Worker** nằm trong một **Auto Scaling Group** với **desired capacity = 0**. Bình thường sẽ không có EC2 nào tồn tại. Chỉ khi GitLab xuất hiện job mới, Runner Manager mới yêu cầu Auto Scaling Group khởi tạo thêm instance. Worker sau khi boot sẽ nhận đúng một job, chạy trong Docker container rồi tự terminate.
 
 Điểm mình thích ở mô hình này là Runner Manager luôn rất nhẹ, còn toàn bộ tài nguyên phục vụ build chỉ xuất hiện khi thực sự cần.
 
@@ -49,10 +49,10 @@ Phần thứ hai là các **EC2 Worker** nằm trong một **Auto Scaling Group*
 Luồng chạy một job có thể tóm tắt như sau:
 
 1. Runner Manager nhận job từ GitLab qua HTTPS.
-2. Fleeting AWS plugin yêu cầu Auto Scaling Group tăng capacity từ `0` lên `1`.
+2. Fleeting AWS plugin yêu cầu Auto Scaling Group tăng capacity từ **0** lên **1**.
 3. EC2 boot từ custom AMI, Runner Manager kết nối qua SSH và khởi chạy Docker container.
 4. Log cùng kết quả được trả về GitLab.
-5. Worker bị loại bỏ sau job và capacity quay về `0`.
+5. Worker bị loại bỏ sau job và capacity quay về **0**.
 
 ## Một job trên một máy
 
@@ -73,12 +73,12 @@ Phần cấu hình quan trọng nhất của Runner thực ra khá ngắn:
       idle_time  = "5m"
 ```
 
-`capacity_per_instance = 1` giới hạn mỗi EC2 chạy một job tại một thời điểm, còn `max_use_count = 1` khiến instance được lên lịch loại bỏ ngay sau lần sử dụng đầu tiên. Mình chấp nhận mất local cache và khả năng tái sử dụng worker để đổi lấy môi trường sạch, dễ dự đoán hơn cho từng pipeline. Trong môi trường production, `aws:latest` cũng nên được pin về một phiên bản plugin cụ thể.
+**capacity_per_instance = 1** giới hạn mỗi EC2 chạy một job tại một thời điểm, còn **max_use_count = 1** khiến instance được lên lịch loại bỏ ngay sau lần sử dụng đầu tiên. Mình chấp nhận mất local cache và khả năng tái sử dụng worker để đổi lấy môi trường sạch, dễ dự đoán hơn cho từng pipeline. Trong môi trường production, **aws:latest** cũng nên được pin về một phiên bản plugin cụ thể.
 
 
 ## Chỉ nên có một thành phần điều khiển capacity
 
-Terraform tạo Auto Scaling Group ban đầu, nhưng GitLab Runner mới là thành phần tăng hoặc giảm `desired_capacity` trong lúc vận hành. Nếu Terraform vẫn cố quản lý giá trị này ở mỗi lần `apply`, hai controller có thể kéo capacity theo hai hướng khác nhau.
+Terraform tạo Auto Scaling Group ban đầu, nhưng GitLab Runner mới là thành phần tăng hoặc giảm **desired_capacity** trong lúc vận hành. Nếu Terraform vẫn cố quản lý giá trị này ở mỗi lần **apply**, hai controller có thể kéo capacity theo hai hướng khác nhau.
 
 ```hcl
 resource "aws_autoscaling_group" "runner" {
@@ -100,7 +100,7 @@ resource "aws_autoscaling_group" "runner" {
 }
 ```
 
-`ignore_changes` không có nghĩa là Terraform bỏ quản lý ASG. Terraform vẫn quản lý Launch Template, subnet, tag và các thuộc tính hạ tầng khác; nó chỉ không ghi đè số lượng instance mà Runner đang yêu cầu.
+**ignore_changes** không có nghĩa là Terraform bỏ quản lý ASG. Terraform vẫn quản lý Launch Template, subnet, tag và các thuộc tính hạ tầng khác; nó chỉ không ghi đè số lượng instance mà Runner đang yêu cầu.
 
 # Prebuilt Docker image bằng GitHub Actions
 
@@ -152,7 +152,7 @@ jobs:
   <figcaption>CI image trên GHCR có cả tag <code>latest</code> và tag gắn với commit để dễ truy vết.</figcaption>
 </figure>
 
-Trong bản demo mình vẫn dùng `latest` để cập nhật nhanh. Nếu cần tính tái lập cao hơn, worker nên pull image theo digest hoặc một tag bất biến thay vì một tag có thể trỏ sang nội dung mới.
+Trong bản demo mình vẫn dùng **latest** để cập nhật nhanh. Nếu cần tính tái lập cao hơn, worker nên pull image theo digest hoặc một tag bất biến thay vì một tag có thể trỏ sang nội dung mới.
 
 # Bake sẵn VM image
 
@@ -168,7 +168,7 @@ Trong AMI này đã có sẵn:
 - các công cụ cần thiết
 - Docker image phục vụ CI
 
-Packer dùng builder `amazon-ebs`, chạy provisioning script và đóng gói trạng thái cuối thành AMI:
+Packer dùng builder **amazon-ebs**, chạy provisioning script và đóng gói trạng thái cuối thành AMI:
 
 ```hcl
 build {
@@ -185,7 +185,7 @@ build {
 }
 ```
 
-Provisioning script cài Docker và chạy `docker pull "${CI_IMAGE}"` ngay trong quá trình build AMI. Vì các layer đã có sẵn trên disk, worker mới chỉ cần kiểm tra hoặc tải những layer thay đổi khi boot.
+Provisioning script cài Docker và chạy **docker pull "${CI_IMAGE}"** ngay trong quá trình build AMI. Vì các layer đã có sẵn trên disk, worker mới chỉ cần kiểm tra hoặc tải những layer thay đổi khi boot.
 
 <figure>
   <img src="/images/3-BlogPosted/config.png" alt="File biến Packer chứa region, instance type và địa chỉ CI image trên GHCR" loading="lazy">
@@ -211,7 +211,7 @@ watch -n 5 'aws autoscaling describe-auto-scaling-groups \
   --query "AutoScalingGroups[0].{desired:DesiredCapacity,instances:Instances[].LifecycleState}"'
 ```
 
-Nếu hệ thống hoạt động đúng, `desired` sẽ đi theo chuỗi `0 → 1 → 0`. Trong một đợt nhiều job, EC2 ở trạng thái `Initializing`, `Running`, `Shutting-down` và `Terminated` có thể cùng xuất hiện vì mỗi worker có vòng đời riêng.
+Nếu hệ thống hoạt động đúng, **desired** sẽ đi theo chuỗi **0 → 1 → 0**. Trong một đợt nhiều job, EC2 ở trạng thái **Initializing**, **Running**, **Shutting-down** và **Terminated** có thể cùng xuất hiện vì mỗi worker có vòng đời riêng.
 
 <figure>
   <img src="/images/3-BlogPosted/ec2.png" alt="Các EC2 worker tạm thời ở trạng thái running, shutting-down và terminated" loading="lazy">

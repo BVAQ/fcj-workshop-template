@@ -1,4 +1,4 @@
----
+﻿---
 title : "ECS Fargate Compute Layer"
 date : 2024-01-01
 weight : 4
@@ -102,7 +102,7 @@ const appContainer = taskDefinition.addContainer('App', {
     STORAGE: 'raftdb',
     RAFTDB_ADDR: '127.0.0.1:9100',
     AUTH_ENABLED: 'false',
-    ALLOWED_ORIGINS: `https://${domainName}`,
+    ALLOWED_ORIGINS: **https://${domainName}**,
     DDB_CONFIG: db.configTable.tableName,
     DDB_BANS: db.bansTable.tableName,
     DDB_MILESTONES: db.milestonesTable.tableName,
@@ -253,7 +253,7 @@ All HTTP traffic receives a **301 Permanent Redirect** to HTTPS. No plaintext tr
 ```typescript
 new route53.ARecord(scope, 'WsRecord', {
   zone: hostedZone,
-  recordName: `ws.${domainName}`,
+  recordName: **ws.${domainName}**,
   target: route53.RecordTarget.fromAlias(
     new route53_targets.LoadBalancerTarget(alb)
   ),

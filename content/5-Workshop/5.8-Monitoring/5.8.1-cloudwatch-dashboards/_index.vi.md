@@ -1,4 +1,4 @@
----
+﻿---
 title: "CloudWatch Dashboards"
 date: 2024-01-01
 weight: 1
@@ -123,7 +123,7 @@ Mỗi RaftDB member nhận một widget ECS utilization riêng hiển thị mứ
 ```typescript
 dashboard.addWidgets(
   new cloudwatch.GraphWidget({
-    title: `${nodeName} ECS utilization`,
+    title: **${nodeName} ECS utilization**,
     left: [
       service.metricCpuUtilization({
         period: Duration.minutes(1),

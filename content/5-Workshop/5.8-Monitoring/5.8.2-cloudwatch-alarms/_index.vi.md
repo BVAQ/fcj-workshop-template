@@ -1,4 +1,4 @@
----
+﻿---
 title: "CloudWatch Alarms"
 date: 2024-01-01
 weight: 2
@@ -33,7 +33,7 @@ Hàm: **createRaftDbMember**
 Mỗi RaftDB member nhận alarm CPU và memory riêng. Thiết kế này tránh gộp chung giữa các node để một member bị quá tải được xác định ngay lập tức mà không cần kiểm tra dashboard:
 
 ```typescript
-const cpuAlarm = new cloudwatch.Alarm(scope, `${nodeName}CpuAlarm`, {
+const cpuAlarm = new cloudwatch.Alarm(scope, **${nodeName}CpuAlarm**, {
   metric: service.metricCpuUtilization({ period: Duration.minutes(1) }),
   threshold: 85,
   evaluationPeriods: 5,
@@ -43,7 +43,7 @@ const cpuAlarm = new cloudwatch.Alarm(scope, `${nodeName}CpuAlarm`, {
   treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
 });
 
-const memoryAlarm = new cloudwatch.Alarm(scope, `${nodeName}MemoryAlarm`, {
+const memoryAlarm = new cloudwatch.Alarm(scope, **${nodeName}MemoryAlarm**, {
   metric: service.metricMemoryUtilization({ period: Duration.minutes(1) }),
   threshold: 85,
   evaluationPeriods: 5,
@@ -63,9 +63,9 @@ test('per-member CPU and memory alarms exist for all three nodes', () => {
   const template = stagingTemplate();
   const alarms = resourceEntriesByType(template, 'AWS::CloudWatch::Alarm');
   for (let n = 1; n <= 3; n++) {
-    const cpuAlarm = alarms.find(([id]) => id.includes(`raftdb${n}CpuAlarm`));
+    const cpuAlarm = alarms.find(([id]) => id.includes(**raftdb${n}CpuAlarm**));
     expect(cpuAlarm).toBeDefined();
-    const memoryAlarm = alarms.find(([id]) => id.includes(`raftdb${n}MemoryAlarm`));
+    const memoryAlarm = alarms.find(([id]) => id.includes(**raftdb${n}MemoryAlarm**));
     expect(memoryAlarm).toBeDefined();
   }
 });
@@ -83,7 +83,7 @@ Hai alarm toàn cluster bảo vệ chống lại các kịch bản mất dữ li
 
 ```typescript
 const maxSnapshotAge = new cloudwatch.MathExpression({
-  expression: `MAX([${Object.keys(snapshotAgeMetrics).join(', ')}])`,
+  expression: **MAX([${Object.keys(snapshotAgeMetrics).join(', ')}])**,
   usingMetrics: snapshotAgeMetrics,
   period: Duration.minutes(5),
   label: 'Max snapshot age across cluster',
@@ -107,7 +107,7 @@ Alarm này sử dụng **MAX** giữa cả ba node, vì vậy nó chỉ kích ho
 
 ```typescript
 const totalWalErrors = new cloudwatch.MathExpression({
-  expression: `SUM([${Object.keys(walMetrics).join(', ')}])`,
+  expression: **SUM([${Object.keys(walMetrics).join(', ')}])**,
   usingMetrics: walMetrics,
   period: Duration.minutes(5),
   label: 'Total WAL errors across cluster',
@@ -139,9 +139,9 @@ File: **Infrastructure**
 for (const member of members) {
   new cloudwatch.Alarm(
     this,
-    `${member.nodeName}DeploymentRollbackAlarm`,
+    **${member.nodeName}DeploymentRollbackAlarm**,
     {
-      alarmDescription: `Deployment failed to stabilize for ${member.nodeName} (sustained low CPU)`,
+      alarmDescription: **Deployment failed to stabilize for ${member.nodeName} (sustained low CPU)**,
       metric: member.service.metricCpuUtilization({
         statistic: cloudwatch.Stats.AVERAGE,
         period: Duration.minutes(1),

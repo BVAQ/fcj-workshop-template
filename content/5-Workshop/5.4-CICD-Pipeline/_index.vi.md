@@ -1,4 +1,4 @@
----
+﻿---
 title: "CI/CD Pipeline"
 date: 2024-01-01
 weight: 4
@@ -370,7 +370,7 @@ Dưới đây là ví dụ cấu hình bản ghi NS trên Cloudflare, ủy quy�
 
 ![Ủy quyền tên miền — Bản ghi NS trên Cloudflare](/images/5-Workshop/5.4-CICD-Pipeline/753747574_1015957567992787_6550916551567091605_n.jpg)
 
-Sau khi cấu hình, bạn có thể kiểm tra kết quả phân giải bản ghi NS từ terminal bằng lệnh `dig place.namanhishere.com NS`:
+Sau khi cấu hình, bạn có thể kiểm tra kết quả phân giải bản ghi NS từ terminal bằng lệnh **dig place.namanhishere.com NS**:
 
 ![Kiểm tra phân giải bản ghi NS tên miền bằng dig](/images/5-Workshop/5.4-CICD-Pipeline/756430488_3121594578036333_8322272973070305772_n.png)
 

@@ -1,4 +1,4 @@
----
+﻿---
 title : "Lớp Tính toán ECS Fargate"
 date : 2024-01-01
 weight : 4
@@ -73,7 +73,7 @@ const appContainer = taskDefinition.addContainer('App', {
     STORAGE: 'raftdb',
     RAFTDB_ADDR: '127.0.0.1:9100',
     AUTH_ENABLED: 'false',
-    ALLOWED_ORIGINS: `https://${domainName}`,
+    ALLOWED_ORIGINS: **https://${domainName}**,
     ...
   },
   secrets: {
@@ -132,7 +132,7 @@ Nếu triển khai thất bại, ECS tự động quay lại định nghĩa task
 ```typescript
 new route53.ARecord(scope, 'WsRecord', {
   zone: hostedZone,
-  recordName: `ws.${domainName}`,
+  recordName: **ws.${domainName}**,
   target: route53.RecordTarget.fromAlias(
     new route53_targets.LoadBalancerTarget(alb)
   ),

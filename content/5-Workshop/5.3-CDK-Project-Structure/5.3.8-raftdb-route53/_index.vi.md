@@ -1,4 +1,4 @@
----
+﻿---
 title : "Cơ sở hạ tầng RaftDB & Route 53"
 date : 2024-01-01
 weight : 8
@@ -29,7 +29,7 @@ export function createRoute53AndCertificates(
 
   // Tạo chứng chỉ wildcard bao phủ tất cả subdomain
   const wildcardCert = new acm.Certificate(scope, 'WildcardCertificate', {
-    domainName: `*.${domainName}`,
+    domainName: ***.${domainName}**,
     validation: acm.CertificateValidation.fromDns(hostedZone),
   });
 

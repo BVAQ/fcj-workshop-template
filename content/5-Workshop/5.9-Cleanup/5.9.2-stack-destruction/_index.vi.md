@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quy trình Huỷ Stack"
 date: 2024-01-01
 weight: 2
@@ -38,7 +38,7 @@ Việc huỷ application stack (**AwsplaceStack**) yêu cầu cẩn trọng hơn
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
-// must survive `cdk destroy` and be auto-imported on the next deployment.
+// must survive **cdk destroy** and be auto-imported on the next deployment.
 repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 ```
 

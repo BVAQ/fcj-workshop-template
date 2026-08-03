@@ -1,4 +1,4 @@
----
+﻿---
 title: "Blog 1"
 date: 2024-01-01
 weight: 1
@@ -37,7 +37,7 @@ The entire system is divided into two parts.
 
 The first part is the **Runner Manager**, running continuously on a small machine. Its only task is to connect to GitLab, monitor the pipeline queue, and decide when more workers are needed.
 
-The second part consists of the **EC2 Workers** located in an **Auto Scaling Group** with `desired capacity = 0`. Normally, no EC2 instances exist. Only when a new job appears on GitLab does the Runner Manager request the Auto Scaling Group to spin up an additional instance. After booting, the worker takes exactly one job, runs it inside a Docker container, and then terminates itself.
+The second part consists of the **EC2 Workers** located in an **Auto Scaling Group** with **desired capacity = 0**. Normally, no EC2 instances exist. Only when a new job appears on GitLab does the Runner Manager request the Auto Scaling Group to spin up an additional instance. After booting, the worker takes exactly one job, runs it inside a Docker container, and then terminates itself.
 
 What I like about this model is that the Runner Manager is always very lightweight, while all the resources needed for building appear only when truly necessary.
 
@@ -49,10 +49,10 @@ What I like about this model is that the Runner Manager is always very lightweig
 The execution flow of a job can be summarized as follows:
 
 1. Runner Manager receives the job from GitLab via HTTPS.
-2. The Fleeting AWS plugin requests the Auto Scaling Group to increase capacity from `0` to `1`.
+2. The Fleeting AWS plugin requests the Auto Scaling Group to increase capacity from **0** to **1**.
 3. The EC2 instance boots from a custom AMI, Runner Manager connects via SSH, and starts the Docker container.
 4. Logs and results are returned to GitLab.
-5. The worker is discarded after the job, and the capacity returns to `0`.
+5. The worker is discarded after the job, and the capacity returns to **0**.
 
 ## One Job Per Machine
 
@@ -73,11 +73,11 @@ The most critical part of the Runner configuration is actually quite short:
       idle_time  = "5m"
 ```
 
-`capacity_per_instance = 1` limits each EC2 instance to running one job at a time, while `max_use_count = 1` ensures the instance is scheduled for removal immediately after its first use. I accept losing local cache and the ability to reuse workers in exchange for a cleaner, more predictable environment for each pipeline. In a production environment, `aws:latest` should also be pinned to a specific plugin version.
+**capacity_per_instance = 1** limits each EC2 instance to running one job at a time, while **max_use_count = 1** ensures the instance is scheduled for removal immediately after its first use. I accept losing local cache and the ability to reuse workers in exchange for a cleaner, more predictable environment for each pipeline. In a production environment, **aws:latest** should also be pinned to a specific plugin version.
 
 ## Only One Capacity Controller Should Exist
 
-Terraform initially creates the Auto Scaling Group, but GitLab Runner is the component that scales the `desired_capacity` up or down during operation. If Terraform continues to try managing this value on every `apply`, the two controllers might pull the capacity in different directions.
+Terraform initially creates the Auto Scaling Group, but GitLab Runner is the component that scales the **desired_capacity** up or down during operation. If Terraform continues to try managing this value on every **apply**, the two controllers might pull the capacity in different directions.
 
 ```hcl
 resource "aws_autoscaling_group" "runner" {
@@ -99,7 +99,7 @@ resource "aws_autoscaling_group" "runner" {
 }
 ```
 
-`ignore_changes` does not mean Terraform abandons management of the ASG. Terraform still manages the Launch Template, subnets, tags, and other infrastructure attributes; it just doesn't overwrite the number of instances the Runner is requesting.
+**ignore_changes** does not mean Terraform abandons management of the ASG. Terraform still manages the Launch Template, subnets, tags, and other infrastructure attributes; it just doesn't overwrite the number of instances the Runner is requesting.
 
 # Prebuilt Docker Image with GitHub Actions
 
@@ -151,7 +151,7 @@ jobs:
   <figcaption>The CI image on GHCR has both the <code>latest</code> tag and a tag associated with the commit for easy tracking.</figcaption>
 </figure>
 
-In the demo version, I still use `latest` for quick updates. If higher reproducibility is needed, the worker should pull the image by digest or an immutable tag instead of a tag that might point to new content.
+In the demo version, I still use **latest** for quick updates. If higher reproducibility is needed, the worker should pull the image by digest or an immutable tag instead of a tag that might point to new content.
 
 # Pre-baking the VM Image
 
@@ -167,7 +167,7 @@ This AMI already contains:
 - Necessary tools
 - The Docker image for CI
 
-Packer uses the `amazon-ebs` builder, runs the provisioning script, and packages the final state into an AMI:
+Packer uses the **amazon-ebs** builder, runs the provisioning script, and packages the final state into an AMI:
 
 ```hcl
 build {
@@ -184,7 +184,7 @@ build {
 }
 ```
 
-The provisioning script installs Docker and runs `docker pull "${CI_IMAGE}"` right during the AMI build process. Because the layers are already present on disk, a new worker only needs to check or download changed layers when booting.
+The provisioning script installs Docker and runs **docker pull "${CI_IMAGE}"** right during the AMI build process. Because the layers are already present on disk, a new worker only needs to check or download changed layers when booting.
 
 <figure>
   <img src="/images/3-BlogPosted/config.png" alt="Packer variables file containing region, instance type, and CI image address on GHCR" loading="lazy">
@@ -210,7 +210,7 @@ watch -n 5 'aws autoscaling describe-auto-scaling-groups \
   --query "AutoScalingGroups[0].{desired:DesiredCapacity,instances:Instances[].LifecycleState}"'
 ```
 
-If the system operates correctly, `desired` will follow the sequence `0 → 1 → 0`. During a burst of multiple jobs, EC2 instances in `Initializing`, `Running`, `Shutting-down`, and `Terminated` states might appear simultaneously because each worker has its own lifecycle.
+If the system operates correctly, **desired** will follow the sequence **0 → 1 → 0**. During a burst of multiple jobs, EC2 instances in **Initializing**, **Running**, **Shutting-down**, and **Terminated** states might appear simultaneously because each worker has its own lifecycle.
 
 <figure>
   <img src="/images/3-BlogPosted/ec2.png" alt="Temporary EC2 workers in running, shutting-down, and terminated states" loading="lazy">

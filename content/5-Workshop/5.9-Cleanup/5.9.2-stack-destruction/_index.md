@@ -1,4 +1,4 @@
----
+﻿---
 title: "Stack Destruction Procedures"
 date: 2024-01-01
 weight: 2
@@ -38,7 +38,7 @@ The application stack (**AwsplaceStack**) destruction requires more care because
 
 ```typescript
 // CI publishes before the application stack is recreated, so the registry
-// must survive `cdk destroy` and be auto-imported on the next deployment.
+// must survive **cdk destroy** and be auto-imported on the next deployment.
 repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 ```
 

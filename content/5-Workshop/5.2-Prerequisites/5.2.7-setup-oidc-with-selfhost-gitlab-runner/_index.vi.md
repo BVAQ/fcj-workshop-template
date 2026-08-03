@@ -1,4 +1,4 @@
----
+﻿---
 title: "Thiết lập OIDC với GitLab Runner tự host"
 date: 2026-07-27
 weight: 7
@@ -17,12 +17,12 @@ Nếu không có OIDC, nhóm cần lưu access key và secret key AWS trong bi�
 1. Mở IAM console.
 2. Vào **Identity providers** → **Add provider**.
 3. Chọn **OpenID Connect**.
-4. Ở **Provider URL**, nhập `https://git.namanhishere.com`.
-5. Ở **Audience**, nhập `https://git.namanhishere.com`.
+4. Ở **Provider URL**, nhập **https://git.namanhishere.com**.
+5. Ở **Audience**, nhập **https://git.namanhishere.com**.
 6. Nhấn **Get thumbprint** để lấy dấu vân tay chứng chỉ TLS tự động.
 7. Nhấn **Add provider**.
 
-Screenshot dưới đây hiển thị IAM OIDC provider cho `git.namanhishere.com` với audience `https://git.namanhishere.com`.
+Screenshot dưới đây hiển thị IAM OIDC provider cho **git.namanhishere.com** với audience **https://git.namanhishere.com**.
 
 ![IAM OIDC provider for GitLab](/images/5-Workshop/5.2-Prerequisite/IAM_OIDC.png)
 
@@ -30,12 +30,12 @@ Screenshot dưới đây hiển thị IAM OIDC provider cho `git.namanhishere.co
 
 1. Trong IAM console, vào **Roles** → **Create role**.
 2. Chọn **Web identity**.
-3. Ở **Identity provider**, chọn `git.namanhishere.com`.
-4. Ở **Audience**, chọn `https://git.namanhishere.com`.
-5. Ở **GitLab branch**, nhóm có thể cần nhập `main` hoặc để trống và sửa trust policy thủ công sau khi tạo.
-6. Đặt tên role `GitLabCDKDeployRole`.
+3. Ở **Identity provider**, chọn **git.namanhishere.com**.
+4. Ở **Audience**, chọn **https://git.namanhishere.com**.
+5. Ở **GitLab branch**, nhóm có thể cần nhập **main** hoặc để trống và sửa trust policy thủ công sau khi tạo.
+6. Đặt tên role **GitLabCDKDeployRole**.
 
-Sau khi tạo, thay trust policy tự tạo bằng JSON này. Thay `ACCOUNT_ID` bằng số tài khoản AWS.
+Sau khi tạo, thay trust policy tự tạo bằng JSON này. Thay **ACCOUNT_ID** bằng số tài khoản AWS.
 
 ```json
 {
@@ -60,7 +60,7 @@ Sau khi tạo, thay trust policy tự tạo bằng JSON này. Thay `ACCOUNT_ID` 
 }
 ```
 
-Screenshot dưới đây hiển thị `GitLabCDKDeployRole` với thời lượng phiên tối đa 1 giờ.
+Screenshot dưới đây hiển thị **GitLabCDKDeployRole** với thời lượng phiên tối đa 1 giờ.
 
 ![GitLab CDK deploy role](/images/5-Workshop/5.2-Prerequisite/IAMDeployRole.png)
 
@@ -70,7 +70,7 @@ Gắn quyền cấp dịch vụ từ phần 5.2.3 vào role. Nhóm có thể dù
 
 ## Bước 4: Kiểm tra luồng OIDC
 
-Cách dễ nhất để kiểm tra là kích hoạt pipeline trong GitLab và theo dõi job `deploy-to-aws`. Nếu assume role thất bại, nhật ký job sẽ hiển thị lỗi từ `aws sts assume-role-with-web-identity`.
+Cách dễ nhất để kiểm tra là kích hoạt pipeline trong GitLab và theo dõi job **deploy-to-aws**. Nếu assume role thất bại, nhật ký job sẽ hiển thị lỗi từ **aws sts assume-role-with-web-identity**.
 
 Nếu muốn kiểm tra thủ công, nhóm cần JWT token GitLab OIDC hợp lệ. Job GitLab CI tự động làm việc này:
 
@@ -87,7 +87,7 @@ ASSUME_ROLE_OUTPUT=$(aws sts assume-role-with-web-identity \
 Kiểm tra thành công trả về credentials tạm thời. Thất bại thường do một trong các giá trị sau sai:
 
 - Provider URL hoặc audience không khớp GitLab.
-- Điều kiện `sub` trong trust policy không khớp đường dẫn dự án hoặc nhánh.
+- Điều kiện **sub** trong trust policy không khớp đường dẫn dự án hoặc nhánh.
 - Role ARN không đúng.
 - JWT token GitLab đã hết hạn.
 
@@ -99,4 +99,4 @@ Copy role ARN:
 arn:aws:iam::ACCOUNT_ID:role/GitLabCDKDeployRole
 ```
 
-Lưu giá trị này vào biến GitLab CI/CD `AWS_ROLE_ARN` như mô tả trong phần 5.2.8.
+Lưu giá trị này vào biến GitLab CI/CD **AWS_ROLE_ARN** như mô tả trong phần 5.2.8.

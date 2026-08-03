@@ -1,4 +1,4 @@
----
+﻿---
 title : "RaftDB Infrastructure & Route 53"
 date : 2024-01-01
 weight : 8
@@ -38,7 +38,7 @@ export function createRoute53AndCertificates(
 
   // Wildcard certificate covering *.domainName
   const wildcardCert = new acm.Certificate(scope, 'WildcardCertificate', {
-    domainName: `*.${domainName}`,
+    domainName: ***.${domainName}**,
     validation: acm.CertificateValidation.fromDns(hostedZone),
   });
 

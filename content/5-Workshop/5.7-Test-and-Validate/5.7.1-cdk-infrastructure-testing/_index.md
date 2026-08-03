@@ -1,4 +1,4 @@
----
+﻿---
 title: "CDK Infrastructure Testing"
 date: 2024-01-01
 weight: 1
@@ -78,7 +78,7 @@ This validates:
 test('invalid ECS image tags fail synthesis before deployment', () => {
   const { result } = synthWithImageTag('invalid/tag');
   expect(result.status).not.toBe(0);
-  expect(`${result.stdout}\n${result.stderr}`).toContain(
+  expect(**${result.stdout}\n${result.stderr}**).toContain(
     'ECS_IMAGE_TAG must be a valid Docker image tag'
   );
 });

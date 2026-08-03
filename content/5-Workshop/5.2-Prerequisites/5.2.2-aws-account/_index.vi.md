@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tài khoản AWS"
 date: 2026-07-27
 weight: 2
@@ -12,11 +12,11 @@ Sử dụng tài khoản AWS mà nhóm sẵn sàng thanh toán. Pipeline tạo c
 
 ## Khóa vùng
 
-Mọi lệnh trong pipeline đều chỉ định rõ `ap-southeast-1`. Điểm vào CDK `awsplace/cdk/bin/app.ts` mặc định dùng `ap-southeast-1` khi `CDK_DEFAULT_REGION` chưa đặt, nhưng pipeline đặt `AWS_REGION: ap-southeast-1` trong mỗi job. Điều này ngăn `AWS_DEFAULT_REGION` cũ lặng chuyển tài nguyên sang vùng khác.
+Mọi lệnh trong pipeline đều chỉ định rõ **ap-southeast-1**. Điểm vào CDK **awsplace/cdk/bin/app.ts** mặc định dùng **ap-southeast-1** khi **CDK_DEFAULT_REGION** chưa đặt, nhưng pipeline đặt **AWS_REGION: ap-southeast-1** trong mỗi job. Điều này ngăn **AWS_DEFAULT_REGION** cũ lặng chuyển tài nguyên sang vùng khác.
 
 ## Ghi lại Account ID
 
-Nhiều tên tài nguyên và ARN trong workshop này chứa số tài khoản AWS 12 chữ số. Trong các trang này, nó được viết là `ACCOUNT_ID`; nhóm hãy thay bằng số của mình.
+Nhiều tên tài nguyên và ARN trong workshop này chứa số tài khoản AWS 12 chữ số. Trong các trang này, nó được viết là **ACCOUNT_ID**; nhóm hãy thay bằng số của mình.
 
 ```bash
 export ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
@@ -25,7 +25,7 @@ echo "$ACCOUNT_ID"
 
 ## Đăng nhập AWS CLI v2
 
-Pipeline sử dụng OIDC, nhưng nhóm vẫn cần credentials AWS cục bộ cho các bước thiết lập trong phần này. Cài đặt AWS CLI v2 và chạy `aws login` để xác thực qua IAM Identity Center hoặc AWS CLI SSO.
+Pipeline sử dụng OIDC, nhưng nhóm vẫn cần credentials AWS cục bộ cho các bước thiết lập trong phần này. Cài đặt AWS CLI v2 và chạy **aws login** để xác thực qua IAM Identity Center hoặc AWS CLI SSO.
 
 ```bash
 aws login
@@ -56,4 +56,4 @@ Kết quả mong đợi:
 ```
 
 
-Nếu lệnh in ra `Unable to locate credentials`, hãy khắc phục trước khi làm gì khác. Phần còn lại của workshop giả định lệnh này thành công.
+Nếu lệnh in ra **Unable to locate credentials**, hãy khắc phục trước khi làm gì khác. Phần còn lại của workshop giả định lệnh này thành công.

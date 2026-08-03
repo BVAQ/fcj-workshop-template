@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 2: AWS - Enterprise Cloud Architectures and Industry Application"
 date: 2026-07-04
 weight: 2
@@ -37,7 +37,7 @@ Furthermore, career orientation mindsets must shift: Do not just label yourself 
 **The Future Landscape and the AI Job Paradox:**
 - **The Inverted Pyramid Model:** The traditional hierarchical personnel structure is breaking down. Currently, Junior hiring is sharply declining, the Middle tier is gradually being replaced by the optimization of AI Agents, while companies are hungrier for Seniors than ever before. Students are forced to mature at a dizzying pace, aiming to achieve a 3-4 year experience-level mindset in the shortest possible time.
 - **The LED Bulb Paradox:** Many students fear AI will steal jobs because it saves up to 90% of coding time. To address this, Mr. Hung drew a comparison to the LED bulb: Although LED bulbs save immense amounts of electricity, precisely because they are cheap and efficient, humans install them everywhere (from staircases and gardens to bedrooms). Similarly, as the cost and barriers to software development decrease due to AI, the digitalization demand from traditional (Non-Tech) businesses will explode fiercely. This actually creates a vastly larger total volume of jobs, but simultaneously, the quality and complexity requirements of those jobs will skyrocket.
-- **The Immutable Success Formula:** `Result = Capability x Visibility x Consistency`. If any factor in this equation is zero, the final result is zero. Flashy international certifications now merely serve as a "ticket" to bypass automated AI CV screeners. What Hiring Managers truly seek are practical personal projects, in-depth technical blogs that demonstrate analytical thinking, and a steadfast Lifelong Learning spirit.
+- **The Immutable Success Formula:** **Result = Capability x Visibility x Consistency**. If any factor in this equation is zero, the final result is zero. Flashy international certifications now merely serve as a "ticket" to bypass automated AI CV screeners. What Hiring Managers truly seek are practical personal projects, in-depth technical blogs that demonstrate analytical thinking, and a steadfast Lifelong Learning spirit.
 
 #### Session 2: Data Architecture - The Gap Between Academia and the Real World
 **Speaker:** Mr. Banh Cam Vinh - Data Engineer at Renova Cloud

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 1: Agentic AI Build Week (AABW) Hackathon"
 date: 2024-01-01
 weight: 1
@@ -134,7 +134,7 @@ Việc trải qua trọn vẹn sự kiện AABW Hackathon giống hệt như m�
 
 #### 🧠 Đấu trí và Cọ xát kỹ thuật cực độ (Hands-on Technical Pressure)
 - Bắt đầu với sự hoang mang (Overwhelmed): 2 giờ đầu tiên là khoảng thời gian kinh khủng nhất khi đứng trước một "vùng biển lớn" các dịch vụ AWS và không biết phải lắp ghép chúng như thế nào. Nhưng ngay sau khi bản thiết kế trên bảng trắng được chốt, mọi người rơi vào trạng thái dòng chảy (In the zone) - tiếng gõ phím vang lên liên tục không ngừng nghỉ.
-- Đối mặt với khủng hoảng: Trải nghiệm code báo lỗi liên tục lúc 3 giờ sáng, quên commit code lên Github dẫn đến conflict từa lưa, hay pha "đứng tim" khi vô tình push file `.env` chứa mật khẩu lên public repo... Đó là những kinh nghiệm xương máu không một giảng đường hay sách vở nào dạy được.
+- Đối mặt với khủng hoảng: Trải nghiệm code báo lỗi liên tục lúc 3 giờ sáng, quên commit code lên Github dẫn đến conflict từa lưa, hay pha "đứng tim" khi vô tình push file **.env** chứa mật khẩu lên public repo... Đó là những kinh nghiệm xương máu không một giảng đường hay sách vở nào dạy được.
 
 #### 🤝 Tinh thần đồng đội và Mở rộng mối quan hệ (Networking and Collaboration)
 - Áp lực khủng khiếp đã gắn kết những con người xa lạ. Việc cùng nhau nhai vội miếng gà rán KFC lúc nửa đêm, đi dạo quanh khuôn viên Vinhomes lúc 2h sáng để đầu óc tỉnh táo lại, và động viên nhau sửa từng dòng bug đã tạo nên một sợi dây liên kết tuyệt vời.

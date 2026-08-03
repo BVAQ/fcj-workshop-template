@@ -1,4 +1,4 @@
----
+﻿---
 title : "Lambda, API Gateway & Amplify"
 date : 2024-01-01
 weight : 7
@@ -138,7 +138,7 @@ export function createApiGateway(
 
   const api = new apigatewayv2.HttpApi(scope, 'ApiGateway', {
     corsPreflight: {
-      allowOrigins: [`https://${domainName}`],
+      allowOrigins: [**https://${domainName}**],
       allowMethods: [
         apigatewayv2.CorsHttpMethod.GET,
         apigatewayv2.CorsHttpMethod.POST,
@@ -158,7 +158,7 @@ export function createApiGateway(
 
   // Custom domain: api.<domainName>
   const apiDomainName = new apigatewayv2.DomainName(scope, 'CustomDomain', {
-    domainName: `api.${domainName}`,
+    domainName: **api.${domainName}**,
     certificate: wildcardCert,
   });
 
@@ -171,7 +171,7 @@ export function createApiGateway(
   // Route 53: api.<domainName> → API Gateway
   new route53.ARecord(scope, 'ApiRecord', {
     zone: hostedZone,
-    recordName: `api.${domainName}`,
+    recordName: **api.${domainName}**,
     target: route53.RecordTarget.fromAlias(
       new targets.ApiGatewayv2DomainProperties(
         apiDomainName.regionalDomainName,
@@ -199,7 +199,7 @@ For this application, the Lambda handles all routing internally via Express — 
 
 ```typescript
 corsPreflight: {
-  allowOrigins: [`https://${domainName}`],
+  allowOrigins: [**https://${domainName}**],
   allowMethods: [GET, POST, PUT, DELETE, OPTIONS],
   allowHeaders: ['content-type', 'authorization'],
   allowCredentials: true,

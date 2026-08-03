@@ -1,4 +1,4 @@
----
+﻿---
 title: "AWS Account"
 date: 2026-07-27
 weight: 2
@@ -12,11 +12,11 @@ Use an AWS account you are willing to bill. The pipeline creates billable resour
 
 ## Region lock
 
-Every command in the pipeline targets `ap-southeast-1` explicitly. The CDK entry point `awsplace/cdk/bin/app.ts` defaults to `ap-southeast-1` when `CDK_DEFAULT_REGION` is unset, but the pipeline sets `AWS_REGION: ap-southeast-1` in every job. This prevents a stale `AWS_DEFAULT_REGION` from silently redirecting resources to another region.
+Every command in the pipeline targets **ap-southeast-1** explicitly. The CDK entry point **awsplace/cdk/bin/app.ts** defaults to **ap-southeast-1** when **CDK_DEFAULT_REGION** is unset, but the pipeline sets **AWS_REGION: ap-southeast-1** in every job. This prevents a stale **AWS_DEFAULT_REGION** from silently redirecting resources to another region.
 
 ## Note your account ID
 
-Many resource names and ARNs in this workshop include the 12-digit AWS account number. Throughout these pages it is written as `ACCOUNT_ID`; substitute your own.
+Many resource names and ARNs in this workshop include the 12-digit AWS account number. Throughout these pages it is written as **ACCOUNT_ID**; substitute your own.
 
 ```bash
 export ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
@@ -25,7 +25,7 @@ echo "$ACCOUNT_ID"
 
 ## AWS CLI v2 login
 
-The pipeline itself uses OIDC, but you still need local AWS credentials for the setup steps in this section. Install AWS CLI v2 and run `aws login` to authenticate through IAM Identity Center or AWS CLI SSO.
+The pipeline itself uses OIDC, but you still need local AWS credentials for the setup steps in this section. Install AWS CLI v2 and run **aws login** to authenticate through IAM Identity Center or AWS CLI SSO.
 
 ```bash
 aws login
@@ -56,4 +56,4 @@ Expected output:
 ```
 
 
-If the command prints `Unable to locate credentials`, fix that before anything else. The rest of the workshop assumes this command succeeds.
+If the command prints **Unable to locate credentials**, fix that before anything else. The rest of the workshop assumes this command succeeds.
