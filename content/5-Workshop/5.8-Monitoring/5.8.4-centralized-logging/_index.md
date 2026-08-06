@@ -1,4 +1,4 @@
----
+﻿---
 title: "Centralized Logging"
 date: 2024-01-01
 weight: 4
@@ -110,7 +110,7 @@ The CI/CD pipeline also produces structured logs that complement the runtime mon
 
 The RaftDB publication evidence (image digest, contract test results, scan report) is uploaded as a workflow artifact with 90-day retention. This provides an audit trail connecting a running container to its build, test, and scan provenance.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open CloudWatch Logs Insights in the AWS Console.
 Run a query filtering by a log group for the awsplace application.
 Capture the interface showing the query editor, the log stream selector, and a sample of results.
@@ -124,3 +124,4 @@ Screenshot suggestion 3: Navigate to VPC Endpoints in the AWS Console.
 Filter by the RaftDB VPC and capture the list showing the CloudWatch Logs endpoint alongside ECR and S3 endpoints.
 Save as: static/images/5.7/vpc-endpoints-logging.png
 -->
+

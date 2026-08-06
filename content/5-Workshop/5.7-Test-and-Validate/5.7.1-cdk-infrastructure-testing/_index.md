@@ -112,7 +112,7 @@ test('GitLab and GitHub publish and deploy through the shared ECR contract', () 
 
 This reads the actual **.gitlab-ci.yml** and **deploy.yml** files and asserts they use the same deployment scripts and patterns. This prevents one CI system from drifting out of sync.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: Run npm test inside the awsplace/cdk folder.
 Capture the Jest output showing all 7 test files passing with green checkmarks.
 Save as: static/images/5.6/cdk-test-results.png
@@ -187,10 +187,11 @@ The **npm test** script performs three steps sequentially:
 2. **npm run synth** — Runs cdk synth to generate CloudFormation templates
 3. **jest --runInBand** — Executes all 7 test files serially
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: Run npm test inside awsplace/cdk and capture the terminal output showing:
 1. The TypeScript compilation
 2. The CDK synth output
 3. The Jest test results (all passing)
 Save as: static/images/5.6/npm-test-output.png
 -->
+

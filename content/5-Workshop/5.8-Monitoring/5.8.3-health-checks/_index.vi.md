@@ -1,4 +1,4 @@
----
+﻿---
 title: "Health Check Container & Ứng dụng"
 date: 2024-01-01
 weight: 3
@@ -134,10 +134,11 @@ Readiness marker tại **/tmp/raftdb-ready** là chốt khoá của hệ thống
 
 Hợp đồng này có nghĩa là health check cung cấp một tín hiệu trung thực: nếu marker tồn tại, server đã hoàn tất recovery, có durable store ghi được, và sẵn sàng phục vụ client request.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Mở ECS console, điều hướng đến một RaftDB task, và xem tab "Health" hoặc chi tiết container hiển thị cấu hình health check và trạng thái cuối cùng.
 Lưu tại: static/images/5.7/ecs-health-check.png
 
 Gợi ý chụp ảnh 2: Mở EC2 Target Groups console, chọn ECS target group, và chụp tab "Health checks" hiển thị đường dẫn /health, interval, timeout, và thiết lập threshold.
 Lưu tại: static/images/5.7/alb-target-health.png
 -->
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kiểm thử & Xác thực"
 date: 2024-01-01
 weight: 6
@@ -26,10 +26,11 @@ Khi viết test, quy tắc cốt lõi của chúng mình là **kiểm thử hợ
 
 Bằng cách kiểm tra kết quả thực tế, chúng mình có thể phát hiện ra những lỗi deploy mà kiểu mock truyền thống hay bỏ sót.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Sơ đồ kim tự tháp kiểm thử (testing pyramid) của dự án awsplace:
 - Đỉnh: CI/CD Pipeline (GitHub Actions / GitLab CI)
 - Giữa: CDK Contract Tests (Jest)
 - Đáy: Application Tests (Go unit + integration)
 Lưu tại: static/images/5.6/testing-pyramid.png
 -->
+

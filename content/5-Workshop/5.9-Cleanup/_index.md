@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cleanup"
 date: 2024-01-01
 weight: 8
@@ -26,10 +26,11 @@ When it comes to cleaning up, our main rule is to **separate destroying the stac
 
 This separation gives us peace of mind. If we ever need to tear down and recreate our stack, we know we won't accidentally wipe out our production images, database snapshots, or app secrets.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: A diagram showing the cleanup decision flow of the awsplace project:
 - Stack Deletion (cdk destroy) → removes compute, network, and security resources
 - Retained Resources (RETAIN policy) → survive stack deletion
 - Manual Data Destruction (runbook procedure) → requires written approval
 Save as: static/images/5.8/cleanup-decision-flow.png
 -->
+

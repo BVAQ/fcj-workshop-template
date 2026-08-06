@@ -112,7 +112,7 @@ test('GitLab and GitHub publish and deploy through the shared ECR contract', () 
 
 Test này đọc trực tiếp file **.gitlab-ci.yml** và **deploy.yml** thực tế và assert rằng cả hai sử dụng cùng deployment script và pattern. Điều này ngăn không cho một hệ thống CI bị lệch (drift) so với hệ thống kia.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Chạy lệnh npm test trong thư mục awsplace/cdk.
 Chụp đầu ra Jest hiển thị tất cả 7 file test pass với dấu tick xanh.
 Lưu tại: static/images/5.6/cdk-test-results.png
@@ -185,10 +185,11 @@ Script **npm test** thực hiện tuần tự ba bước:
 2. **npm run synth** — Chạy cdk synth để tạo CloudFormation template
 3. **jest --runInBand** — Chạy toàn bộ 7 file test tuần tự
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Chạy lệnh npm test trong thư mục awsplace/cdk và chụp đầu ra terminal hiển thị:
 1. Phần biên dịch TypeScript
 2. Đầu ra CDK synth
 3. Kết quả Jest test (tất cả pass)
 Lưu tại: static/images/5.6/npm-test-output.png
 -->
+

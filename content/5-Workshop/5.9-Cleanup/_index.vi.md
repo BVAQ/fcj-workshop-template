@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dọn dẹp Tài nguyên"
 date: 2024-01-01
 weight: 8
@@ -26,10 +26,11 @@ Khi nói đến việc dọn dẹp, quy tắc lớn nhất của chúng mình l�
 
 Sự tách biệt này mang lại sự an tâm tuyệt đối. Nhờ đó, dù có dọn dẹp hay tạo lại stack đi chăng nữa, chúng mình cũng không bao giờ lo vô tình xóa mất Docker image của production, snapshot của database, hay secret của ứng dụng.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Sơ đồ luồng quyết định dọn dẹp của dự án awsplace:
 - Xoá Stack (cdk destroy) → loại bỏ tài nguyên compute, network, và security
 - Tài nguyên Được Giữ lại (chính sách RETAIN) → tồn tại sau khi xoá stack
 - Huỷ Dữ liệu Thủ công (quy trình runbook) → yêu cầu phê duyệt bằng văn bản
 Lưu tại: static/images/5.8/cleanup-decision-flow.png
 -->
+

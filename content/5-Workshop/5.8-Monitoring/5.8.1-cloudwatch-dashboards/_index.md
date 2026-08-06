@@ -164,7 +164,7 @@ dashboard.addWidgets(
 
 This widget is paired with the **RaftDbTcpLivenessAlarm** that fires when healthy targets fall below the expected node count.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open the CloudWatch Dashboards console in AWS.
 Navigate to the RaftDB dashboard and capture the full view showing all widgets:
 EFS signals, Raft consensus panels, per-member ECS utilization, and NLB liveness.
@@ -174,3 +174,4 @@ Screenshot suggestion 2: Select a single Raft consensus widget (e.g., "Raft cons
 Zoom into a time range where a leadership transition occurred to show the metric transitions.
 Save as: static/images/5.7/raft-consensus-widget.png
 -->
+

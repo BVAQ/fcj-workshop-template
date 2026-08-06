@@ -1,4 +1,4 @@
----
+﻿---
 title: "Retained Data Cleanup"
 date: 2024-01-01
 weight: 3
@@ -157,7 +157,7 @@ The staging runbook mandates documentation of every cleanup operation:
 
 This approach aligns with the capacity runbook's requirement that the service owner must explicitly approve resource retirement in writing.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: In the S3 console, open the RaftDB snapshot bucket after stack destruction.
 Capture the bucket showing object versions still present despite the stack being destroyed.
 Save as: static/images/5.8/retained-s3-bucket.png
@@ -166,3 +166,4 @@ Screenshot suggestion 2: In the EFS console, show the filesystem still existing 
 Capture the filesystem detail showing the "Orphaned" or "Not managed by CloudFormation" indicator.
 Save as: static/images/5.8/retained-efs-filesystem.png
 -->
+

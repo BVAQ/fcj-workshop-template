@@ -1,4 +1,4 @@
----
+﻿---
 title: "Xác thực Pipeline CI/CD"
 date: 2024-01-01
 weight: 3
@@ -39,7 +39,7 @@ deploy:
 
 Điều này có nghĩa là nếu bất kỳ job nào trong 6 job tiên quyết thất bại, việc triển khai sẽ bị chặn hoàn toàn.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Vào tab GitHub Actions và mở một workflow run.
 Chụp sơ đồ phụ thuộc trực quan cho thấy deploy job phụ thuộc vào tất cả test job.
 GitHub hiển thị đồ thị này dưới dạng biểu đồ luồng ngang.
@@ -144,7 +144,7 @@ RaftDB image tuân theo chuỗi giám sát nghiêm ngặt:
     bash raftdb/test/migration_runtime_contract_test.sh "${ECR_URI}@${IMAGE_DIGEST}"
 ```
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Mở một workflow run "Test & Deploy" thành công trong GitHub Actions.
 Mở rộng job "deploy" và chụp các step hiển thị validate, prepare, và CDK deploy.
 Lưu tại: static/images/5.6/deploy-steps.png
@@ -172,3 +172,4 @@ test('GitLab and GitHub publish and deploy through the shared ECR contract', () 
 ```
 
 Cách tiếp cận "test-the-test" này đảm bảo hai hệ thống CI không bao giờ bị lệch nhau.
+

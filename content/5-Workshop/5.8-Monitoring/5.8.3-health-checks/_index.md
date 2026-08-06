@@ -1,4 +1,4 @@
----
+﻿---
 title: "Container & Application Health Checks"
 date: 2024-01-01
 weight: 3
@@ -134,10 +134,11 @@ The readiness marker at **/tmp/raftdb-ready** is the linchpin of the health-chec
 
 This contract means the health check provides a truthful signal: if the marker exists, the server has completed recovery, has a writable durable store, and is ready to serve client requests.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open the ECS console, navigate to a RaftDB task, and view the "Health" tab or the container details showing the health check configuration and last status.
 Save as: static/images/5.7/ecs-health-check.png
 
 Screenshot suggestion 2: Open the EC2 Target Groups console, select the ECS target group, and capture the "Health checks" tab showing the /health path, interval, timeout, and threshold settings.
 Save as: static/images/5.7/alb-target-health.png
 -->
+

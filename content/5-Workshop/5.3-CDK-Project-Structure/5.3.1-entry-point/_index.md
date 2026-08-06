@@ -1,4 +1,4 @@
----
+﻿---
 title : "Entry Point & Stack Composition"
 date : 2024-01-01
 weight : 1
@@ -266,10 +266,11 @@ if (process.env.ENABLE_RAFTDB === 'true') {
 
 The **addDependency** call ensures the main stack is deployed before the staging stack — the staging stack cannot resolve **Fn.importValue('AwsplaceEcsRepositoryName')** until the main stack exists.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open bin/ entry point file in VS Code and capture the full file showing the App creation, validation calls, and conditional staging stack logic.
 Save as: static/images/5.4/entry-point-code.png
 
 Screenshot suggestion 2: Run npx cdk synth and capture the cdk.out/ directory showing both AwsplaceStack.template.json and RaftDbStagingStack.template.json (when ENABLE_RAFTDB=true).
 Save as: static/images/5.4/cdk-out-templates.png
 -->
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Application Testing"
 date: 2024-01-01
 weight: 2
@@ -131,7 +131,7 @@ Key test areas:
 
 The health check loop waits up to 60 seconds for MiniStack to become ready before running any tests, ensuring reliable CI execution.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Navigate to your GitHub repository Actions tab.
 Click on a successful "Test & Deploy" workflow run.
 Expand the job list and capture all 4 test jobs showing green checkmarks.
@@ -170,3 +170,4 @@ This builds the RaftDB image **once**, then runs 4 contract test scripts and a T
 - **High** vulnerabilities → require explicit approval via RAFTDB_ACCEPT_HIGH_CVES variable
 
 After all tests and the scan pass, the image is published to ECR with an immutable tag (raftdb-*commit SHA*).
+

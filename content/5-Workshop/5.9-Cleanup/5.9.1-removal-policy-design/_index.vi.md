@@ -166,8 +166,9 @@ appSecret.applyRemovalPolicy(RemovalPolicy.RETAIN);
 | Việc vô tình xoá có thể gây mất dữ liệu không có đường khôi phục không? | **RETAIN** + không autoDeleteObjects | Staging snapshot bucket |
 | Tài nguyên an toàn để xoá nhưng sẽ chặn xoá stack nếu không rỗng? | **DESTROY** + autoDeleteObjects | Application snapshot bucket |
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Trong CloudFormation console, chọn một tài nguyên từ AwsplaceStack (ví dụ: ECR repository).
 Chụp chi tiết tài nguyên hiển thị trường DeletionPolicy: Retain.
 Lưu tại: static/images/5.8/retain-policy-ecr.png
 -->
+

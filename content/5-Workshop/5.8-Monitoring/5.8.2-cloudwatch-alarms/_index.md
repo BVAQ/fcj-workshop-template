@@ -195,7 +195,7 @@ The choice between **NOT_BREACHING** and **BREACHING** is intentional for each a
 
 This prevents the "alarm fatigue" pattern where operators learn to ignore alarms because they fire during every deployment.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open CloudWatch Alarms in the AWS Console.
 Filter to the RaftDB staging stack alarms and capture the list showing all 9+ alarms with their current state (OK/ALARM/INSUFFICIENT_DATA).
 Save as: static/images/5.7/cloudwatch-alarms-list.png
@@ -204,3 +204,4 @@ Screenshot suggestion 2: Click into the RaftDbSnapshotAgeAlarm.
 Capture the alarm detail view showing the threshold (900s), the math expression, and the metric graph.
 Save as: static/images/5.7/snapshot-age-alarm-detail.png
 -->
+

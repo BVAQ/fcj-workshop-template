@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kiểm thử Ứng dụng"
 date: 2024-01-01
 weight: 2
@@ -131,7 +131,7 @@ Các khu vực test chính:
 
 Vòng lặp health check chờ tối đa 60 giây cho MiniStack sẵn sàng trước khi chạy test, đảm bảo CI chạy ổn định.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Vào tab Actions trên GitHub repository.
 Click vào một workflow run "Test & Deploy" thành công.
 Mở rộng danh sách job và chụp cả 4 job test hiển thị dấu tick xanh.
@@ -170,3 +170,4 @@ Quá trình này build RaftDB image **một lần duy nhất**, sau đó chạy 
 - Lỗ hổng **High** → yêu cầu phê duyệt rõ ràng qua biến RAFTDB_ACCEPT_HIGH_CVES
 
 Sau khi tất cả test và quét đều pass, image được publish lên ECR với tag bất biến (raftdb-*commit SHA*).
+

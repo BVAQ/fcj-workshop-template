@@ -39,7 +39,7 @@ Thứ hai là **hạ tầng có thể tái tạo dưới dạng code**. Toàn b�
 - Pixel canvas cộng tác thời gian thực qua WebSocket, nơi người dùng đã đăng nhập đặt một trong 16 màu mỗi cooldown interval lên lưới dùng chung
 - Luồng đăng nhập Discord OAuth2: redirect, đổi code, cookie phiên HS256 JWT, endpoint nhận diện **/api/me**
 - Áp dụng cooldown theo user, admin có thể điều chỉnh tại thời gian chạy mà không cần redeploy
-- Mở rộng bảng động theo bốn hướng, admin kích hoạt thủ công hoặc milestone đã hẹn tự động触发, hình vẽ hiện có được giữ nguyên qua dịch tọa độ offset
+- Mở rộng bảng động theo bốn hướng, admin kích hoạt thủ công hoặc milestone đã hẹn tự động, hình vẽ hiện có được giữ nguyên qua dịch tọa độ offset
 - Dashboard admin tại **/admin.html** với thống kê thời gian thực, preview canvas, mở rộng thủ công, CRUD milestone, xóa vùng chữ nhật, ban user và IP, điều chỉnh cooldown, và feed hoạt động gần đây
 - Lưu trữ canvas dựa trên RaftDB, một engine lưu trữ C++23 tự viết dùng Raft-consensus với WAL phân đoạn và snapshot S3 định kỳ
 - Hạ tầng dạng code: một CDK stack (**AwsplaceStack**) bằng TypeScript tạo ra mọi tài nguyên AWS; không có gì được tạo thủ công trong console
@@ -132,3 +132,4 @@ Ba giới hạn, nêu rõ ở đây thay vì giấu trong code.
 Production chạy **một Raft voter**, không phải quorum. **desiredCount: 1** và một access point EFS duy nhất có nghĩa là cấu hình multi-voter mà storage engine hỗ trợ không được sử dụng trên production; code rõ ràng rằng chế độ single-node không phải là câu chuyện về durability. Cấu hình ba voter tồn tại trong một stack staging riêng và được mô tả là mục tiêu đã ghi nhận, không phải trạng thái hiện tại.
 
 **Cooldown lưu trong bộ nhớ** trong process Go và mất khi task restart, nên người dùng tạm thời lấy lại khả năng đặt ngay sau khi redeploy.
+

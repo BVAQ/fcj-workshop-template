@@ -131,7 +131,7 @@ CI/CD artifacts (test logs, scan reports, publication evidence) are managed sepa
 
 The 90-day artifact retention aligns with the RaftDB chain-of-custody requirement: publication evidence must be available for audit during the full rollback window (7 days after read cutover) plus a generous margin.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Run cdk destroy RaftDbStagingStack --force in a terminal.
 Capture the output showing CloudFormation resources being deleted and the final confirmation.
 Save as: static/images/5.8/cdk-destroy-staging.png
@@ -140,3 +140,4 @@ Screenshot suggestion 2: Open the CloudFormation console during a stuck-stack sc
 Capture the stack events showing the failure and then the successful deletion triggered by prepare-cloudformation-deploy.sh.
 Save as: static/images/5.8/stuck-stack-cleanup.png
 -->
+

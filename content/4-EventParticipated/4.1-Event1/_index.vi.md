@@ -132,23 +132,24 @@ Những công nghệ và tư duy từ cuộc thi này quá sát với thực t�
 
 Việc trải qua trọn vẹn sự kiện AABW Hackathon giống hệt như một chuyến tàu lượn siêu tốc về mặt cảm xúc (emotional rollercoaster). Đây không chỉ là một khóa học, đây là một thao trường thực sự.
 
-#### 🧠 Đấu trí và Cọ xát kỹ thuật cực độ (Hands-on Technical Pressure)
+####  Đấu trí và Cọ xát kỹ thuật cực độ (Hands-on Technical Pressure)
 - Bắt đầu với sự hoang mang (Overwhelmed): 2 giờ đầu tiên là khoảng thời gian kinh khủng nhất khi đứng trước một "vùng biển lớn" các dịch vụ AWS và không biết phải lắp ghép chúng như thế nào. Nhưng ngay sau khi bản thiết kế trên bảng trắng được chốt, mọi người rơi vào trạng thái dòng chảy (In the zone) - tiếng gõ phím vang lên liên tục không ngừng nghỉ.
 - Đối mặt với khủng hoảng: Trải nghiệm code báo lỗi liên tục lúc 3 giờ sáng, quên commit code lên Github dẫn đến conflict từa lưa, hay pha "đứng tim" khi vô tình push file **.env** chứa mật khẩu lên public repo... Đó là những kinh nghiệm xương máu không một giảng đường hay sách vở nào dạy được.
 
-#### 🤝 Tinh thần đồng đội và Mở rộng mối quan hệ (Networking and Collaboration)
+####  Tinh thần đồng đội và Mở rộng mối quan hệ (Networking and Collaboration)
 - Áp lực khủng khiếp đã gắn kết những con người xa lạ. Việc cùng nhau nhai vội miếng gà rán KFC lúc nửa đêm, đi dạo quanh khuôn viên Vinhomes lúc 2h sáng để đầu óc tỉnh táo lại, và động viên nhau sửa từng dòng bug đã tạo nên một sợi dây liên kết tuyệt vời.
 - Giao lưu với các đội thi khác và các mentor từ AWS giúp mình nhận ra kiến thức của mình còn quá nhỏ bé, nhưng đồng thời cũng thấy rõ con đường mình cần đi để trở thành một Solution Architect thực thụ.
 
-#### 💡 Sự giác ngộ sau sự kiện (The Pride)
+####  Sự giác ngộ sau sự kiện (The Pride)
 - Khoảnh khắc nhìn thấy sản phẩm của team thực sự hoạt động, có thể chat được, phân tích được hình ảnh, và xử lý được dữ liệu ngay trên Cloud là cảm giác tự hào (Proud) khó tả.
 - Sự kiện này giúp mình phá vỡ giới hạn tâm lý: Mình từng nghĩ phải mất nhiều tháng để làm một sản phẩm AI phức tạp, nhưng Hackathon đã chứng minh rằng: Nếu bạn tập trung cao độ, phân bổ nguồn lực tốt và dùng đúng công cụ Cloud mạnh mẽ, bạn có thể biến một ý tưởng điên rồ thành hiện thực chỉ trong vỏn vẹn 24 giờ đồng hồ.
 
-#### 📸 Một vài hình ảnh tại Sự kiện (Event photos)
+####  Một vài hình ảnh tại Sự kiện (Event photos)
 <div style="display: flex; justify-content: center; gap: 10px;">
   <img src="/images/4-Event/z8093879699810_c69fefaf8ebc56abaa36cba73d596f48.jpg" style="width: 30%; object-fit: cover;" />
   <img src="/images/4-Event/z8093879709518_706d9214a0e85dbf18454836f36e3b10.jpg" style="width: 30%; object-fit: cover;" />
   <img src="/images/4-Event/z8093879712854_b2c5d2eca158a3ecabd73b0369e16770.jpg" style="width: 30%; object-fit: cover;" />
 </div>
+
 
 

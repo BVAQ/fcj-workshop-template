@@ -131,7 +131,7 @@ CI/CD artifact (test log, báo cáo scan, publication evidence) được quản 
 
 Thời gian lưu artifact 90 ngày phù hợp với yêu cầu chain-of-custody của RaftDB: publication evidence phải có sẵn để kiểm toán trong toàn bộ rollback window (7 ngày sau read cutover) cộng với biên độ hào phóng.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Chạy cdk destroy RaftDbStagingStack --force trong terminal.
 Chụp đầu ra hiển thị tài nguyên CloudFormation đang bị xoá và xác nhận cuối cùng.
 Lưu tại: static/images/5.8/cdk-destroy-staging.png
@@ -140,3 +140,4 @@ Gợi ý chụp ảnh 2: Mở CloudFormation console trong kịch bản stack b�
 Chụp stack events hiển thị lỗi và sau đó là xoá thành công được kích hoạt bởi prepare-cloudformation-deploy.sh.
 Lưu tại: static/images/5.8/stuck-stack-cleanup.png
 -->
+

@@ -195,7 +195,7 @@ Lựa chọn giữa **NOT_BREACHING** và **BREACHING** là có chủ đích cho
 
 Điều này ngăn chặn mô hình "mệt mỏi vì alarm" (alarm fatigue) — nơi người vận hành học cách bỏ qua alarm vì chúng kích hoạt trong mỗi lần triển khai.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Mở CloudWatch Alarms trong AWS Console.
 Lọc theo alarm của RaftDB staging stack và chụp danh sách hiển thị tất cả 9+ alarm với trạng thái hiện tại (OK/ALARM/INSUFFICIENT_DATA).
 Lưu tại: static/images/5.7/cloudwatch-alarms-list.png
@@ -204,3 +204,4 @@ Gợi ý chụp ảnh 2: Click vào RaftDbSnapshotAgeAlarm.
 Chụp giao diện chi tiết alarm hiển thị ngưỡng (900s), math expression, và đồ thị metric.
 Lưu tại: static/images/5.7/snapshot-age-alarm-detail.png
 -->
+

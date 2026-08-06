@@ -1,4 +1,4 @@
----
+﻿---
 title: "Giám sát"
 date: 2024-01-01
 weight: 7
@@ -28,10 +28,11 @@ Cách tiếp cận của chúng mình rất đơn giản: **chỉ giám sát nh�
 
 Cách làm này giúp dashboard của chúng mình luôn gọn gàng và cảnh báo luôn hữu ích. Mỗi khi có tiếng báo động, chúng mình biết ngay cần phải sửa gì.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh: Sơ đồ các tầng giám sát của dự án awsplace:
 - Trên cùng: CloudWatch Dashboards (trực quan hoá thời gian thực)
 - Giữa: CloudWatch Alarms (cảnh báo tự động)
 - Dưới cùng: Health Checks + Centralized Logging (chẩn đoán cấp dịch vụ)
 Lưu tại: static/images/5.7/monitoring-layers.png
 -->
+

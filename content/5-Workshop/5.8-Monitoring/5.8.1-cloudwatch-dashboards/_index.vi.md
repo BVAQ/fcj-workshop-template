@@ -164,7 +164,7 @@ dashboard.addWidgets(
 
 Widget này được ghép cặp với **RaftDbTcpLivenessAlarm** kích hoạt khi healthy target giảm xuống dưới số lượng node mong đợi.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Mở CloudWatch Dashboards console trên AWS.
 Điều hướng đến RaftDB dashboard và chụp toàn bộ giao diện hiển thị tất cả widget:
 EFS signals, Raft consensus panels, ECS utilization từng member, và NLB liveness.
@@ -174,3 +174,4 @@ Gợi ý chụp ảnh 2: Chọn một widget Raft consensus (ví dụ: "Raft con
 Phóng to vào khoảng thời gian xảy ra chuyển đổi leadership để hiển thị các chuyển tiếp metric.
 Lưu tại: static/images/5.7/raft-consensus-widget.png
 -->
+

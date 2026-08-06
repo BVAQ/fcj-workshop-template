@@ -1,4 +1,4 @@
----
+﻿---
 title: "CI/CD Pipeline Validation"
 date: 2024-01-01
 weight: 3
@@ -39,7 +39,7 @@ deploy:
 
 This means a failure in any of the 6 prerequisite jobs will block deployment entirely.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: Go to the GitHub Actions tab and open a workflow run.
 Capture the visual dependency graph showing how the deploy job depends on all test jobs.
 Save as: static/images/5.6/deployment-gate.png
@@ -143,7 +143,7 @@ The RaftDB image follows a rigorous chain of custody:
     bash raftdb/test/migration_runtime_contract_test.sh "${ECR_URI}@${IMAGE_DIGEST}"
 ```
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion 1: Open a successful "Test & Deploy" workflow run in GitHub Actions.
 Expand the "deploy" job and capture the steps showing validate, prepare, and CDK deploy.
 Save as: static/images/5.6/deploy-steps.png
@@ -171,3 +171,4 @@ test('GitLab and GitHub publish and deploy through the shared ECR contract', () 
 ```
 
 This "test-the-test" approach ensures the two CI systems never drift apart.
+

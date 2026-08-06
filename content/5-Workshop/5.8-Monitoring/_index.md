@@ -1,4 +1,4 @@
----
+﻿---
 title: "Monitoring"
 date: 2024-01-01
 weight: 7
@@ -28,10 +28,11 @@ Our approach to monitoring is simple: **we only monitor things that actually bre
 
 This keeps our dashboards clean and our alerts useful. When an alarm goes off, we know exactly what to fix.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: A diagram showing the monitoring layers of the awsplace project:
 - Top: CloudWatch Dashboards (real-time visualization)
 - Middle: CloudWatch Alarms (automated alerting)
 - Bottom: Health Checks + Centralized Logging (service-level diagnostics)
 Save as: static/images/5.7/monitoring-layers.png
 -->
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dọn dẹp Dữ liệu Được Giữ lại"
 date: 2024-01-01
 weight: 3
@@ -157,7 +157,7 @@ Staging runbook yêu cầu ghi chép lại mọi thao tác dọn dẹp:
 
 Cách tiếp cận này phù hợp với yêu cầu của capacity runbook rằng service owner phải phê duyệt rõ ràng việc ngừng hoạt động tài nguyên bằng văn bản.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Trong S3 console, mở RaftDB snapshot bucket sau khi huỷ stack.
 Chụp bucket hiển thị object version vẫn còn mặc dù stack đã bị huỷ.
 Lưu tại: static/images/5.8/retained-s3-bucket.png
@@ -166,3 +166,4 @@ Gợi ý chụp ảnh 2: Trong EFS console, hiển thị filesystem vẫn tồn 
 Chụp chi tiết filesystem hiển thị chỉ báo "Orphaned" hoặc "Not managed by CloudFormation".
 Lưu tại: static/images/5.8/retained-efs-filesystem.png
 -->
+

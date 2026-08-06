@@ -133,23 +133,24 @@ The technologies and philosophies showcased at this event are directly applicabl
 
 Participating in the **AABW Hackathon** was a true emotional rollercoaster. It was less of a tech conference and more of a technological proving ground.
 
-#### 🧠 The Intense Mental & Technical Crucible
+####  The Intense Mental & Technical Crucible
 - **Overwhelmed at the Start:** The first two hours were terrifying. Staring into the vast ocean of AWS services without knowing how to piece them together was daunting. However, once the whiteboard architecture was locked in, the team entered a deep state of "flow"—the sound of typing didn't stop for hours.
 - **Embracing the Chaos:** Experiencing cascading code failures at 3:00 AM, dealing with messy Git merge conflicts because someone forgot to commit, and the heart-stopping panic of almost exposing credentials... these are the visceral, high-stakes lessons that forge real engineers.
 
-#### 🤝 Team Spirit & Networking
+####  Team Spirit & Networking
 - **Bonds Forged in Fire:** The immense pressure united a group of strangers. Eating cold fried chicken at midnight, taking a 2:00 AM walk around the Vinhomes campus just to stay awake, and motivating each other to fix just one more bug created an incredible sense of camaraderie.
 - **Learning from the Best:** Engaging with other teams and AWS mentors made me realize how much I still have to learn, but it also clearly illuminated the path I need to take to become a true Solution Architect.
 
-#### 💡 The Pride of Creation
+####  The Pride of Creation
 - **The 'Aha' Moment:** The exact moment our team's product actually worked—when the AI successfully analyzed data on the cloud and responded correctly—brought an indescribable feeling of pride.
 - **Shattering Mental Barriers:** I used to believe that building a complex AI product required months of planning and development. This hackathon proved a profound truth: If you have intense focus, clear resource allocation, and the right Cloud tools, you can transform a crazy idea into a stunning, functional reality in exactly 24 hours.
 
-#### 📸 A Few Memories from the Event
+####  A Few Memories from the Event
 <div style="display: flex; justify-content: center; gap: 10px;">
   <img src="/images/4-Event/z8093879699810_c69fefaf8ebc56abaa36cba73d596f48.jpg" style="width: 30%; object-fit: cover;" />
   <img src="/images/4-Event/z8093879709518_706d9214a0e85dbf18454836f36e3b10.jpg" style="width: 30%; object-fit: cover;" />
   <img src="/images/4-Event/z8093879712854_b2c5d2eca158a3ecabd73b0369e16770.jpg" style="width: 30%; object-fit: cover;" />
 </div>
+
 
 

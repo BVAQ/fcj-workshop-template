@@ -1,4 +1,4 @@
----
+﻿---
 title: "Centralized Logging"
 date: 2024-01-01
 weight: 4
@@ -110,7 +110,7 @@ CI/CD pipeline cũng tạo ra log có cấu trúc bổ sung cho giám sát thờ
 
 Bằng chứng publication RaftDB (image digest, kết quả contract test, báo cáo scan) được upload dưới dạng workflow artifact với thời gian lưu 90 ngày. Điều này cung cấp một audit trail kết nối container đang chạy với nguồn gốc build, test, và scan của nó.
 
-<!-- 📸 HƯỚNG DẪN HÌNH ẢNH:
+<!--  HƯỚNG DẪN HÌNH ẢNH:
 Gợi ý chụp ảnh 1: Mở CloudWatch Logs Insights trong AWS Console.
 Chạy một truy vấn lọc theo log group của ứng dụng awsplace.
 Chụp giao diện hiển thị trình soạn truy vấn, bộ chọn log stream, và một mẫu kết quả.
@@ -124,3 +124,4 @@ Gợi ý chụp ảnh 3: Điều hướng đến VPC Endpoints trong AWS Console
 Lọc theo RaftDB VPC và chụp danh sách hiển thị CloudWatch Logs endpoint cùng với ECR và S3 endpoint.
 Lưu tại: static/images/5.7/vpc-endpoints-logging.png
 -->
+

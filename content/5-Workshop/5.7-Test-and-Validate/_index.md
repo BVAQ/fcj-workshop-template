@@ -1,4 +1,4 @@
----
+﻿---
 title: "Test & Validate"
 date: 2024-01-01
 weight: 6
@@ -26,10 +26,11 @@ When it comes to testing, our core rule is to **test the contract, not the imple
 
 By testing the real output, we catch actual deployment bugs that simple mocking would completely miss.
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: A diagram showing the testing pyramid of the awsplace project:
 - Top: CI/CD Pipeline (GitHub Actions / GitLab CI)
 - Middle: CDK Contract Tests (Jest)
 - Bottom: Application Tests (Go unit + integration)
 Save as: static/images/5.6/testing-pyramid.png
 -->
+

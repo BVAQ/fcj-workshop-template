@@ -166,8 +166,9 @@ This prevents a stack recreation from destroying and requiring manual re-entry o
 | Could accidental deletion cause data loss with no recovery path? | **RETAIN** + no autoDeleteObjects | Staging snapshot bucket |
 | Is the resource safe to delete but would block stack deletion if non-empty? | **DESTROY** + autoDeleteObjects | Application snapshot bucket |
 
-<!-- 📸 IMAGE GUIDELINE:
+<!--  IMAGE GUIDELINE:
 Screenshot suggestion: In the CloudFormation console, select a resource from the AwsplaceStack (e.g., the ECR repository).
 Capture the resource detail showing the DeletionPolicy: Retain field.
 Save as: static/images/5.8/retain-policy-ecr.png
 -->
+
